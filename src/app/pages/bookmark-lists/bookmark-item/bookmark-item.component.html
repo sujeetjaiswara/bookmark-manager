@@ -1,1 +1,42 @@
-<p>bookmark-item works!</p>
+<div class="d-flex bg-white mb-3 shadow-sm rounded">
+  <div class="p-2">
+    <img src="assets/upload/butterfly-7416290_640.jpg" alt="" width="200" />
+  </div>
+  <div class="w-100 ps-2">
+    <div class="d-flex justify-content-between mt-2 me-3 mb-1">
+      <div>
+        <a [href]="bookmark.Links" target="_blank" class="text-black">
+          <h4 class="fw-bold fs-6 mb-0">{{ bookmark.Title }}</h4>
+        </a>
+      </div>
+      <div>
+        <small class="text-muted">{{ bookmark.BookmarkDate }}</small>
+      </div>
+    </div>
+
+    <div>
+      <mat-chip-list aria-label="Fish selection" class="tags">
+        <ng-container *ngFor="let tag of getTags(bookmark.Tags)">
+          <mat-chip
+            color="warn"
+            class="custom-chip-size"
+            style="
+              font-size: 10px;
+              padding: 2px 5px;
+              min-height: 22px;
+              border-radius: 4px;
+              color: #fff;
+              background: #d9534f;
+            "
+          >
+            {{ tag }}
+          </mat-chip>
+        </ng-container>
+      </mat-chip-list>
+    </div>
+
+    <div class="mt-2 text-muted pe-1">
+      {{ bookmark.Description }}
+    </div>
+  </div>
+</div>

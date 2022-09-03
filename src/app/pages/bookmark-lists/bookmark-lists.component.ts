@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
-interface Bookmark {
-
-}
+import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 
 @Component({
   selector: 'bm-bookmark-lists',
@@ -12,7 +9,7 @@ interface Bookmark {
 })
 export class BookmarkListsComponent implements OnInit {
 
-  bookmarks = [
+  bookmarks: Bookmark[] = [
     {
       "BookmarkId": 59,
       "Title": "Twilio Node",
@@ -75,18 +72,9 @@ export class BookmarkListsComponent implements OnInit {
     },
   ]
 
-
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.bookmarks)
   }
-
-  getTags(tags: string) {
-    if (!tags) {
-      return;
-    }
-    return tags.split(',');
-  }
-
 }

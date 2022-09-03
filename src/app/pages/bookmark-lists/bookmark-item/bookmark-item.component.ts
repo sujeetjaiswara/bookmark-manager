@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 
 @Component({
   selector: 'bm-bookmark-item',
@@ -8,9 +9,17 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class BookmarkItemComponent implements OnInit {
 
+  @Input() bookmark!: Bookmark;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  getTags(tags: string) {
+    if (!tags) {
+      return;
+    }
+    return tags.split(',');
   }
 
 }
