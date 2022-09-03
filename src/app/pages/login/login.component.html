@@ -1,2 +1,21 @@
-<p>login works!</p>
-<a routerLink="/bookmarks" routerLinkActive="active" mat-button>Login</a>
+<div
+  class="d-flex align-items-center justify-content-center"
+  style="height: 90vh"
+>
+  <div class="card col-md-6 p-4 shadow">
+    <form>
+      <h2>Login</h2>
+      <div class="mb-4">
+        <input type="text" class="form-control" placeholder="User name" />
+      </div>
+      <div class="mb-4">
+        <input type="password" class="form-control" placeholder="Password" />
+      </div>
+      <div class="d-flex justify-content-end">
+        <button mat-flat-button color="primary" (click)="onLogin()">
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

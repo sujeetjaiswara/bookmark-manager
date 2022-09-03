@@ -9,4 +9,10 @@
   <section *ngFor="let bookmark of bookmarks">
     <bm-bookmark-item [bookmark]="bookmark"></bm-bookmark-item>
   </section>
+
+  <div class="fixed-bottom w-100 mb-3 d-flex justify-content-end">
+    <button mat-mini-fab color="warn">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>
