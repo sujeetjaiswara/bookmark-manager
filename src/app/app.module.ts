@@ -8,11 +8,22 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NavComponent } from './layouts/nav/nav.component';
 import { SharedModule } from './shared/shared/shared.module';
+import { BookmarkListsComponent } from './pages/bookmark-lists/bookmark-lists.component';
+import { BookmarkFavouritesComponent } from './pages/bookmark-favourites/bookmark-favourites.component';
+import { LoginComponent } from './pages/login/login.component';
+import { BookmarkAddComponent } from './pages/bookmark-add/bookmark-add.component';
+import { BookmarkItemComponent } from './pages/bookmark-lists/bookmark-item/bookmark-item.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    BookmarkListsComponent,
+    BookmarkFavouritesComponent,
+    LoginComponent,
+    BookmarkAddComponent,
+    BookmarkItemComponent
   ],
   imports: [
     BrowserModule,

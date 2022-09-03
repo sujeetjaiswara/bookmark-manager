@@ -1,19 +1,24 @@
 <mat-toolbar color="primary" style="height: 3.2rem">
-  <button
+  <!-- <button
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with menu icon"
   >
     <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
+  </button> -->
+
+  <span class="text-white d-flex align-items-center fw-normal">
+    <mat-icon class="me-1">stars</mat-icon> Bookmarks
+  </span>
+
   <span class="example-spacer"></span>
   <button
     mat-icon-button
     class="example-icon favorite-icon"
     aria-label="Example icon-button with heart icon"
+    (click)="onLogout()"
   >
-    <mat-icon>favorite</mat-icon>
+    <mat-icon>logout</mat-icon>
   </button>
   <button
     mat-icon-button

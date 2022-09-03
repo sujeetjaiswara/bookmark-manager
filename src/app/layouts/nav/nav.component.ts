@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'bm-nav',
@@ -6,11 +7,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
-  ngOnInit(): void {
+  onLogout() {
+    this._router.navigate(['login']);
   }
-
 }
