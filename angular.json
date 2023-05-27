@@ -9,10 +9,12 @@
         "@schematics/angular:component": {
           "prefix": "bm",
           "style": "scss",
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "standalone": true
         },
         "@schematics/angular:directive": {
-          "prefix": "bm"
+          "prefix": "bm",
+          "standalone": true
         }
       },
       "root": "",
@@ -25,7 +27,9 @@
             "outputPath": "dist/bookmark-manager",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -94,10 +98,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
@@ -114,6 +119,6 @@
     }
   },
   "cli": {
-    "analytics": "4a277a9b-cb16-4e1a-862b-2ad5ebc910fd"
+    "analytics": "b33987d3-fff4-482d-be21-cbaac29bfc84"
   }
 }
