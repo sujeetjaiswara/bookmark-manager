@@ -1,8 +1,8 @@
 <div class="pt-3 pb-2">
-  <div class="mb-3 d-flex">
-    <input type="search" class="form-control me-1" placeholder="Search..." />
-    <button mat-flat-button color="primary">
-      <mat-icon class="fs-5">search</mat-icon>Search
+  <div class="flex mb-3">
+    <input type="search" class="form-input w-full h-9 me-1 rounded" placeholder="Search..." />
+    <button mat-flat-button color="primary" class="text-sm">
+      <mat-icon>search</mat-icon>Search
     </button>
   </div>
 
@@ -10,7 +10,7 @@
     <bm-bookmark-item [bookmark]="bookmark"></bm-bookmark-item>
   </section>
 
-  <div class="fixed-bottom w-100 mb-3 d-flex justify-content-end">
+  <div class="w-full fixed bottom-0 flex justify-end mb-3">
     <button mat-mini-fab color="warn">
       <mat-icon>add</mat-icon>
     </button>

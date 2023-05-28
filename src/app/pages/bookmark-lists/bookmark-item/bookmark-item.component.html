@@ -1,16 +1,19 @@
-<div class="d-flex bg-white mb-3 shadow-sm rounded">
+<div class="flex bg-gray-50 mb-4 shadow-sm rounded border">
+  <!-- Cover image -->
   <div class="p-2">
     <img src="assets/upload/butterfly-7416290_640.jpg" alt="" width="200" />
   </div>
-  <div class="w-100 ps-2">
-    <div class="d-flex justify-content-between mt-2 me-3 mb-1">
+
+  <!-- Content -->
+  <div class="w-full ps-2">
+    <div class="flex justify-between mt-2 me-3 mb-1">
       <div>
-        <a [href]="bookmark.Links" target="_blank" class="text-black">
+        <a [href]="bookmark.Links" target="_blank" class="text-black hover:text-violet-600">
           <h4 class="fw-bold fs-6 mb-0">{{ bookmark.Title }}</h4>
         </a>
       </div>
       <div>
-        <small class="text-muted">{{ bookmark.BookmarkDate }}</small>
+        <small class="text-gray-400">{{ bookmark.BookmarkDate }}</small>
       </div>
     </div>
 
@@ -35,7 +38,7 @@
       </mat-chip-list> -->
     </div>
 
-    <div class="mt-2 text-muted pe-1">
+    <div class="mt-2 pe-1 text-gray-600 text-sm">
       {{ bookmark.Description }}
     </div>
   </div>
