@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 
 @Component({
@@ -72,9 +73,14 @@ export class BookmarkListsComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(private _router:Router) { }
 
   ngOnInit(): void {
     console.log(this.bookmarks)
+  }
+
+  onAdd(e: Event) {
+    e.preventDefault();
+    this._router.navigate(['add-bookmark'])
   }
 }

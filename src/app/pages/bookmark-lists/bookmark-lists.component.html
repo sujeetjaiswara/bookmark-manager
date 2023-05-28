@@ -1,8 +1,13 @@
 <div class="pt-3 pb-2">
   <div class="flex mb-3">
     <input type="search" class="form-input w-full h-9 me-1 rounded" placeholder="Search..." />
-    <button mat-flat-button color="primary" class="text-sm">
+
+    <button mat-flat-button color="accent" class="text-sm w-36">
       <mat-icon>search</mat-icon>Search
+    </button>
+
+    <button mat-flat-button color="primary" class="text-sm ms-1 w-32" (click)="onAdd($event)">
+      <mat-icon>add</mat-icon>Add
     </button>
   </div>
 
@@ -10,9 +15,9 @@
     <bm-bookmark-item [bookmark]="bookmark"></bm-bookmark-item>
   </section>
 
-  <div class="w-full fixed bottom-0 flex justify-end mb-3">
+  <!-- <div class="w-full fixed bottom-0 flex justify-end mb-3">
     <button mat-mini-fab color="warn">
       <mat-icon>add</mat-icon>
     </button>
-  </div>
+  </div> -->
 </div>
