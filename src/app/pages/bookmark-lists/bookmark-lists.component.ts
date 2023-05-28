@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'bm-bookmark-lists',
@@ -73,10 +74,16 @@ export class BookmarkListsComponent implements OnInit {
     },
   ]
 
-  constructor(private _router: Router) { }
+  constructor(
+    private _router: Router,
+    private _data: DataService
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.bookmarks)
+    // console.log(this.bookmarks);
+    this._data.getBookmarks().subscribe((data) => {
+      console.log('bookmarks=>', data)
+    });
   }
 
   onAdd(e: Event) {
