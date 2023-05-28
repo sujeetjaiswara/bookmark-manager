@@ -8,38 +8,31 @@
   <div class="w-full ps-2">
     <div class="flex justify-between mt-2 me-3 mb-1">
       <div>
-        <a [href]="bookmark.Links" target="_blank" class="text-black hover:text-violet-600">
+        <a [href]="bookmark.Links" target="_blank" class="font-semibold hover:text-violet-600">
           <h4 class="fw-bold fs-6 mb-0">{{ bookmark.Title }}</h4>
         </a>
       </div>
       <div>
-        <small class="text-gray-400">{{ bookmark.BookmarkDate }}</small>
+        <small class="text-gray-400 text-xs">{{ bookmark.BookmarkDate }}</small>
       </div>
     </div>
 
     <div>
-      <!-- <mat-chip-list aria-label="Fish selection" class="tags">
-        <ng-container *ngFor="let tag of getTags(bookmark.Tags)">
-          <mat-chip
-            color="warn"
-            class="custom-chip-size"
-            style="
-              font-size: 10px;
-              padding: 2px 5px;
-              min-height: 22px;
-              border-radius: 4px;
-              color: #fff;
-              background: #d9534f;
-            "
-          >
-            {{ tag }}
-          </mat-chip>
-        </ng-container>
-      </mat-chip-list> -->
+      <mat-chip-listbox>
+        <mat-chip *ngFor="let tag of getTags(bookmark.Tags)" class="text-xs py-1 px-2 rounded-xl bg-red-700">
+          {{ tag }}
+        </mat-chip>
+      </mat-chip-listbox>
     </div>
 
     <div class="mt-2 pe-1 text-gray-600 text-sm">
       {{ bookmark.Description }}
+    </div>
+
+    <div *ngIf="bookmark.Likes" class="flex justify-end">
+      <button mat-icon-button color="primary" (click)="onFav($event)">
+        <mat-icon>star</mat-icon>
+      </button>
     </div>
   </div>
 </div>

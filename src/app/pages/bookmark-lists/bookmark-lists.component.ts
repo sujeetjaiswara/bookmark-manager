@@ -49,7 +49,7 @@ export class BookmarkListsComponent implements OnInit {
       "Description": "JavaScript is all like \"You images done yet or what?\"",
       "Screenshot": "09-171728efbda8.jpg",
       "BookmarkDate": "09-17-2016",
-      "Likes": 1
+      "Likes": 0
     },
     {
       "BookmarkId": 54,
@@ -69,11 +69,11 @@ export class BookmarkListsComponent implements OnInit {
       "Description": "Creating Migrations\r\nRunning Migrations\r\nUpdate Migrations",
       "Screenshot": "09-033a066bda8c.jpg",
       "BookmarkDate": "09-03-2016",
-      "Likes": 1
+      "Likes": 0
     },
   ]
 
-  constructor(private _router:Router) { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
     console.log(this.bookmarks)

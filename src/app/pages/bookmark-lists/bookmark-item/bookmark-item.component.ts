@@ -22,4 +22,8 @@ export class BookmarkItemComponent implements OnInit {
     return tags.split(',');
   }
 
+  onFav(e: Event) {
+    e.stopPropagation()
+  }
+
 }
