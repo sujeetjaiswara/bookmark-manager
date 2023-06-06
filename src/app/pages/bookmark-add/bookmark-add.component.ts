@@ -1,16 +1,24 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'bm-bookmark-add',
   templateUrl: './bookmark-add.component.html',
   styleUrls: ['./bookmark-add.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule
+  ]
 })
 export class BookmarkAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  onAdd() {
+    this.router.navigate(['/bookmarks']);
   }
-
 }

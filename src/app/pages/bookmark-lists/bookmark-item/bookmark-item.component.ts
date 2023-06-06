@@ -1,11 +1,21 @@
+import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 
 @Component({
   selector: 'bm-bookmark-item',
   templateUrl: './bookmark-item.component.html',
   styleUrls: ['./bookmark-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatIconModule,
+    MatButtonModule,
+    NgIf,
+    NgFor
+  ]
 })
 export class BookmarkItemComponent implements OnInit {
 

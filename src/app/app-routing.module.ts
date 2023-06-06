@@ -1,32 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookmarkAddComponent } from './pages/bookmark-add/bookmark-add.component';
-import { BookmarkFavouritesComponent } from './pages/bookmark-favourites/bookmark-favourites.component';
-import { BookmarkListsComponent } from './pages/bookmark-lists/bookmark-lists.component';
-import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'login',
     title: 'Login',
-    component: LoginComponent
+    loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
   },
   {
     path: 'bookmarks',
     title: 'Bookmarks',
-    component: BookmarkListsComponent
-    // loadChildren: () => import('./pages/bookmark-lists').then(m => m.HomeModule),
+    loadComponent: () => import('./pages/bookmark-lists/bookmark-lists.component').then(m => m.BookmarkListsComponent)
   },
   {
     path: 'fav-bookmarks',
     title: 'Fav Bookmarks',
-    component: BookmarkFavouritesComponent
+    loadComponent: () => import('./pages/bookmark-favourites/bookmark-favourites.component').then(m => m.BookmarkFavouritesComponent),
   },
   {
     path: 'add-bookmark',
     title: 'Add Bookmark',
-    component: BookmarkAddComponent
+    loadComponent: () => import('./pages/bookmark-add/bookmark-add.component').then(m => m.BookmarkAddComponent),
   },
 ];
 

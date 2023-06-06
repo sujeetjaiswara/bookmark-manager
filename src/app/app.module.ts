@@ -1,29 +1,12 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavComponent } from './layouts/nav/nav.component';
-import { BookmarkAddComponent } from './pages/bookmark-add/bookmark-add.component';
-import { BookmarkFavouritesComponent } from './pages/bookmark-favourites/bookmark-favourites.component';
-import { BookmarkItemComponent } from './pages/bookmark-lists/bookmark-item/bookmark-item.component';
-import { BookmarkListsComponent } from './pages/bookmark-lists/bookmark-lists.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SharedModule } from './shared/shared/shared.module';
+// import { SharedModule } from './shared/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    BookmarkListsComponent,
-    BookmarkFavouritesComponent,
-    LoginComponent,
-    BookmarkAddComponent,
-    BookmarkItemComponent
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,10 +17,10 @@ import { SharedModule } from './shared/shared/shared.module';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    SharedModule,
-    HttpClientModule
+    // SharedModule,
+    // HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  // bootstrap: [AppComponent]
 })
 export class AppModule { }

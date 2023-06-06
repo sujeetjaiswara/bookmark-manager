@@ -1,13 +1,25 @@
+import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { DataService } from 'src/app/shared/services/data.service';
+import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
 @Component({
   selector: 'bm-bookmark-lists',
   templateUrl: './bookmark-lists.component.html',
   styleUrls: ['./bookmark-lists.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    BookmarkItemComponent,
+    NgFor,
+  ],
+  providers: [DataService]
 })
 export class BookmarkListsComponent implements OnInit {
 
@@ -81,9 +93,9 @@ export class BookmarkListsComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.bookmarks);
-    this._data.getBookmarks().subscribe((data) => {
-      console.log('bookmarks=>', data)
-    });
+    // this._data.getBookmarks().subscribe((data) => {
+    //   console.log('bookmarks=>', data)
+    // });
   }
 
   onAdd(e: Event) {

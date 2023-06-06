@@ -4,13 +4,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   selector: 'bm-bookmark-favourites',
   templateUrl: './bookmark-favourites.component.html',
   styleUrls: ['./bookmark-favourites.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: []
 })
 export class BookmarkFavouritesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
