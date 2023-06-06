@@ -1,4 +1,4 @@
-<div class="flex bg-gray-50 mb-4 shadow-sm rounded border">
+<div class="flex bg-gray-50 mb-4 shadow-sm rounded border bookmarkRow group">
   <!-- Cover image -->
   <div class="p-2">
     <img src="assets/upload/butterfly-7416290_640.jpg" alt="" width="200" />
@@ -8,7 +8,7 @@
   <div class="w-full ps-2">
     <div class="flex justify-between mt-2 me-3 mb-1">
       <div>
-        <a [href]="bookmark.Links" target="_blank" class="font-semibold hover:text-violet-600">
+        <a [href]="bookmark.Links" target="_blank" class="font-semibold hover:text-teal-900">
           <h4 class="fw-bold fs-6 mb-0">{{ bookmark.Title }}</h4>
         </a>
       </div>
@@ -18,19 +18,29 @@
     </div>
 
     <div>
-      <mat-chip-listbox>
-        <mat-chip *ngFor="let tag of getTags(bookmark.Tags)" class="text-xs">
+      <!-- <mat-chip-listbox class="text-xs text-teal-900" color="primary">
+        <mat-chip *ngFor="let tag of getTags(bookmark.Tags)">
           {{ tag }}
         </mat-chip>
-      </mat-chip-listbox>
+      </mat-chip-listbox> -->
+      <ng-container *ngFor="let tag of getTags(bookmark.Tags)">
+        <div
+             class="text-xs font-sans bg-teal-900 hover:opacity-80 hover:cursor-pointer text-white px-2 py-1 rounded inline-flex me-1">
+          {{ tag }}
+        </div>
+      </ng-container>
     </div>
 
     <div class="mt-2 pe-1 text-gray-600 text-sm">
       {{ bookmark.Description }}
     </div>
 
-    <div *ngIf="bookmark.Likes" class="flex justify-end">
-      <button mat-icon-button color="primary" (click)="onFav($event)">
+    <div class="flex justify-end">
+      <button class="invisible group-hover:visible" mat-icon-button color="warn" (click)="onFav($event)">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      <button *ngIf="bookmark.Likes" mat-icon-button color="primary" (click)="onFav($event)">
         <mat-icon>star</mat-icon>
       </button>
     </div>
