@@ -5,7 +5,27 @@
         <img src="assets/NoAvailablePhoto.svg" alt="">
     </div> -->
 
-    <div class="mb-4">
+    <mat-form-field>
+        <mat-label>Snapshot</mat-label>
+        <input matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Link</mat-label>
+        <input matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder=""></textarea>
+    </mat-form-field>
+
+    <!-- <div class="mb-4">
         <div for="">Snapshot</div>
         <input type="file" name="" id="" class="form-input rounded border-gray-300 w-full h-[38px]">
     </div>
@@ -23,7 +43,7 @@
     <div class="mb-4">
         <div for="">Description</div>
         <textarea class="form-textarea rounded border-gray-300 w-full"></textarea>
-    </div>
+    </div> -->
 
     <div class="flex justify-end">
         <button mat-flat-button color="primary" (click)="onAdd()">Add</button>

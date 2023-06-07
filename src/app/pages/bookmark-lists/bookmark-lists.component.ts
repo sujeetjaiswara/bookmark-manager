@@ -1,4 +1,5 @@
 import { NgFor } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +19,7 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
     MatIconModule,
     BookmarkItemComponent,
     NgFor,
+    HttpClientModule,
   ],
   providers: [DataService]
 })
