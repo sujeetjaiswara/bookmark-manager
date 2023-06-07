@@ -1,7 +1,6 @@
-import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './layouts/nav/nav.component';
 
 @Component({
@@ -11,15 +10,19 @@ import { NavComponent } from './layouts/nav/nav.component';
   standalone: true,
   imports: [
     NavComponent,
-    RouterModule,
-    HttpClientModule,
-    MatSnackBarModule,
+    CommonModule,
+    RouterOutlet,
+    // BrowserAnimationsModule,
+    // ServiceWorkerModule.register('ngsw-worker.js', {
+    //   enabled: !isDevMode(),s
+    //   registrationStrategy: 'registerWhenStable:30000'
+    // }),
   ],
 })
 export class AppComponent {
   constructor(
     // private _updates: SwUpdate,
-    private _snackBar: MatSnackBar
+    // private _snackBar: MatSnackBar
   ) {
     // _updates.versionUpdates.subscribe(evt => {
     //   switch (evt.type) {
