@@ -1,49 +1,32 @@
 <div class="w-4/6 my-10 mx-auto">
-    <h4 class="text-lg font-bold">Add Bookmark</h4>
-    <hr class="mb-5">
-    <!-- <div class="border h-72 mb-4">
-        <img src="assets/NoAvailablePhoto.svg" alt="">
-    </div> -->
 
-    <mat-form-field>
+    <h4 class="text-lg font-bold">Add Bookmark</h4>
+
+    <hr class="mb-5">
+
+    <div class="border h-72 mb-4">
+        <img src="assets/NoAvailablePhoto.svg" alt="">
+    </div>
+
+    <mat-form-field class="w-full mb-4">
         <mat-label>Snapshot</mat-label>
         <input matInput placeholder="">
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="w-full mb-4">
         <mat-label>Title</mat-label>
         <input matInput placeholder="">
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="w-full mb-4">
         <mat-label>Link</mat-label>
         <input matInput placeholder="">
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="w-full mb-4">
         <mat-label>Description</mat-label>
         <textarea matInput placeholder=""></textarea>
     </mat-form-field>
-
-    <!-- <div class="mb-4">
-        <div for="">Snapshot</div>
-        <input type="file" name="" id="" class="form-input rounded border-gray-300 w-full h-[38px]">
-    </div>
-
-    <div class="mb-4">
-        <div for="">Title</div>
-        <input type="text" name="" id="" class="form-input rounded border-gray-300 w-full h-[38px]">
-    </div>
-
-    <div class="mb-4">
-        <div for="">Link</div>
-        <input type="text" name="" id="" class="form-input rounded border-gray-300 w-full h-[38px]">
-    </div>
-
-    <div class="mb-4">
-        <div for="">Description</div>
-        <textarea class="form-textarea rounded border-gray-300 w-full"></textarea>
-    </div> -->
 
     <div class="flex justify-end">
         <button mat-flat-button color="primary" (click)="onAdd()">Add</button>

@@ -12,9 +12,8 @@ import { NavComponent } from './layouts/nav/nav.component';
     NavComponent,
     CommonModule,
     RouterOutlet,
-    // BrowserAnimationsModule,
     // ServiceWorkerModule.register('ngsw-worker.js', {
-    //   enabled: !isDevMode(),s
+    //   enabled: !isDevMode(),
     //   registrationStrategy: 'registerWhenStable:30000'
     // }),
   ],

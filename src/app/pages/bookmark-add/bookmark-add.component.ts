@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   imports: [
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ]
 })
 export class BookmarkAddComponent implements OnInit {
