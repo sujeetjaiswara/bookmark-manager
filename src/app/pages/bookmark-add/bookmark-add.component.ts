@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule
   ]
 })
 export class BookmarkAddComponent implements OnInit {

@@ -1,12 +1,14 @@
-<div class="w-4/6 my-10 mx-auto">
+<div class="lg:w-5/12 md:w-full sm:w-full my-10 mx-auto">
 
-    <h4 class="text-lg font-bold">Add Bookmark</h4>
+    <h4 class="text-xl font-bold">Add Bookmark</h4>
 
     <hr class="mb-5">
 
-    <div class="border h-72 mb-4">
+    <!-- <div class="border h-72 mb-4">
         <img src="assets/NoAvailablePhoto.svg" alt="">
-    </div>
+    </div> -->
+
+
 
     <mat-form-field class="w-full mb-4">
         <mat-label>Snapshot</mat-label>
@@ -27,6 +29,33 @@
         <mat-label>Description</mat-label>
         <textarea matInput placeholder=""></textarea>
     </mat-form-field>
+
+
+
+    <!-- <div class="w-full mb-4">
+        <label class="block text-sm mb-1">Snapshot</label>
+        <input matNativeControl type="text" placeholder=""
+               class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded p-2 w-full">
+    </div>
+
+    <div class="w-full mb-4">
+        <label class="block text-sm mb-1">Title</label>
+        <input matNativeControl type="text" placeholder=""
+               class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded p-2 w-full">
+    </div>
+
+    <div class="w-full mb-4">
+        <label class="block text-sm mb-1">Link</label>
+        <input matNativeControl placeholder="" type="url"
+               class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded p-2 w-full">
+    </div>
+
+    <div class="w-full mb-4">
+        <label class="block text-sm mb-1">Description</label>
+        <textarea matNativeControl placeholder=""
+                  class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded p-2 w-full"></textarea>
+    </div>
+     -->
 
     <div class="flex justify-end">
         <button mat-flat-button color="primary" (click)="onAdd()">Add</button>
