@@ -21,7 +21,9 @@ export class BookmarkItemComponent implements OnInit {
   @Input() bookmark!: Bookmark;
   @Output() removeBookmark = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void { }
 
