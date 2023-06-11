@@ -13,17 +13,19 @@
     </button>
   </div>
 
-  <ng-container *ngIf="bookmarks.length > 0; else noBookmarks">
-    <cdk-virtual-scroll-viewport scrollWindow itemSize="150">
-      <section *cdkVirtualFor="let bookmark of bookmarks; trackBy: trackByFn">
-        <bm-bookmark-item [bookmark]="bookmark"
-                          (removeBookmark)="removeBookmark($event)">
-        </bm-bookmark-item>
-      </section>
-    </cdk-virtual-scroll-viewport>
+  <ng-container *ngIf="bookmarks$|async as bookmarks">
+    <ng-container *ngIf="bookmarks.length > 0; else noBookmarks">
+      <cdk-virtual-scroll-viewport scrollWindow itemSize="150">
+        <section *cdkVirtualFor="let bookmark of bookmarks; trackBy: trackByFn">
+          <bm-bookmark-item [bookmark]="bookmark"
+                            (removeBookmark)="removeBookmark($event)">
+          </bm-bookmark-item>
+        </section>
+      </cdk-virtual-scroll-viewport>
+    </ng-container>
+    <ng-template #noBookmarks>
+      No data
+    </ng-template>
   </ng-container>
 
-  <ng-template #noBookmarks>
-    No data
-  </ng-template>
 </div>

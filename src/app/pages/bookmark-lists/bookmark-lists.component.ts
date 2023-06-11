@@ -5,7 +5,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
+import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import data from './../../../assets/data/bookmarks.json';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
@@ -27,23 +29,23 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   providers: [DataService]
 })
 export class BookmarkListsComponent implements OnInit {
-  bookmarks: Bookmark[] = []
+  public bookmarks$: Observable<Bookmark[]>;
 
   constructor(
     private _router: Router,
     private _cd: ChangeDetectorRef,
-    private _data: DataService
-  ) { }
+    private _data: DataService,
+    private _bookmarksService: BookmarksService
+  ) {
+    this.bookmarks$ = this._bookmarksService.getBookmarks();
+  }
 
   ngOnInit(): void {
     // this._data.getBookmarks().subscribe((data) => {
     //   console.log('bookmarks=>', data)
     // });
 
-    console.log(data);
-
-    this.bookmarks = data;
-    this._cd.markForCheck();
+    this._bookmarksService.setBookmarks(data);
   }
 
   trackByFn(_index: number, bookmark: Bookmark) {
@@ -58,11 +60,11 @@ export class BookmarkListsComponent implements OnInit {
   removeBookmark(bookmark: Bookmark) {
     const cnf = confirm('Are you sure?');
     if (cnf) {
-      const bookmarks = [...this.bookmarks];
+      const bookmarks = [...this._bookmarksService.bookmarks$.getValue()];
       const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
       if (index > -1) {
         bookmarks.splice(index, 1);
-        this.bookmarks = bookmarks;
+        this._bookmarksService.setBookmarks(bookmarks);
       }
     }
   }
