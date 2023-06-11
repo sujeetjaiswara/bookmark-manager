@@ -36,9 +36,8 @@ export class BookmarkAddComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   fruitCtrl = new FormControl('');
   filteredFruits: Observable<string[]>;
-  fruits: string[] = ['Lemon'];
+  fruits: string[] = [];
   allFruits: string[] = ['JS', 'PHP', 'ANGULAR', 'CSS', 'HTML'];
-
   previewImage = 'assets/NoAvailablePhoto.svg';
   isSaving = false;
 

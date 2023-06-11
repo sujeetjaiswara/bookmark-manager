@@ -1,4 +1,4 @@
-<div class="flex bg-gray-50 mb-4 shadow-sm rounded border bookmarkRow group">
+<div class="flex bg-gray-50 mb-4 shadow-sm rounded border group">
   <!-- Cover image -->
   <div class="p-2">
     <img src="assets/upload/butterfly-7416290_640.jpg" alt="" width="200" />
@@ -36,6 +36,10 @@
     </div>
 
     <div class="flex justify-end">
+      <button class="invisible group-hover:visible" mat-icon-button (click)="onEdit($event,bookmark)">
+        <mat-icon>edit</mat-icon>
+      </button>
+
       <button class="invisible group-hover:visible" mat-icon-button color="warn" (click)="onRemove($event,bookmark)">
         <mat-icon>delete</mat-icon>
       </button>

@@ -1,3 +1,4 @@
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
@@ -21,6 +22,7 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
     BookmarkItemComponent,
     CommonModule,
     HttpClientModule,
+    ScrollingModule
   ],
   providers: [DataService]
 })
@@ -56,9 +58,11 @@ export class BookmarkListsComponent implements OnInit {
   removeBookmark(bookmark: Bookmark) {
     const cnf = confirm('Are you sure?');
     if (cnf) {
-      const index = this.bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
+      const bookmarks = [...this.bookmarks];
+      const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
       if (index > -1) {
-        this.bookmarks.splice(index, 1)
+        bookmarks.splice(index, 1);
+        this.bookmarks = bookmarks;
       }
     }
   }

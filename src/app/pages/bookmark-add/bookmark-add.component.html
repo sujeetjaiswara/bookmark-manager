@@ -26,7 +26,7 @@
     </mat-form-field>
 
     <mat-form-field class="w-full">
-        <mat-label>Favorite Fruits</mat-label>
+        <mat-label>Tags</mat-label>
         <mat-chip-grid #chipGrid aria-label="Fruit selection">
             <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
                 {{fruit}}
@@ -35,7 +35,7 @@
                 </button>
             </mat-chip-row>
         </mat-chip-grid>
-        <input placeholder="New Fruit..." #fruitInput
+        <input placeholder="" #fruitInput
                [formControl]="fruitCtrl"
                [matChipInputFor]="chipGrid"
                [matAutocomplete]="auto"
