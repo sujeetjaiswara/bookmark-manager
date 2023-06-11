@@ -1,63 +1,93 @@
 <div class="lg:w-5/12 md:w-full sm:w-full my-10 mx-auto">
 
-    <h4 class="text-xl font-bold">Add Bookmark</h4>
+    <h4 class="text-2xl mb-5 text-center">Add Bookmark</h4>
 
-    <hr class="mb-5">
+    <div class="border h-3/4 mb-4">
+        <img id="ImgPreview" [src]="previewImage" alt="">
+    </div>
 
-    <!-- <div class="border h-72 mb-4">
-        <img src="assets/NoAvailablePhoto.svg" alt="">
-    </div> -->
+    <div class="w-full mb-3">
+        <div>
+            <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
+                <mat-icon>add</mat-icon> Snapshot
+            </button>
+            <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+        </div>
+    </div>
 
-
-
-    <mat-form-field class="w-full mb-4">
-        <mat-label>Snapshot</mat-label>
-        <input matInput placeholder="">
-    </mat-form-field>
-
-    <mat-form-field class="w-full mb-4">
+    <mat-form-field class="w-full">
         <mat-label>Title</mat-label>
         <input matInput placeholder="">
     </mat-form-field>
 
-    <mat-form-field class="w-full mb-4">
+    <mat-form-field class="w-full">
         <mat-label>Link</mat-label>
         <input matInput placeholder="">
     </mat-form-field>
 
-    <mat-form-field class="w-full mb-4">
+    <mat-form-field class="w-full">
+        <mat-label>Favorite Fruits</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Fruit selection">
+            <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+                {{fruit}}
+                <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip-row>
+        </mat-chip-grid>
+        <input placeholder="New Fruit..." #fruitInput
+               [formControl]="fruitCtrl"
+               [matChipInputFor]="chipGrid"
+               [matAutocomplete]="auto"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               (matChipInputTokenEnd)="add($event)" />
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                {{fruit}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
         <mat-label>Description</mat-label>
         <textarea matInput placeholder=""></textarea>
     </mat-form-field>
 
-
-
-    <!-- <div class="w-full mb-4">
-        <label class="block text-sm mb-1">Snapshot</label>
-        <input matNativeControl type="text" placeholder=""
-               class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded p-2 w-full">
-    </div>
-
-    <div class="w-full mb-4">
-        <label class="block text-sm mb-1">Title</label>
-        <input matNativeControl type="text" placeholder=""
-               class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded p-2 w-full">
-    </div>
-
-    <div class="w-full mb-4">
-        <label class="block text-sm mb-1">Link</label>
-        <input matNativeControl placeholder="" type="url"
-               class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded p-2 w-full">
-    </div>
-
-    <div class="w-full mb-4">
-        <label class="block text-sm mb-1">Description</label>
-        <textarea matNativeControl placeholder=""
-                  class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded p-2 w-full"></textarea>
-    </div>
-     -->
-
     <div class="flex justify-end">
-        <button mat-flat-button color="primary" (click)="onAdd()">Add</button>
+        <button mat-flat-button color="primary"
+                [disabled]="isSaving"
+                [class.custom-disabled-button]="isSaving"
+                (click)="onAdd()">
+            <ng-container *ngIf="isSaving; else btnAdd">
+                <mat-spinner diameter="20" class="custom-spinner"></mat-spinner>
+            </ng-container>
+            <ng-template #btnAdd>
+                Add
+            </ng-template>
+        </button>
     </div>
 </div>
+
+<!-- <div class="w-full mb-4">
+    <label class="block text-sm mb-1">Snapshot</label>
+    <input matNativeControl type="text" placeholder=""
+           class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
+</div>
+
+<div class="w-full mb-4">
+    <label class="block text-sm mb-1">Title</label>
+    <input matNativeControl type="text" placeholder=""
+           class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
+</div>
+
+<div class="w-full mb-4">
+    <label class="block text-sm mb-1">Link</label>
+    <input matNativeControl placeholder="" type="url"
+           class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
+</div>
+
+<div class="w-full mb-4">
+    <label class="block text-sm mb-1">Description</label>
+    <textarea matNativeControl placeholder=""
+              class="outline-none border-2  focus:border-teal-600 rounded p-2 w-full"></textarea>
+</div> -->

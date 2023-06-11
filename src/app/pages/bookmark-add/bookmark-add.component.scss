@@ -1,0 +1,18 @@
+#ImgPreview {
+    width: 100%;
+    max-height: 250px;
+}
+
+::ng-deep .custom-spinner circle {
+    stroke: #fff;
+}
+
+.example-chip-list {
+    width: 100%;
+}
+
+.custom-disabled-button {
+    background-color: #00695C;
+    color: #fff;
+    opacity: 0.5;
+}
