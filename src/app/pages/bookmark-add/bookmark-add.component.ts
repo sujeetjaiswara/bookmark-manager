@@ -2,7 +2,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { Observable, map, startWith } from 'rxjs';
+import { Bookmark } from 'src/app/shared/interfaces/bookmark';
+import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 
 @Component({
   selector: 'bm-bookmark-add',
@@ -45,9 +47,13 @@ export class BookmarkAddComponent implements OnInit {
 
   announcer = inject(LiveAnnouncer);
 
+  bookmarkForm!: FormGroup;
+
   constructor(
     private router: Router,
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
+    private _fb: FormBuilder,
+    private _bookmarksService: BookmarksService
   ) {
     this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
       startWith(null),
@@ -55,7 +61,14 @@ export class BookmarkAddComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.bookmarkForm = this._fb.group({
+      title: [''],
+      link: [''],
+      tags: [''],
+      description: ''
+    })
+  }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -91,11 +104,32 @@ export class BookmarkAddComponent implements OnInit {
   }
 
   onAdd() {
-    this.isSaving = true;
-    setTimeout(() => {
-      this.isSaving = false;
-      this.router.navigate(['/bookmarks']);
-    }, 800);
+    console.log(this.bookmarkForm.value);
+    console.log(this.fruits);
+
+    const form = this.bookmarkForm.value;
+
+    const bookmark: Bookmark = {
+      Title: form.title,
+      Links: form.link,
+      Screenshot: '',
+      Tags: this.fruits.toString(),
+      Description: form.description,
+      Likes: 0,
+      BookmarkId: Math.floor(Math.random() * 100),
+      BookmarkDate: new Date()
+    }
+
+    const bookmarks = this._bookmarksService.bookmarks$.getValue();
+    bookmarks.push(bookmark);
+
+    this._bookmarksService.setBookmarks(bookmarks);
+
+    // this.isSaving = true;
+    // setTimeout(() => {
+    //   this.isSaving = false;
+    this.router.navigate(['/bookmarks']);
+    // }, 800);
   }
 
   onFileSelected(event: any) {

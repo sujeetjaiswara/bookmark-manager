@@ -6,52 +6,54 @@
         <img id="ImgPreview" [src]="previewImage" alt="">
     </div>
 
-    <div class="w-full mb-3">
-        <div>
-            <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
-                <mat-icon>add</mat-icon> Snapshot
-            </button>
-            <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
-        </div>
-    </div>
-
-    <mat-form-field class="w-full">
-        <mat-label>Title</mat-label>
-        <input matInput placeholder="">
-    </mat-form-field>
-
-    <mat-form-field class="w-full">
-        <mat-label>Link</mat-label>
-        <input matInput placeholder="">
-    </mat-form-field>
-
-    <mat-form-field class="w-full">
-        <mat-label>Tags</mat-label>
-        <mat-chip-grid #chipGrid aria-label="Fruit selection">
-            <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
-                {{fruit}}
-                <button matChipRemove [attr.aria-label]="'remove ' + fruit">
-                    <mat-icon>cancel</mat-icon>
+    <form [formGroup]="bookmarkForm">
+        <div class="w-full mb-3">
+            <div>
+                <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
+                    <mat-icon>add</mat-icon> Snapshot
                 </button>
-            </mat-chip-row>
-        </mat-chip-grid>
-        <input placeholder="" #fruitInput
-               [formControl]="fruitCtrl"
-               [matChipInputFor]="chipGrid"
-               [matAutocomplete]="auto"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-               (matChipInputTokenEnd)="add($event)" />
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-                {{fruit}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
+                <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+            </div>
+        </div>
 
-    <mat-form-field class="w-full">
-        <mat-label>Description</mat-label>
-        <textarea matInput placeholder=""></textarea>
-    </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>Title</mat-label>
+            <input formControlName="title" matInput placeholder="">
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Link</mat-label>
+            <input formControlName="link" matInput placeholder="">
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Tags</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Fruit selection">
+                <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+                    {{fruit}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+            </mat-chip-grid>
+            <input placeholder="" #fruitInput
+                   [formControl]="fruitCtrl"
+                   [matChipInputFor]="chipGrid"
+                   [matAutocomplete]="auto"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   (matChipInputTokenEnd)="add($event)" />
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                    {{fruit}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Description</mat-label>
+            <textarea formControlName="description" matInput placeholder=""></textarea>
+        </mat-form-field>
+    </form>
 
     <div class="flex justify-end">
         <button mat-flat-button color="primary"
@@ -67,6 +69,8 @@
         </button>
     </div>
 </div>
+
+<pre>{{bookmarkForm.value|json}}</pre>
 
 <!-- <div class="w-full mb-4">
     <label class="block text-sm mb-1">Snapshot</label>

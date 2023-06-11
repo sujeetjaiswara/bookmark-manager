@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
-import data from './../../../assets/data/bookmarks.json';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
 @Component({
@@ -45,7 +44,7 @@ export class BookmarkListsComponent implements OnInit {
     //   console.log('bookmarks=>', data)
     // });
 
-    this._bookmarksService.setBookmarks(data);
+    // this._bookmarksService.setBookmarks(data);
   }
 
   trackByFn(_index: number, bookmark: Bookmark) {

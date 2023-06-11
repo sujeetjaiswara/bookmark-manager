@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,8 +14,7 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
   imports: [
     MatIconModule,
     MatButtonModule,
-    NgIf,
-    NgFor
+    CommonModule,
   ]
 })
 export class BookmarkItemComponent implements OnInit {
