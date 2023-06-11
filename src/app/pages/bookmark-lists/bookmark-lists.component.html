@@ -13,13 +13,15 @@
     </button>
   </div>
 
-  <section *ngFor="let bookmark of bookmarks">
-    <bm-bookmark-item [bookmark]="bookmark"></bm-bookmark-item>
-  </section>
+  <ng-container *ngIf="bookmarks.length > 0; else noBookmarks">
+    <section *ngFor="let bookmark of bookmarks; trackBy: trackByFn">
+      <bm-bookmark-item [bookmark]="bookmark"
+                        (removeBookmark)="removeBookmark($event)">
+      </bm-bookmark-item>
+    </section>
+  </ng-container>
 
-  <!-- <div class="w-full fixed bottom-0 flex justify-end mb-3">
-    <button mat-mini-fab color="warn">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div> -->
+  <ng-template #noBookmarks>
+    No data
+  </ng-template>
 </div>

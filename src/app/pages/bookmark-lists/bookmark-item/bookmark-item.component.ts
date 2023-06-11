@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
@@ -18,8 +18,8 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
   ]
 })
 export class BookmarkItemComponent implements OnInit {
-
   @Input() bookmark!: Bookmark;
+  @Output() removeBookmark = new EventEmitter();
 
   constructor() { }
 
@@ -34,6 +34,11 @@ export class BookmarkItemComponent implements OnInit {
 
   onFav(e: Event) {
     e.stopPropagation()
+  }
+
+  onRemove(e: Event, bookmark: Bookmark) {
+    e.stopPropagation();
+    this.removeBookmark.emit(bookmark);
   }
 
 }

@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +18,7 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
     MatButtonModule,
     MatIconModule,
     BookmarkItemComponent,
-    NgFor,
+    CommonModule,
     HttpClientModule,
   ],
   providers: [DataService]
@@ -100,8 +100,22 @@ export class BookmarkListsComponent implements OnInit {
     // });
   }
 
+  trackByFn(_index: number, bookmark: Bookmark) {
+    return bookmark.BookmarkId;
+  }
+
   onAdd(e: Event) {
     e.preventDefault();
-    this._router.navigate(['add-bookmark'])
+    this._router.navigate(['add-bookmark']);
+  }
+
+  removeBookmark(bookmark: Bookmark) {
+    const cnf = confirm('Are you sure?');
+    if (cnf) {
+      const index = this.bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
+      if (index > -1) {
+        this.bookmarks.splice(index, 1)
+      }
+    }
   }
 }
