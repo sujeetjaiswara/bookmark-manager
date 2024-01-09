@@ -1,0 +1,11 @@
+<div class="flex mb-3">
+    <input type="search"
+           class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded px-2 py-1 w-full me-1"
+           placeholder="Search..." />
+
+    <button mat-flat-button color="accent" class="text-sm w-36">
+        <mat-icon>search</mat-icon>Search
+    </button>
+
+    <ng-content select="actionButtons"></ng-content>
+</div>

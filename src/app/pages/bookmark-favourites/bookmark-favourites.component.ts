@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
@@ -23,7 +24,8 @@ import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-
     BookmarkItemComponent,
     CommonModule,
     HttpClientModule,
-    ScrollingModule
+    ScrollingModule,
+    SearchBoxComponent
   ],
   providers: [DataService]
 })
