@@ -67,4 +67,13 @@ export class BookmarkListsComponent implements OnInit {
       }
     }
   }
+
+  toggleFavBookmark(bookmark: any) {
+    const bookmarks = [...this._bookmarksService.bookmarks$.getValue()];
+    const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
+    if (index > -1) {
+      bookmarks[index].Likes = !bookmarks[index].Likes;
+      this._bookmarksService.setBookmarks(bookmarks);
+    }
+  }
 }

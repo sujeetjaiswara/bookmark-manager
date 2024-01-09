@@ -1,1 +1,30 @@
-<p>bookmark-favourites works!</p>
+<div class="pt-3 pb-2">
+    <div class="flex mb-3">
+        <input type="search"
+               class="outline-none border-2 border-teal-400 focus:border-teal-600 rounded px-2 py-1 w-full me-1"
+               placeholder="Search..." />
+
+        <button mat-flat-button color="accent" class="text-sm w-36">
+            <mat-icon>search</mat-icon>Search
+        </button>
+        <!-- 
+        <button mat-flat-button color="primary" class="text-sm ms-1 w-32" (click)="onAdd($event)">
+            <mat-icon>add</mat-icon>Add
+        </button> -->
+    </div>
+
+    @if (bookmarks$|async; as bookmarks) {
+    @if(bookmarks.length > 0) {
+    <cdk-virtual-scroll-viewport scrollWindow itemSize="150">
+        <section *cdkVirtualFor="let bookmark of bookmarks; trackBy: trackByFn">
+            <bm-bookmark-item [bookmark]="bookmark"
+                              (removeBookmark)="removeBookmark($event)"
+                              (toggleFavBookmark)="toggleFavBookmark($event)">
+            </bm-bookmark-item>
+        </section>
+    </cdk-virtual-scroll-viewport>
+    } @else {
+    No data
+    }
+    }
+</div>

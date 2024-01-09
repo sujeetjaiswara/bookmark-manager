@@ -6,5 +6,5 @@ export interface Bookmark {
   Description: string;
   Screenshot: string;
   BookmarkDate: Date;
-  Likes: number;
+  Likes: boolean;
 }

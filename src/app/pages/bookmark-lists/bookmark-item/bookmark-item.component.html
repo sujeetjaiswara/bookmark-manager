@@ -18,17 +18,12 @@
     </div>
 
     <div>
-      <!-- <mat-chip-listbox class="text-xs text-teal-900" color="primary">
-        <mat-chip *ngFor="let tag of getTags(bookmark.Tags)">
-          {{ tag }}
-        </mat-chip>
-      </mat-chip-listbox> -->
-      <ng-container *ngFor="let tag of getTags(bookmark.Tags)">
-        <div
-             class="text-xs font-sans bg-teal-900 hover:opacity-80 hover:cursor-pointer text-white px-2 py-1 rounded inline-flex me-1">
-          {{ tag }}
-        </div>
-      </ng-container>
+      @for (tag of getTags(bookmark.Tags); track $index) {
+      <div
+           class="text-xs font-sans bg-teal-900 hover:opacity-80 hover:cursor-pointer text-white px-2 py-1 rounded inline-flex me-1">
+        {{ tag }}
+      </div>
+      }
     </div>
 
     <div class="mt-2 pe-1 text-gray-600 text-sm">
@@ -44,8 +39,14 @@
         <mat-icon>delete</mat-icon>
       </button>
 
-      <button *ngIf="bookmark.Likes" mat-icon-button color="primary" (click)="onFav($event)">
-        <mat-icon>star</mat-icon>
+      <button mat-icon-button (click)="onFav($event, bookmark)">
+        @if (bookmark.Likes) {
+        <mat-icon color="primary">star</mat-icon>
+        }@else {
+        <mat-icon class="text-slate-400">
+          star
+        </mat-icon>
+        }
       </button>
     </div>
   </div>

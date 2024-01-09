@@ -1,16 +1,22 @@
 <div class="lg:w-5/12 md:w-full sm:w-full my-10 mx-auto">
 
-    <h4 class="text-2xl mb-5 text-center">Add Bookmark</h4>
+    <!-- <h4 class="text-lg mb-5 text-center">Add Bookmark</h4> -->
 
-    <div class="border h-3/4 mb-4">
+    <div class="border rounded h-3/4 mb-4">
+        @if (previewImage) {
         <img id="ImgPreview" [src]="previewImage" alt="">
+        }@else {
+        <div class="p-28 text-center text-gray-300">
+            Preview
+        </div>
+        }
     </div>
 
     <form [formGroup]="bookmarkForm">
         <div class="w-full mb-3">
             <div>
                 <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
-                    <mat-icon>add</mat-icon> Snapshot
+                    <mat-icon>add</mat-icon> Attach screenshot
                 </button>
                 <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
             </div>
@@ -29,12 +35,14 @@
         <mat-form-field class="w-full">
             <mat-label>Tags</mat-label>
             <mat-chip-grid #chipGrid aria-label="Fruit selection">
-                <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+                @for (fruit of fruits; track $index) {
+                <mat-chip-row (removed)="remove(fruit)">
                     {{fruit}}
                     <button matChipRemove [attr.aria-label]="'remove ' + fruit">
                         <mat-icon>cancel</mat-icon>
                     </button>
                 </mat-chip-row>
+                }
             </mat-chip-grid>
             <input placeholder="" #fruitInput
                    [formControl]="fruitCtrl"
@@ -43,9 +51,11 @@
                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                    (matChipInputTokenEnd)="add($event)" />
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                @for (fruit of filteredFruits| async; track $index) {
+                <mat-option [value]="fruit">
                     {{fruit}}
                 </mat-option>
+                }
             </mat-autocomplete>
         </mat-form-field>
 
@@ -55,7 +65,10 @@
         </mat-form-field>
     </form>
 
-    <div class="flex justify-end">
+    <div class="flex justify-end mb-15">
+        <button mat-flat-button class="ms-2" (click)="onCancel()">
+            Cancel
+        </button>
         <button mat-flat-button color="primary"
                 [disabled]="isSaving"
                 [class.custom-disabled-button]="isSaving"
@@ -70,7 +83,7 @@
     </div>
 </div>
 
-<pre>{{bookmarkForm.value|json}}</pre>
+<!-- <pre>{{bookmarkForm.value|json}}</pre> -->
 
 <!-- <div class="w-full mb-4">
     <label class="block text-sm mb-1">Snapshot</label>

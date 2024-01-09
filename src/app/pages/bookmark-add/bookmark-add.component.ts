@@ -40,7 +40,7 @@ export class BookmarkAddComponent implements OnInit {
   filteredFruits: Observable<string[]>;
   fruits: string[] = [];
   allFruits: string[] = ['JS', 'PHP', 'ANGULAR', 'CSS', 'HTML'];
-  previewImage = 'assets/NoAvailablePhoto.svg';
+  previewImage = '';
   isSaving = false;
 
   @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
@@ -115,7 +115,7 @@ export class BookmarkAddComponent implements OnInit {
       Screenshot: '',
       Tags: this.fruits.toString(),
       Description: form.description,
-      Likes: 0,
+      Likes: false,
       BookmarkId: Math.floor(Math.random() * 100),
       BookmarkDate: new Date()
     }
@@ -125,11 +125,11 @@ export class BookmarkAddComponent implements OnInit {
 
     this._bookmarksService.setBookmarks(bookmarks);
 
-    // this.isSaving = true;
-    // setTimeout(() => {
-    //   this.isSaving = false;
-    this.router.navigate(['/bookmarks']);
-    // }, 800);
+    this.isSaving = true;
+    setTimeout(() => {
+      this.isSaving = false;
+      this.router.navigate(['/bookmarks']);
+    }, 800);
   }
 
   onFileSelected(event: any) {
@@ -142,5 +142,9 @@ export class BookmarkAddComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  onCancel() {
+    this.router.navigate(['/bookmarks']);
   }
 }

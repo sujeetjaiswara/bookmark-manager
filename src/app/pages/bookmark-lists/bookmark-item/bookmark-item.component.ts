@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -17,13 +17,13 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
     CommonModule,
   ]
 })
-export class BookmarkItemComponent implements OnInit {
+export class BookmarkItemComponent {
   @Input() bookmark!: Bookmark;
-  @Output() removeBookmark = new EventEmitter();
+
+  @Output() removeBookmark = new EventEmitter<Bookmark>();
+  @Output() toggleFavBookmark = new EventEmitter<Bookmark>();
 
   constructor(private _router: Router,) { }
-
-  ngOnInit(): void { }
 
   getTags(tags: string) {
     if (!tags) {
@@ -32,8 +32,9 @@ export class BookmarkItemComponent implements OnInit {
     return tags.split(',');
   }
 
-  onFav(e: Event) {
-    e.stopPropagation()
+  onFav(e: Event, bookmark: Bookmark) {
+    e.preventDefault();
+    this.toggleFavBookmark.emit(bookmark);
   }
 
   onEdit(e: Event, bookmark: Bookmark) {
