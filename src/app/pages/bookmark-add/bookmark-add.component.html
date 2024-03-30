@@ -1,87 +1,108 @@
-<div class="lg:w-5/12 md:w-full sm:w-full my-10 mx-auto">
+<div class="flex flex-col min-h-[calc(100vh-10rem)] bg-white my-2 rounded-md shadow border">
 
-    <!-- <h4 class="text-lg mb-5 text-center">Add Bookmark</h4> -->
+    <div class="w-full md:w-10/12 lg:w-5/12 mx-auto py-4 xs:mx-4">
 
-    <div class="border rounded h-3/4 mb-4">
-        @if (previewImage) {
-        <img id="ImgPreview" [src]="previewImage" alt="">
-        }@else {
-        <div class="p-28 text-center text-gray-300">
-            Preview
+        <h4 class="text-xl font-medium mb-5 text-center">Add Bookmark</h4>
+
+        <div class="border rounded h-3/4 mb-4">
+            @if (previewImage) {
+            <img id="ImgPreview" [src]="previewImage" alt="">
+            }@else {
+            <div class="p-28 text-center text-gray-300">
+                Preview
+            </div>
+            }
         </div>
-        }
-    </div>
 
-    <form [formGroup]="bookmarkForm">
-        <div class="w-full mb-3">
-            <div>
+        <form [formGroup]="bookmarkForm">
+            <div class="w-full mb-3">
                 <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
                     <mat-icon>add</mat-icon> Attach screenshot
                 </button>
                 <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
             </div>
+
+            <!-- <mat-form-field class="w-full">
+                <mat-label>Title</mat-label>
+                <input formControlName="title" matInput placeholder="">
+            </mat-form-field> -->
+
+            <div class="w-full mb-4">
+                <label class="block text-sm mb-1">Title</label>
+                <input matNativeControl type="text" placeholder=""
+                       class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
+            </div>
+
+            <!-- <mat-form-field class="w-full">
+                <mat-label>Link</mat-label>
+                <input formControlName="link" matInput placeholder="">
+            </mat-form-field> -->
+
+            <div class="w-full mb-4">
+                <label class="block text-sm mb-1">Link</label>
+                <input matNativeControl placeholder="" type="url"
+                       class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
+            </div>
+
+            <mat-form-field class="w-full">
+                <mat-label>Tags</mat-label>
+                <mat-chip-grid #chipGrid aria-label="Fruit selection">
+                    @for (fruit of fruits; track $index) {
+                    <mat-chip-row (removed)="remove(fruit)">
+                        {{fruit}}
+                        <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip-row>
+                    }
+                </mat-chip-grid>
+                <input placeholder="" #fruitInput
+                       [formControl]="fruitCtrl"
+                       [matChipInputFor]="chipGrid"
+                       [matAutocomplete]="auto"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       (matChipInputTokenEnd)="add($event)" />
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                    @for (fruit of filteredFruits| async; track $index) {
+                    <mat-option [value]="fruit">
+                        {{fruit}}
+                    </mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <!-- <mat-form-field class="w-full">
+                <mat-label>Description</mat-label>
+                <textarea formControlName="description" matInput placeholder=""></textarea>
+            </mat-form-field> -->
+
+            <div class="w-full mb-4">
+                <label class="block text-sm mb-1">Description</label>
+                <textarea matNativeControl placeholder=""
+                          class="outline-none border-2  focus:border-teal-600 rounded p-2 w-full"></textarea>
+            </div>
+        </form>
+
+        <div class="flex justify-end mb-15">
+            <button mat-flat-button class="ms-2" (click)="onCancel()">
+                Cancel
+            </button>
+            <button mat-flat-button color="primary"
+                    [disabled]="isSaving"
+                    [class.custom-disabled-button]="isSaving"
+                    (click)="onAdd()">
+                <ng-container *ngIf="isSaving; else btnAdd">
+                    <mat-spinner diameter="20" class="custom-spinner"></mat-spinner>
+                </ng-container>
+                <ng-template #btnAdd>
+                    Add
+                </ng-template>
+            </button>
         </div>
-
-        <mat-form-field class="w-full">
-            <mat-label>Title</mat-label>
-            <input formControlName="title" matInput placeholder="">
-        </mat-form-field>
-
-        <mat-form-field class="w-full">
-            <mat-label>Link</mat-label>
-            <input formControlName="link" matInput placeholder="">
-        </mat-form-field>
-
-        <mat-form-field class="w-full">
-            <mat-label>Tags</mat-label>
-            <mat-chip-grid #chipGrid aria-label="Fruit selection">
-                @for (fruit of fruits; track $index) {
-                <mat-chip-row (removed)="remove(fruit)">
-                    {{fruit}}
-                    <button matChipRemove [attr.aria-label]="'remove ' + fruit">
-                        <mat-icon>cancel</mat-icon>
-                    </button>
-                </mat-chip-row>
-                }
-            </mat-chip-grid>
-            <input placeholder="" #fruitInput
-                   [formControl]="fruitCtrl"
-                   [matChipInputFor]="chipGrid"
-                   [matAutocomplete]="auto"
-                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                   (matChipInputTokenEnd)="add($event)" />
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                @for (fruit of filteredFruits| async; track $index) {
-                <mat-option [value]="fruit">
-                    {{fruit}}
-                </mat-option>
-                }
-            </mat-autocomplete>
-        </mat-form-field>
-
-        <mat-form-field class="w-full">
-            <mat-label>Description</mat-label>
-            <textarea formControlName="description" matInput placeholder=""></textarea>
-        </mat-form-field>
-    </form>
-
-    <div class="flex justify-end mb-15">
-        <button mat-flat-button class="ms-2" (click)="onCancel()">
-            Cancel
-        </button>
-        <button mat-flat-button color="primary"
-                [disabled]="isSaving"
-                [class.custom-disabled-button]="isSaving"
-                (click)="onAdd()">
-            <ng-container *ngIf="isSaving; else btnAdd">
-                <mat-spinner diameter="20" class="custom-spinner"></mat-spinner>
-            </ng-container>
-            <ng-template #btnAdd>
-                Add
-            </ng-template>
-        </button>
     </div>
+
 </div>
+
 
 <!-- <pre>{{bookmarkForm.value|json}}</pre> -->
 

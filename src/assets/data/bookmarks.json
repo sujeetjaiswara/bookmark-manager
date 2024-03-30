@@ -5,7 +5,7 @@
         "Links": "https://qwik.builder.io",
         "Tags": "CSS,HTML,JS,QWIK",
         "Description": "Qwik skips hydration, your applications are instantly interactive. This is accomplished by resumability.",
-        "Screenshot": "06-11e0c641195b.jpg",
+        "Screenshot": "https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -15,7 +15,7 @@
         "Links": "https:\/\/twilio.github.io\/twilio-node\/",
         "Tags": "NODEJS-API",
         "Description": "The Twilio platform makes adding voice, SMS, and VoIP capabilities to your applications ridiculously simple. This helper library for node aims to make it even easier.",
-        "Screenshot": "09-24c2aee86157.jpg",
+        "Screenshot": "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -25,7 +25,7 @@
         "Links": "http:\/\/imagesloaded.desandro.com",
         "Tags": "JQUERY-PLUGIN",
         "Description": "JavaScript is all like \"You images done yet or what?\"",
-        "Screenshot": "09-171728efbda8.jpg",
+        "Screenshot": "https://images.pexels.com/photos/1351238/pexels-photo-1351238.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -35,7 +35,7 @@
         "Links": "http:\/\/madflow.github.io\/jquery-slugify\/",
         "Tags": "SLUG,JQUERY-PLUGIN",
         "Description": "url slug creation plugin for jQuery",
-        "Screenshot": "09-05248e844336.jpg",
+        "Screenshot": "https://images.pexels.com/photos/1161547/pexels-photo-1161547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -45,7 +45,7 @@
         "Links": "http:\/\/clivern.com\/laravel-migrations-part1\/",
         "Tags": "LARAVEL",
         "Description": "Creating Migrations\r\nRunning Migrations\r\nUpdate Migrations",
-        "Screenshot": "09-033a066bda8c.jpg",
+        "Screenshot": "https://images.pexels.com/photos/8093186/pexels-photo-8093186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -55,7 +55,7 @@
         "Links": "https:\/\/brandcolors.net\/",
         "Tags": "COLORS",
         "Description": "Official color codes for the worlds & biggest brands",
-        "Screenshot": "08-25f3f27a3247.jpg",
+        "Screenshot": "https://images.pexels.com/photos/7657201/pexels-photo-7657201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -65,7 +65,7 @@
         "Links": "https:\/\/paulund.co.uk\/social-media-colours",
         "Tags": "COLORS",
         "Description": "Whenever creating a new site I always find myself going to the major social networking sites to grab their colours to use in icons or buttons. Instead of having to go to all these individual sites I wanted one place to go and get these colours when I needed them.",
-        "Screenshot": "08-25e995f98d56.jpg",
+        "Screenshot": "https://images.pexels.com/photos/7657209/pexels-photo-7657209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -75,7 +75,7 @@
         "Links": "http:\/\/www.allaboutrajni.com\/",
         "Tags": "LAYOUT",
         "Description": "built in adobe flash",
-        "Screenshot": "08-248f14e45fce.jpg",
+        "Screenshot": "https://images.pexels.com/photos/56944/pexels-photo-56944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -85,7 +85,7 @@
         "Links": "http:\/\/www.tutorialspoint.com\/learn_c_by_examples\/doubly_linked_list_program_in_c.htm",
         "Tags": "C-TUTS",
         "Description": "C is the most widely used computer language. It keeps fluctuating at number one scale of popularity along with Java programming language, which is also equally popular and most widely used among modern software programmers.",
-        "Screenshot": "072b030ba1.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -95,7 +95,7 @@
         "Links": "http:\/\/judelicio.us\/initial.js\/",
         "Tags": "JQUERY-PLUGIN,AVATAR",
         "Description": "Simple jQuery plugin to make Gmail like text avatars for profile pictures. These avatars can be scaled up to any size as they are SVG based.",
-        "Screenshot": "e555ebe0ce.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -105,7 +105,7 @@
         "Links": "https:\/\/www.npmjs.com\/package\/angular-avatar",
         "Tags": "ANGULAR-PLUGIN",
         "Description": "Angular Avatar is a simple and lightweight AngularJS directive that generates a letter's avatar like Microsoft or Google do in their web apps. First letter of each word in a string or a group of initials will be used to generate the avatar. The image of the avatar will be rendered in an html img tag as a real png or jpeg. The image data can be retrieved using javascript to be stored in back-end giving you an initial profile picture in your web or mobile apps when the user does not upload one. Se",
-        "Screenshot": "a4300b002b.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -115,7 +115,7 @@
         "Links": "https:\/\/www.passportindex.org\/index.php",
         "Tags": "IDEA,CREATIVE ",
         "Description": "Passport Index curates, sorts and ranks the world's passports. Explore passport designs, browse them by visa-free score, by color, or by country and discover how they rank. Which passport do you like best?",
-        "Screenshot": "7634ea65a4.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -125,7 +125,7 @@
         "Links": "http:\/\/aaronporter.co\/",
         "Tags": "PORTFOLIO",
         "Description": "Designer, Filmmaker, and Creative.",
-        "Screenshot": "5737c6ec2e.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -135,7 +135,7 @@
         "Links": "https:\/\/www.youtube.com\/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX",
         "Tags": "ES6-VEDIO",
         "Description": "Let's Learn ES6: Ryan Christiani11 videos12,616 viewsUpdated yesterday",
-        "Screenshot": "42998cf32d.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -145,7 +145,7 @@
         "Links": "https:\/\/github.com\/djadmin\/medium-cli",
         "Tags": "npm",
         "Description": "Medium for Hackers - A CLI for reading Medium Stories.\r\n\r\nIt helps you read awesome medium articles right in your terminal.",
-        "Screenshot": "35f4a8d465.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -155,7 +155,7 @@
         "Links": "https:\/\/github.com\/loopj\/jquery-tokeninput",
         "Tags": "jquery-plugin",
         "Description": "Tokeninput is a jQuery plugin which allows your users to select multiple items from a predefined list, using autocompletion as they type to find each item. You may have seen a similar type of text entry when filling in the recipients field sending messages on facebook.",
-        "Screenshot": "3d2d8ccb37.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -165,7 +165,7 @@
         "Links": "http:\/\/www.thebicyclefilm.info\/intro.html",
         "Tags": "UI,Layout",
         "Description": "The Bicycle short film by Andrey Trevgoda.",
-        "Screenshot": "2723d092b6.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -175,7 +175,7 @@
         "Links": "http:\/\/www.themezaa.com\/html\/brando\/personal.html",
         "Tags": "portfolio",
         "Description": "\"A great collection of creative, responsive, elegant onepage templates for different industries.",
-        "Screenshot": "94f6d7e04a.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -185,7 +185,7 @@
         "Links": "http:\/\/briangardner.com\/",
         "Tags": "UI,portfolio",
         "Description": "A collection of writings and personal essays on authenticity and life.",
-        "Screenshot": "2bb232c0b1.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -195,7 +195,7 @@
         "Links": "http:\/\/mykilos.de\/",
         "Tags": "UI,Layout",
         "Description": "Browse products sold by MY KILOS in our Tictail shop.\r\n\r\nTictail lets you create a beautiful online store for free - tictail.com",
-        "Screenshot": "a5bfc9e079.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -205,7 +205,7 @@
         "Links": "http:\/\/45kilo.com\/en\/",
         "Tags": "UI,Layout",
         "Description": "45 KILO is a design studio that develops interiors and redesigns products.",
-        "Screenshot": "49182f81e6.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -215,7 +215,7 @@
         "Links": "http:\/\/alen-vuletic.from.hr\/",
         "Tags": "portfolio",
         "Description": "Currently i\u2019m living and\r\nworking in Split, Croatia.\r\nYou can find me crafting HTML\/CSS, WordPress websites for Slicejack as a junior front-end developer.",
-        "Screenshot": "8dd48d6a2e.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -225,7 +225,7 @@
         "Links": "http:\/\/aaronct.me\/info\/",
         "Tags": "portfolio",
         "Description": "My name is Aaron Coppedge-Thomas and I\u2019m a designer and animator currently making brands remarkable at MRY. Before that, I worked on interactive smart TV experiences for BrightLine. A graduate of the Savannah College of Art and Design with a B.F.A. in animation, my work is inspired by the intersection of motion and interaction design.",
-        "Screenshot": "72b32a1f75.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -235,7 +235,7 @@
         "Links": "http:\/\/www.vtcreative.fr\/",
         "Tags": "portfolio",
         "Description": "Je suis Vincent Tantardini, UI\/UX designer lyonnais de 27 ans passionn\u00e9 par les nouvelles technologies. Je propose aux professionnels mes comp\u00e9tences pour penser et designer des sites web ou des applications mobiles intuitifs, modernes et performants. <br><br> J'aime par-dessus tout repousser les limites en terme de conception et d'ergonomie, et amener les projets sur lesquels je travaille au plus haut niveau.",
-        "Screenshot": "e165421110.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -245,7 +245,7 @@
         "Links": "http:\/\/syedridhwan.com\/",
         "Tags": "portfolio",
         "Description": "think. design",
-        "Screenshot": "d67d8ab4f4.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -255,7 +255,7 @@
         "Links": "http:\/\/allenova.pro\/",
         "Tags": "portfolio",
         "Description": "Graphic Design &amp; Art Direction in Barcelona: design consultancy, research and concept development, brand identity, print design, packaging and web design.",
-        "Screenshot": "a9a6653e48.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 1
     },
@@ -265,7 +265,7 @@
         "Links": "http:\/\/uidesigner.co.in\/",
         "Tags": "portfolio",
         "Description": "Krishan Govind Website Designer and Website Developer based in New Delhi India. Krishan Govind is passonate in design and art. Krishan Govind is a Freelancer Website Designer & Developer in New Delhi, India. He has Vast experience as a Freelance Website Designer & Developer in New Delhi India.",
-        "Screenshot": "389bc7bb1e.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     },
@@ -275,7 +275,7 @@
         "Links": "http:\/\/vinirama.com\/minimo\/vr_portfolios\/portfolio-6\/#mobile-navigation",
         "Tags": "portfolio",
         "Description": "nice portfolio gallery overlay, full page navigation",
-        "Screenshot": "8c7bbbba95.jpg",
+        "Screenshot": "",
         "BookmarkDate": "Sun Jun 11 2023 19:13:21 GMT+0530 (India Standard Time)",
         "Likes": 0
     }
