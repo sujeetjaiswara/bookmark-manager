@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'bm-nav',
@@ -19,9 +20,13 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class NavComponent {
 
-  constructor(private _router: Router) { }
+  constructor(
+    private _router: Router,
+    private _authService: AuthService
+  ) { }
 
   onLogout() {
+    this._authService.isAuthenticated = false;
     this._router.navigate(['login']);
   }
 }

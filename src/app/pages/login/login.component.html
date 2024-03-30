@@ -1,21 +1,23 @@
 <div class="flex items-center justify-center"
      style="height: 90vh">
-  <div class="p-8 shadow-md shadow-violet-100 rounded-lg border w-5/12">
+  <div class="p-4 md:p-8 shadow-md shadow-violet-100 rounded-lg border md:w-4/12">
     <form>
-      <h2 class="font-bold text-lg mb-5">Login</h2>
+      <h2 class="font-bold text-2xl mb-5 text-center">Login</h2>
 
       <div class="mb-4">
-        <input type="text" class="outline-none border-2 border-teal-400H focus:border-teal-600 rounded p-2 w-full"
-               placeholder="User name" />
+        <label class="block text-sm font-medium mb-1">Email</label>
+        <input type="text" class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full"
+               placeholder="" />
       </div>
 
       <div class="mb-4">
-        <input type="password" class="outline-none border-2 border-teal-400H focus:border-teal-600 rounded p-2 w-full"
-               placeholder="Password" />
+        <label class="block text-sm font-medium mb-1">Password</label>
+        <input type="password" class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full"
+               placeholder="" />
       </div>
 
       <div class="flex justify-end">
-        <button mat-flat-button color="primary" (click)="onLogin($event)">
+        <button mat-flat-button color="primary" class="w-full" type="button" (click)="onLogin($event)">
           Login
         </button>
       </div>

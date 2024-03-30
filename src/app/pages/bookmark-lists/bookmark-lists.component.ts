@@ -10,6 +10,7 @@ import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
+import bookmarkData from './../../../assets/data/bookmarks.json';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
 @Component({
@@ -32,6 +33,8 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 export class BookmarkListsComponent implements OnInit {
   public bookmarks$: Observable<Bookmark[]>;
 
+  _bookmarkData: any = bookmarkData;
+
   constructor(
     private _router: Router,
     private _cd: ChangeDetectorRef,
@@ -46,7 +49,7 @@ export class BookmarkListsComponent implements OnInit {
     //   console.log('bookmarks=>', data)
     // });
 
-    // this._bookmarksService.setBookmarks(data);
+    this._bookmarksService.setBookmarks(this._bookmarkData);
   }
 
   trackByFn(_index: number, bookmark: Bookmark) {

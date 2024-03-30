@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './shared/components/nav/nav.component';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
   constructor(
     // private _updates: SwUpdate,
     // private _snackBar: MatSnackBar
+    public _authService: AuthService
   ) {
     // _updates.versionUpdates.subscribe(evt => {
     //   switch (evt.type) {

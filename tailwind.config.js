@@ -3,7 +3,7 @@ module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
-      visibility: ["group-hover"],
+      // visibility: ["group-hover"],
     },
   },
   // plugins: [require("@tailwindcss/forms")],
