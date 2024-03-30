@@ -1,47 +1,42 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
+// @import "tailwindcss/base" layer(tailwindcss);
+// @import "tailwindcss/components" layer(tailwindcss);
+// @import "tailwindcss/utilities" layer(tailwindcss);
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
+// @import "primeng/resources/themes/lara-light-purple/theme.css";
+// @import "primeng/resources/primeng.css";
+// @import "primeicons/primeicons.css";
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$bookmark-manager-primary: mat.define-palette(mat.$teal-palette, 900);
-$bookmark-manager-accent: mat.define-palette(mat.$teal-palette, 600);
+// html,
+// body {
+//   height: 100%;
+//   background-color: #eee;
+// }
 
-// The warn palette is optional (defaults to red).
-$bookmark-manager-warn: mat.define-palette(mat.$red-palette);
+// body {
+//   margin: 0;
+//   font-family: Roboto, "Helvetica Neue", sans-serif;
+// }
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$bookmark-manager-theme: mat.define-light-theme((color: (primary: $bookmark-manager-primary,
-        accent: $bookmark-manager-accent,
-        warn: $bookmark-manager-warn,
-      )));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($bookmark-manager-theme);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* You can add global styles to this file, and also import other style files */
+@layer components {
+  .input {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500
+  }
+
+  .btn-primary {
+    @apply text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800
+  }
+
+  .btn-alternative {
+    @apply py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700
+  }
+}
 
 html,
 body {
-  height: 100%;
   background-color: #eee;
 }
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';

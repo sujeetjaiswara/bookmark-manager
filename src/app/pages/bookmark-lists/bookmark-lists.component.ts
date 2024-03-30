@@ -2,8 +2,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
@@ -20,13 +18,11 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
-    MatButtonModule,
-    MatIconModule,
     BookmarkItemComponent,
     CommonModule,
     HttpClientModule,
     ScrollingModule,
-    SearchBoxComponent
+    SearchBoxComponent,
   ],
   providers: [DataService]
 })
@@ -45,9 +41,9 @@ export class BookmarkListsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this._data.getBookmarks().subscribe((data) => {
-    //   console.log('bookmarks=>', data)
-    // });
+    this._data.getBookmarks().subscribe((data) => {
+      console.log('bookmarks=>', data)
+    });
 
     this._bookmarksService.setBookmarks(this._bookmarkData);
   }

@@ -1,8 +1,7 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { BtnFavComponent } from 'src/app/shared/components/btn-fav/btn-fav.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 
 @Component({
@@ -12,10 +11,14 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
-    MatIconModule,
-    MatButtonModule,
     CommonModule,
     NgOptimizedImage,
+    BtnFavComponent
+  ],
+  providers: [
+    {
+      provide: IMAGE_CONFIG, useValue: { placeholderResolution: 40 }
+    }
   ]
 })
 export class BookmarkItemComponent {
@@ -33,8 +36,7 @@ export class BookmarkItemComponent {
     return tags.split(',');
   }
 
-  onFav(e: Event, bookmark: Bookmark) {
-    e.preventDefault();
+  onFav(bookmark: Bookmark) {
     this.toggleFavBookmark.emit(bookmark);
   }
 

@@ -1,131 +1,159 @@
-<div class="flex flex-col min-h-[calc(100vh-10rem)] bg-white my-2 rounded-md shadow border">
+<div class="flex flex-col min-h-[calc(100vh-10rem)]">
+  <div
+    class="w-[92vw] md:w-11/12 lg:w-8/12 mx-auto my-2 md:my-2 bg-white rounded-md shadow border p-4"
+  >
+    <h4 class="text-xl font-medium mb-2">Add Bookmark</h4>
 
-    <div class="w-full md:w-10/12 lg:w-5/12 mx-auto py-4 xs:mx-4">
-
-        <h4 class="text-xl font-medium mb-5 text-center">Add Bookmark</h4>
-
-        <div class="border rounded h-3/4 mb-4">
-            @if (previewImage) {
-            <img id="ImgPreview" [src]="previewImage" alt="">
-            }@else {
-            <div class="p-28 text-center text-gray-300">
-                Preview
-            </div>
-            }
-        </div>
-
-        <form [formGroup]="bookmarkForm">
-            <div class="w-full mb-3">
-                <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
-                    <mat-icon>add</mat-icon> Attach screenshot
-                </button>
-                <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
-            </div>
-
-            <!-- <mat-form-field class="w-full">
-                <mat-label>Title</mat-label>
-                <input formControlName="title" matInput placeholder="">
-            </mat-form-field> -->
-
-            <div class="w-full mb-4">
-                <label class="block text-sm mb-1">Title</label>
-                <input matNativeControl type="text" placeholder=""
-                       class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
-            </div>
-
-            <!-- <mat-form-field class="w-full">
-                <mat-label>Link</mat-label>
-                <input formControlName="link" matInput placeholder="">
-            </mat-form-field> -->
-
-            <div class="w-full mb-4">
-                <label class="block text-sm mb-1">Link</label>
-                <input matNativeControl placeholder="" type="url"
-                       class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
-            </div>
-
-            <mat-form-field class="w-full">
-                <mat-label>Tags</mat-label>
-                <mat-chip-grid #chipGrid aria-label="Fruit selection">
-                    @for (fruit of fruits; track $index) {
-                    <mat-chip-row (removed)="remove(fruit)">
-                        {{fruit}}
-                        <button matChipRemove [attr.aria-label]="'remove ' + fruit">
-                            <mat-icon>cancel</mat-icon>
-                        </button>
-                    </mat-chip-row>
-                    }
-                </mat-chip-grid>
-                <input placeholder="" #fruitInput
-                       [formControl]="fruitCtrl"
-                       [matChipInputFor]="chipGrid"
-                       [matAutocomplete]="auto"
-                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                       (matChipInputTokenEnd)="add($event)" />
-                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                    @for (fruit of filteredFruits| async; track $index) {
-                    <mat-option [value]="fruit">
-                        {{fruit}}
-                    </mat-option>
-                    }
-                </mat-autocomplete>
-            </mat-form-field>
-
-            <!-- <mat-form-field class="w-full">
-                <mat-label>Description</mat-label>
-                <textarea formControlName="description" matInput placeholder=""></textarea>
-            </mat-form-field> -->
-
-            <div class="w-full mb-4">
-                <label class="block text-sm mb-1">Description</label>
-                <textarea matNativeControl placeholder=""
-                          class="outline-none border-2  focus:border-teal-600 rounded p-2 w-full"></textarea>
-            </div>
-        </form>
-
-        <div class="flex justify-end mb-15">
-            <button mat-flat-button class="ms-2" (click)="onCancel()">
-                Cancel
-            </button>
-            <button mat-flat-button color="primary"
-                    [disabled]="isSaving"
-                    [class.custom-disabled-button]="isSaving"
-                    (click)="onAdd()">
-                <ng-container *ngIf="isSaving; else btnAdd">
-                    <mat-spinner diameter="20" class="custom-spinner"></mat-spinner>
-                </ng-container>
-                <ng-template #btnAdd>
-                    Add
-                </ng-template>
-            </button>
-        </div>
+    <div class="border rounded h-3/4 mb-4">
+      @if (previewImage) {
+      <img
+        id="ImgPreview"
+        class="w-full h-64 border-2 border-gray-300 border-dashed rounded-lg object-cover"
+        [src]="previewImage"
+        alt=""
+      />
+      }@else {
+      <div class="flex items-center justify-center w-full">
+        <label
+          for="dropzone-file"
+          class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+        >
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <svg
+              class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 16"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+              />
+            </svg>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+              <span class="font-semibold">Click to upload</span> or drag and
+              drop
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              SVG, PNG, JPG or GIF (MAX. 800x400px)
+            </p>
+          </div>
+          <input
+            id="dropzone-file"
+            type="file"
+            class="hidden"
+            (change)="onFileSelected($event)"
+            #fileInput
+          />
+        </label>
+      </div>
+      }
     </div>
 
+    <form [formGroup]="bookmarkForm">
+      <div class="w-full mb-4">
+        <label
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Title</label
+        >
+        <input formControlName="title" type="text" class="input" />
+      </div>
+
+      <div class="w-full mb-4">
+        <label
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Link</label
+        >
+        <input formControlName="link" type="url" class="input" />
+      </div>
+
+      <div class="w-full mb-4">
+        <label
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Tags</label
+        >
+        <input
+          formControlName="tags"
+          type="url"
+          class="input mb-2"
+          (keyup.enter)="onAddTag()"
+        />
+
+        @for (tag of tags; track $index) {
+        <span
+          id="badge-dismiss-default"
+          class="inline-flex items-center px-2 py-1 me-2 mb-2 text-sm font-medium text-orange-800 bg-orange-100 rounded dark:bg-orange-900 dark:text-orange-300"
+        >
+          {{ tag }}
+          <button
+            type="button"
+            class="inline-flex items-center p-1 ms-2 text-sm text-orange-400 bg-transparent rounded-sm hover:bg-orange-200 hover:text-orange-900 dark:hover:bg-orange-800 dark:hover:text-orange-300"
+            data-dismiss-target="#badge-dismiss-default"
+            aria-label="Remove"
+            (click)="removeTag(tag)"
+          >
+            <svg
+              class="w-2 h-2"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span class="sr-only">Remove badge</span>
+          </button>
+        </span>
+        }
+      </div>
+
+      <div class="w-full mb-4">
+        <label
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Description</label
+        >
+        <textarea formControlName="description" class="input"></textarea>
+      </div>
+    </form>
+
+    <div class="flex justify-end gap-1">
+      <button class="btn-alternative" (click)="onCancel()">Cancel</button>
+
+      <button class="btn-primary" [disabled]="isSaving" (click)="onAdd()">
+        <ng-container *ngIf="isSaving; else btnAdd">
+          <svg
+            aria-hidden="true"
+            role="status"
+            class="inline w-4 h-4 me-1 text-white animate-spin"
+            viewBox="0 0 100 101"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+              fill="#E5E7EB"
+            />
+            <path
+              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+              fill="currentColor"
+            />
+          </svg>
+          Saving...
+        </ng-container>
+        <ng-template #btnAdd> Save </ng-template>
+      </button>
+    </div>
+  </div>
 </div>
 
-
-<!-- <pre>{{bookmarkForm.value|json}}</pre> -->
-
-<!-- <div class="w-full mb-4">
-    <label class="block text-sm mb-1">Snapshot</label>
-    <input matNativeControl type="text" placeholder=""
-           class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
-</div>
-
-<div class="w-full mb-4">
-    <label class="block text-sm mb-1">Title</label>
-    <input matNativeControl type="text" placeholder=""
-           class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
-</div>
-
-<div class="w-full mb-4">
-    <label class="block text-sm mb-1">Link</label>
-    <input matNativeControl placeholder="" type="url"
-           class="outline-none border-2 focus:border-teal-600 rounded p-2 w-full">
-</div>
-
-<div class="w-full mb-4">
-    <label class="block text-sm mb-1">Description</label>
-    <textarea matNativeControl placeholder=""
-              class="outline-none border-2  focus:border-teal-600 rounded p-2 w-full"></textarea>
-</div> -->
+<!-- <pre>{{ bookmarkForm.value | json }}</pre> -->

@@ -2,8 +2,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
@@ -19,8 +17,6 @@ import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
-    MatButtonModule,
-    MatIconModule,
     BookmarkItemComponent,
     CommonModule,
     HttpClientModule,

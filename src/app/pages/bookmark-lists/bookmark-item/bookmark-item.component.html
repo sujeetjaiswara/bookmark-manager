@@ -1,62 +1,109 @@
-<div class="flex bg-white mb-4 shadow-sm rounded border group">
-  <!-- Cover image -->
-  <div class="p-2 w-[150px] h-[100px] bg-gray-100" style="position: relative">
+<div class="flex bg-white shadow-sm rounded border group p-1 mb-2">
+  <!-- Screenshot -->
+  <div class="w-[150px] h-100 bg-gray-100" style="position: relative">
     @if(bookmark.Screenshot) {
-    <img class="m-1 rounded"
-         [ngSrc]="bookmark.Screenshot"
-         placeholder="data:image/png;base64,iVBORw0K..."
-         alt="" fill priority />
+    <img
+      class="rounded object-cover"
+      [ngSrc]="bookmark.Screenshot"
+      placeholder="data:image/png;base64,iVBORw0K..."
+      alt=""
+      fill
+      priority
+    />
     }@else {
-    <img class="m-1 rounded"
-         ngSrc="https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-         placeholder="data:image/png;base64,iVBORw0K..."
-         alt="" fill priority />
+    <img
+      class="rounded object-cover"
+      ngSrc="https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      placeholder="data:image/png;base64,iVBORw0K..."
+      [placeholderConfig]="{ blur: true }"
+      alt=""
+      fill
+      priority
+    />
     }
   </div>
 
-  <!-- Content -->
   <div class="w-full p-4">
-    <div class="flex justify-between">
+    <!-- Title & date -->
+    <div class="flex justify-between mb-2">
       <div>
-        <a [href]="bookmark.Links" target="_blank" class="font-semibold hover:text-teal-900 leading-none">
-          <h4 class="font-medium fs-6 leading-none">{{ bookmark.Title }}</h4>
+        <a
+          [href]="bookmark.Links"
+          target="_blank"
+          class="font-semibold hover:text-orange-900 leading-none"
+        >
+          <h4 class="font-medium text-lg leading-none">
+            {{ bookmark.Title }}
+          </h4>
         </a>
       </div>
       <div>
-        <small class="text-gray-600 text-xs">{{ bookmark.BookmarkDate|date }}</small>
+        <small class="text-gray-600 text-xs">
+          {{ bookmark.BookmarkDate | date }}
+        </small>
       </div>
     </div>
 
-    <div class="text-gray-600 text-sm line-clamp-2">
+    <div class="text-gray-600 text-sm line-clamp-4 mb-2">
       {{ bookmark.Description }}
     </div>
 
-    <div>
+    <!-- Tags -->
+    <div class="mb-2">
       @for (tag of getTags(bookmark.Tags); track $index) {
-      <div
-           class="text-xs font-sans bg-teal-900 hover:opacity-80 hover:cursor-pointer text-white px-2 py-1 rounded inline-flex me-1">
+      <span
+        class="bg-orange-100 text-orange-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-orange-900 dark:text-orange-300"
+      >
         {{ tag }}
-      </div>
+      </span>
       }
     </div>
 
-    <div class="flex justify-end">
-      <button class="invisible group-hover:visible" mat-icon-button (click)="onEdit($event,bookmark)">
-        <mat-icon>edit</mat-icon>
+    <!-- Actions -->
+    <div class="flex items-center justify-end gap-2">
+      <bm-btn-fav
+        [isLiked]="bookmark.Likes"
+        (toggleFav)="onFav(bookmark)"
+      ></bm-btn-fav>
+
+      <button (click)="onEdit($event, bookmark)">
+        <svg
+          class="w-5 h-5 text-gray-600 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+          />
+        </svg>
       </button>
 
-      <button class="invisible group-hover:visible" mat-icon-button color="warn" (click)="onRemove($event,bookmark)">
-        <mat-icon>delete</mat-icon>
-      </button>
-
-      <button mat-icon-button (click)="onFav($event, bookmark)">
-        @if (bookmark.Likes) {
-        <mat-icon color="primary">star</mat-icon>
-        }@else {
-        <mat-icon class="text-slate-400">
-          star
-        </mat-icon>
-        }
+      <button (click)="onRemove($event, bookmark)">
+        <svg
+          class="w-5 h-5 text-red-500 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
+          />
+        </svg>
       </button>
     </div>
   </div>

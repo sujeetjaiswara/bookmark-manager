@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { initFlowbite } from 'flowbite';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { AuthService } from './shared/services/auth.service';
 
@@ -20,6 +21,7 @@ import { AuthService } from './shared/services/auth.service';
   ],
 })
 export class AppComponent {
+
   constructor(
     // private _updates: SwUpdate,
     // private _snackBar: MatSnackBar
@@ -43,5 +45,9 @@ export class AppComponent {
     //       break;
     //   }
     // });
+  }
+
+  ngOnInit(): void {
+    initFlowbite();
   }
 }

@@ -1,23 +1,86 @@
-<mat-toolbar color="primary" class="z-0">
-  <span class="flex items-center font-normal text-white text-xl">
-    <a mat-button routerLink="/bookmarks">
-      <mat-icon class="me-1">bookmark</mat-icon> Bookmarks
+<nav class="bg-white border-gray-200 dark:bg-teal-900">
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3"
+  >
+    <a
+      routerLink="/bookmarks"
+      class="flex items-center space-x-1 rtl:space-x-reverse text-orange-500"
+    >
+      <img class="w-5 h-5" src="assets/logo.png" alt="logo" />
+      <span
+        class="self-center text-lg font-medium whitespace-nowrap dark:text-white"
+        >Boomkarks</span
+      >
     </a>
-  </span>
+    <div
+      class="flex items-center md:order-2 space-x-3 gap-4 md:space-x-0 rtl:space-x-reverse"
+    >
+      <a class="flex items-center" routerLink="/fav-bookmarks">
+        <svg
+          class="w-5 h-5 text-amber-500 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="m12.75 20.66 6.184-7.098c2.677-2.884 2.559-6.506.754-8.705-.898-1.095-2.206-1.816-3.72-1.855-1.293-.034-2.652.43-3.963 1.442-1.315-1.012-2.678-1.476-3.973-1.442-1.515.04-2.825.76-3.724 1.855-1.806 2.201-1.915 5.823.772 8.706l6.183 7.097c.19.216.46.34.743.34a.985.985 0 0 0 .743-.34Z"
+          />
+        </svg>
+        Liked
+      </a>
 
-  <!-- Spacer -->
-  <!-- <span class="flex flex-grow"></span>
-  <h4 class="text-xl font-semibold">Add Bookmark</h4> -->
-
-  <!-- Spacer -->
-  <span class="flex flex-grow"></span>
-
-  <a mat-icon-button routerLink="/fav-bookmarks">
-    <mat-icon>favorite</mat-icon>
-  </a>
-
-  <a mat-icon-button
-     (click)="onLogout()">
-    <mat-icon>logout</mat-icon>
-  </a>
-</mat-toolbar>
+      <button
+        type="button"
+        class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+        id="user-menu-button"
+        aria-expanded="false"
+        data-dropdown-toggle="user-dropdown"
+        data-dropdown-placement="bottom"
+      >
+        <span class="sr-only">Open user menu</span>
+        <img
+          class="w-8 h-8 rounded-full"
+          src="https://pbs.twimg.com/profile_images/1744825134085804032/z-56CziU_400x400.jpg"
+          alt="user photo"
+        />
+      </button>
+      <!-- Dropdown menu -->
+      <div
+        class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+        id="user-dropdown"
+      >
+        <div class="px-4 py-3">
+          <span class="block text-sm text-gray-900 dark:text-white"
+            >Sujeet Jaiswara</span
+          >
+        </div>
+        <ul class="py-2" aria-labelledby="user-menu-button">
+          <li>
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="onLogout()"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Sign out</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
