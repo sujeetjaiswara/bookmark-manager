@@ -1,7 +1,7 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
@@ -28,12 +28,10 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 })
 export class BookmarkListsComponent implements OnInit {
   public bookmarks$: Observable<Bookmark[]>;
-
   _bookmarkData: any = bookmarkData;
 
   constructor(
     private _router: Router,
-    private _cd: ChangeDetectorRef,
     private _data: DataService,
     private _bookmarksService: BookmarksService
   ) {

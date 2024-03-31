@@ -16,14 +16,11 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
     BtnFavComponent
   ],
   providers: [
-    {
-      provide: IMAGE_CONFIG, useValue: { placeholderResolution: 40 }
-    }
+    { provide: IMAGE_CONFIG, useValue: { placeholderResolution: 40 } }
   ]
 })
 export class BookmarkItemComponent {
   @Input() bookmark!: Bookmark;
-
   @Output() removeBookmark = new EventEmitter<Bookmark>();
   @Output() toggleFavBookmark = new EventEmitter<Bookmark>();
 
@@ -33,6 +30,7 @@ export class BookmarkItemComponent {
     if (!tags) {
       return;
     }
+
     return tags.split(',');
   }
 

@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-// import { ButtonModule } from 'primeng/button';
-// import { InputTextModule } from 'primeng/inputtext';
 import { AuthService } from 'src/app/shared/services/auth.service';
-
 
 @Component({
   selector: 'bm-login',
@@ -11,11 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    // MatButtonModule,
-    // ButtonModule,
-    // InputTextModule
-  ]
+  imports: []
 })
 export class LoginComponent {
 

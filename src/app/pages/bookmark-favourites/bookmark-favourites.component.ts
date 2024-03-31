@@ -30,8 +30,6 @@ export class BookmarkFavouritesComponent {
 
   constructor(
     private _router: Router,
-    // private _cd: ChangeDetectorRef,
-    // private _data: DataService,
     private _bookmarksService: BookmarksService
   ) {
     this.bookmarks$ = this._bookmarksService.getFavBookmarks();
