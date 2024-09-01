@@ -1,7 +1,7 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, effect } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
@@ -32,18 +32,26 @@ export class BookmarkListsComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _data: DataService,
+    // private _data: DataService,
     private _bookmarksService: BookmarksService
   ) {
-    this.bookmarks$ = this._bookmarksService.getBookmarks();
+
+    effect(() => {
+      console.log(this._bookmarksService.getCount());
+    });
   }
 
   ngOnInit(): void {
-    this._data.getBookmarks().subscribe((data) => {
-      console.log('bookmarks=>', data)
-    });
+    // this._data.getBookmarks().subscribe((data) => {
+    //   console.log('bookmarks=>', data)
+    // });
 
-    this._bookmarksService.setBookmarks(this._bookmarkData);
+    this.bookmarks$ = this._bookmarksService.getBookmarks();
+
+    this._bookmarksService.setCount(3454)
+    // console.log(this._bookmarksService.getCount());
+
+    // this._bookmarksService.setBookmarks(this._bookmarkData);
   }
 
   trackByFn(_index: number, bookmark: Bookmark) {
@@ -58,7 +66,7 @@ export class BookmarkListsComponent implements OnInit {
   removeBookmark(bookmark: Bookmark) {
     const cnf = confirm('Are you sure?');
     if (cnf) {
-      const bookmarks = [...this._bookmarksService.bookmarks$.getValue()];
+      const bookmarks = [...this._bookmarksService.bookmarks$()];
       const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
       if (index > -1) {
         bookmarks.splice(index, 1);
@@ -68,7 +76,7 @@ export class BookmarkListsComponent implements OnInit {
   }
 
   toggleFavBookmark(bookmark: any) {
-    const bookmarks = [...this._bookmarksService.bookmarks$.getValue()];
+    const bookmarks = [...this._bookmarksService.bookmarks$()];
     const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
     if (index > -1) {
       bookmarks[index].Likes = !bookmarks[index].Likes;

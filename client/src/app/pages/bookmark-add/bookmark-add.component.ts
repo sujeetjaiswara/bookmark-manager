@@ -72,7 +72,7 @@ export class BookmarkAddComponent implements OnInit {
       BookmarkDate: new Date()
     }
 
-    const bookmarks = this._bookmarksService.bookmarks$.getValue();
+    const bookmarks = this._bookmarksService.bookmarks$();
     bookmarks.push(bookmark);
     this._bookmarksService.setBookmarks(bookmarks);
 
