@@ -1,7 +1,11 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, OnInit, effect } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  effect,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
@@ -20,11 +24,10 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   imports: [
     BookmarkItemComponent,
     CommonModule,
-    HttpClientModule,
     ScrollingModule,
     SearchBoxComponent,
   ],
-  providers: [DataService]
+  providers: [DataService],
 })
 export class BookmarkListsComponent implements OnInit {
   public bookmarks$: Observable<Bookmark[]>;
@@ -35,7 +38,6 @@ export class BookmarkListsComponent implements OnInit {
     // private _data: DataService,
     private _bookmarksService: BookmarksService
   ) {
-
     effect(() => {
       console.log(this._bookmarksService.getCount());
     });
@@ -48,7 +50,7 @@ export class BookmarkListsComponent implements OnInit {
 
     this.bookmarks$ = this._bookmarksService.getBookmarks();
 
-    this._bookmarksService.setCount(3454)
+    this._bookmarksService.setCount(3454);
     // console.log(this._bookmarksService.getCount());
 
     // this._bookmarksService.setBookmarks(this._bookmarkData);
@@ -67,7 +69,9 @@ export class BookmarkListsComponent implements OnInit {
     const cnf = confirm('Are you sure?');
     if (cnf) {
       const bookmarks = [...this._bookmarksService.bookmarks$()];
-      const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
+      const index = bookmarks.findIndex(
+        (x) => x.BookmarkId === bookmark.BookmarkId
+      );
       if (index > -1) {
         bookmarks.splice(index, 1);
         this._bookmarksService.setBookmarks(bookmarks);
@@ -77,7 +81,9 @@ export class BookmarkListsComponent implements OnInit {
 
   toggleFavBookmark(bookmark: any) {
     const bookmarks = [...this._bookmarksService.bookmarks$()];
-    const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
+    const index = bookmarks.findIndex(
+      (x) => x.BookmarkId === bookmark.BookmarkId
+    );
     if (index > -1) {
       bookmarks[index].Likes = !bookmarks[index].Likes;
       this._bookmarksService.setBookmarks(bookmarks);
