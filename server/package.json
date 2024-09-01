@@ -1,0 +1,24 @@
+{
+  "name": "pocket-labs-0.1",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.13.2",
+    "compression": "^1.6.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.3.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "express-session": "^1.14.0",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.5.8",
+    "morgan": "~1.6.1",
+    "multer": "^1.2.0"
+  }
+}
