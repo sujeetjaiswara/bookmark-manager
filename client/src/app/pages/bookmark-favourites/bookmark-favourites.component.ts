@@ -2,7 +2,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
@@ -24,18 +23,18 @@ import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-
   providers: [DataService],
 })
 export class BookmarkFavouritesComponent {
-  public bookmarks$: Observable<Bookmark[]>;
+  // public bookmarks$: Observable<Bookmark[]>;
 
   constructor(
     private _router: Router,
-    private _bookmarksService: BookmarksService
+    public _bookmarksService: BookmarksService
   ) {
-    this.bookmarks$ = this._bookmarksService.getFavBookmarks();
+    // this.bookmarks$ = this._bookmarksService.getFavBookmarks();
     this.getFavBookmarks();
   }
 
   getFavBookmarks() {
-    const allBookmarks = this._bookmarksService.bookmarks$.getValue();
+    const allBookmarks = this._bookmarksService.bookmarks$();
     const favBookmarks = allBookmarks.filter((bookmark) => bookmark.Likes);
     this._bookmarksService.setFavBookmarks(favBookmarks);
   }
@@ -52,7 +51,7 @@ export class BookmarkFavouritesComponent {
   removeBookmark(bookmark: Bookmark) {
     const cnf = confirm('Are you sure?');
     if (cnf) {
-      const bookmarks = [...this._bookmarksService.bookmarks$.getValue()];
+      const bookmarks = [...this._bookmarksService.bookmarks$()];
       const index = bookmarks.findIndex(
         (x) => x.BookmarkId === bookmark.BookmarkId
       );
@@ -64,7 +63,7 @@ export class BookmarkFavouritesComponent {
   }
 
   toggleFavBookmark(bookmark: any) {
-    const bookmarks = [...this._bookmarksService.bookmarks$.getValue()];
+    const bookmarks = [...this._bookmarksService.bookmarks$()];
     const index = bookmarks.findIndex(
       (x) => x.BookmarkId === bookmark.BookmarkId
     );

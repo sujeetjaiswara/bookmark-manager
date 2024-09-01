@@ -1,21 +1,16 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { Bookmark } from '../interfaces/bookmark';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookmarksService {
   public bookmarks$: WritableSignal<Bookmark[]> = signal([]);
-  public favBookmarks$: BehaviorSubject<Bookmark[]>;
+  public favBookmarks$: WritableSignal<Bookmark[]> = signal([]);
   public count: WritableSignal<number> = signal(0);
 
-  constructor() {
-    this.favBookmarks$ = new BehaviorSubject<Bookmark[]>([]);
-  }
-
   getBookmarks() {
-    return this.bookmarks$();
+    return this.bookmarks$.asReadonly();
   }
 
   setBookmarks(value: Bookmark[]) {
@@ -23,11 +18,11 @@ export class BookmarksService {
   }
 
   getFavBookmarks() {
-    return this.favBookmarks$.asObservable();
+    return this.favBookmarks$.asReadonly();
   }
 
   setFavBookmarks(values: Bookmark[]) {
-    this.favBookmarks$.next(values);
+    this.favBookmarks$.set(values);
   }
 
   getCount() {
