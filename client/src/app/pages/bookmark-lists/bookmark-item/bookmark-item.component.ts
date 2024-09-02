@@ -1,5 +1,5 @@
 import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { Router } from '@angular/router';
 import { BtnFavComponent } from 'src/app/shared/components/btn-fav/btn-fav.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
@@ -14,11 +14,10 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
   providers: [{ provide: IMAGE_CONFIG, useValue: { placeholderResolution: 40 } }],
 })
 export class BookmarkItemComponent {
-  @Input() bookmark!: Bookmark;
-  @Output() removeBookmark = new EventEmitter<Bookmark>();
-  @Output() toggleFavBookmark = new EventEmitter<Bookmark>();
-
-  constructor(private _router: Router) {}
+  #router = inject(Router);
+  bookmark = input.required<Bookmark>();
+  removeBookmark = output<Bookmark>();
+  toggleFavBookmark = output<Bookmark>();
 
   getTags(tags: string) {
     if (!tags) {
@@ -34,7 +33,7 @@ export class BookmarkItemComponent {
 
   onEdit(e: Event, bookmark: Bookmark) {
     e.preventDefault();
-    this._router.navigate(['add-bookmark']);
+    this.#router.navigate(['add-bookmark']);
   }
 
   onRemove(e: Event, bookmark: Bookmark) {
