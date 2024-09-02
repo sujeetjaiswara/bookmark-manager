@@ -1,6 +1,6 @@
 {
-    "/api": {
-        "target": "http://bookmarks.test",
-        "secure": false
-    }
+  "/api": {
+    "target": "http://bookmarks.test",
+    "secure": false
+  }
 }

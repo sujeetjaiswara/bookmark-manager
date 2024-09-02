@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   imports: [],
   templateUrl: './btn-fav.component.html',
   styleUrl: './btn-fav.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BtnFavComponent {
   @Input() isLiked = false;

@@ -8,19 +8,17 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: []
+  imports: [],
 })
 export class LoginComponent {
-
   constructor(
     private _router: Router,
     private _authService: AuthService
-  ) { }
+  ) {}
 
   onLogin(e: Event) {
     e.preventDefault();
     this._authService.isAuthenticated = true;
     this._router.navigate(['bookmarks']);
   }
-
 }

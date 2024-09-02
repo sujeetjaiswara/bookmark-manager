@@ -8,9 +8,8 @@ describe('BookmarkAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookmarkAddComponent ]
-    })
-    .compileComponents();
+      declarations: [BookmarkAddComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BookmarkAddComponent);
     component = fixture.componentInstance;

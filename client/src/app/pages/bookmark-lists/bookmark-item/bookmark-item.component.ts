@@ -10,21 +10,15 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
   styleUrls: ['./bookmark-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    CommonModule,
-    NgOptimizedImage,
-    BtnFavComponent
-  ],
-  providers: [
-    { provide: IMAGE_CONFIG, useValue: { placeholderResolution: 40 } }
-  ]
+  imports: [CommonModule, NgOptimizedImage, BtnFavComponent],
+  providers: [{ provide: IMAGE_CONFIG, useValue: { placeholderResolution: 40 } }],
 })
 export class BookmarkItemComponent {
   @Input() bookmark!: Bookmark;
   @Output() removeBookmark = new EventEmitter<Bookmark>();
   @Output() toggleFavBookmark = new EventEmitter<Bookmark>();
 
-  constructor(private _router: Router,) { }
+  constructor(private _router: Router) {}
 
   getTags(tags: string) {
     if (!tags) {
@@ -47,5 +41,4 @@ export class BookmarkItemComponent {
     e.stopPropagation();
     this.removeBookmark.emit(bookmark);
   }
-
 }

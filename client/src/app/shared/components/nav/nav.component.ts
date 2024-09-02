@@ -8,16 +8,13 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    RouterModule,
-  ]
+  imports: [RouterModule],
 })
 export class NavComponent {
-
   constructor(
     private _router: Router,
     private _authService: AuthService
-  ) { }
+  ) {}
 
   onLogout() {
     this._authService.isAuthenticated = false;

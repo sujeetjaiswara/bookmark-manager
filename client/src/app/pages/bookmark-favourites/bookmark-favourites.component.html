@@ -2,17 +2,19 @@
   <bm-search-box></bm-search-box>
 
   <!-- bookmarks$|async -->
-  @if (_bookmarksService.bookmarks$(); as bookmarks) { @if(bookmarks.length > 0)
-  {
-  <cdk-virtual-scroll-viewport scrollWindow itemSize="150">
-    <section *cdkVirtualFor="let bookmark of bookmarks; trackBy: trackByFn">
-      <bm-bookmark-item
-        [bookmark]="bookmark"
-        (removeBookmark)="removeBookmark($event)"
-        (toggleFavBookmark)="toggleFavBookmark($event)"
-      >
-      </bm-bookmark-item>
-    </section>
-  </cdk-virtual-scroll-viewport>
-  } @else { No data } }
+  @if (_bookmarksService.bookmarks$(); as bookmarks) {
+    @if (bookmarks.length > 0) {
+      <cdk-virtual-scroll-viewport scrollWindow itemSize="150">
+        <section *cdkVirtualFor="let bookmark of bookmarks; trackBy: trackByFn">
+          <bm-bookmark-item
+            [bookmark]="bookmark"
+            (removeBookmark)="removeBookmark($event)"
+            (toggleFavBookmark)="toggleFavBookmark($event)">
+          </bm-bookmark-item>
+        </section>
+      </cdk-virtual-scroll-viewport>
+    } @else {
+      No data
+    }
+  }
 </div>

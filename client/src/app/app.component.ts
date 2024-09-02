@@ -11,14 +11,9 @@ import { AuthService } from './shared/services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [
-    NavComponent,
-    CommonModule,
-    RouterOutlet,
-  ],
+  imports: [NavComponent, CommonModule, RouterOutlet],
 })
 export class AppComponent implements OnInit {
-
   constructor(
     private _updates: SwUpdate,
     // private _snackBar: MatSnackBar

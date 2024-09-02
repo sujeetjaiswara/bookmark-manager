@@ -1,11 +1,6 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
@@ -20,12 +15,7 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   styleUrls: ['./bookmark-lists.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    BookmarkItemComponent,
-    CommonModule,
-    ScrollingModule,
-    SearchBoxComponent,
-  ],
+  imports: [BookmarkItemComponent, CommonModule, ScrollingModule, SearchBoxComponent],
   providers: [DataService],
 })
 export class BookmarkListsComponent implements OnInit {
@@ -53,9 +43,7 @@ export class BookmarkListsComponent implements OnInit {
     const cnf = confirm('Are you sure?');
     if (cnf) {
       const bookmarks = [...this.bookmarksService.bookmarks$()];
-      const index = bookmarks.findIndex(
-        (x) => x.BookmarkId === bookmark.BookmarkId
-      );
+      const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
       if (index > -1) {
         bookmarks.splice(index, 1);
         this.bookmarksService.setBookmarks(bookmarks);
@@ -65,9 +53,7 @@ export class BookmarkListsComponent implements OnInit {
 
   toggleFavBookmark(bookmark: any) {
     const bookmarks = [...this.bookmarksService.bookmarks$()];
-    const index = bookmarks.findIndex(
-      (x) => x.BookmarkId === bookmark.BookmarkId
-    );
+    const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
     if (index > -1) {
       bookmarks[index].Likes = !bookmarks[index].Likes;
       this.bookmarksService.setBookmarks(bookmarks);
