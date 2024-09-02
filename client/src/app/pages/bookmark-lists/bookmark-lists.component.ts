@@ -4,10 +4,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
-  effect,
+  inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
@@ -30,30 +29,15 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   providers: [DataService],
 })
 export class BookmarkListsComponent implements OnInit {
-  public bookmarks$: Observable<Bookmark[]>;
+  #router = inject(Router);
+  bookmarksService = inject(BookmarksService);
+
+  // Mockup data
   _bookmarkData: any = bookmarkData;
 
-  constructor(
-    private _router: Router,
-    // private _data: DataService,
-    private _bookmarksService: BookmarksService
-  ) {
-    effect(() => {
-      console.log(this._bookmarksService.getCount());
-    });
-  }
-
   ngOnInit(): void {
-    // this._data.getBookmarks().subscribe((data) => {
-    //   console.log('bookmarks=>', data)
-    // });
-
-    this.bookmarks$ = this._bookmarksService.getBookmarks();
-
-    this._bookmarksService.setCount(3454);
-    // console.log(this._bookmarksService.getCount());
-
-    // this._bookmarksService.setBookmarks(this._bookmarkData);
+    // Set mockup data
+    this.bookmarksService.setBookmarks(this._bookmarkData);
   }
 
   trackByFn(_index: number, bookmark: Bookmark) {
@@ -62,31 +46,31 @@ export class BookmarkListsComponent implements OnInit {
 
   onAdd(e: Event) {
     e.preventDefault();
-    this._router.navigate(['add-bookmark']);
+    this.#router.navigate(['add-bookmark']);
   }
 
   removeBookmark(bookmark: Bookmark) {
     const cnf = confirm('Are you sure?');
     if (cnf) {
-      const bookmarks = [...this._bookmarksService.bookmarks$()];
+      const bookmarks = [...this.bookmarksService.bookmarks$()];
       const index = bookmarks.findIndex(
         (x) => x.BookmarkId === bookmark.BookmarkId
       );
       if (index > -1) {
         bookmarks.splice(index, 1);
-        this._bookmarksService.setBookmarks(bookmarks);
+        this.bookmarksService.setBookmarks(bookmarks);
       }
     }
   }
 
   toggleFavBookmark(bookmark: any) {
-    const bookmarks = [...this._bookmarksService.bookmarks$()];
+    const bookmarks = [...this.bookmarksService.bookmarks$()];
     const index = bookmarks.findIndex(
       (x) => x.BookmarkId === bookmark.BookmarkId
     );
     if (index > -1) {
       bookmarks[index].Likes = !bookmarks[index].Likes;
-      this._bookmarksService.setBookmarks(bookmarks);
+      this.bookmarksService.setBookmarks(bookmarks);
     }
   }
 }

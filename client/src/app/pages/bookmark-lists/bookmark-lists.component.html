@@ -27,7 +27,8 @@
     </button>
   </bm-search-box>
 
-  @if (bookmarks$|async; as bookmarks) { @if(bookmarks.length > 0) {
+  @if (bookmarksService.bookmarks$(); as bookmarks) { @if(bookmarks.length > 0)
+  {
   <cdk-virtual-scroll-viewport scrollWindow itemSize="156">
     <section *cdkVirtualFor="let bookmark of bookmarks; trackBy: trackByFn">
       <bm-bookmark-item
