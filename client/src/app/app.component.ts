@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { initFlowbite } from 'flowbite';
@@ -17,7 +17,7 @@ import { AuthService } from './shared/services/auth.service';
     RouterOutlet,
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(
     private _updates: SwUpdate,

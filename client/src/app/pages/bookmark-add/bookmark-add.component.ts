@@ -1,6 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
@@ -11,11 +21,7 @@ import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
   styleUrls: ['./bookmark-add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class BookmarkAddComponent implements OnInit {
   public bookmarkForm!: FormGroup;
@@ -28,7 +34,7 @@ export class BookmarkAddComponent implements OnInit {
     private _cd: ChangeDetectorRef,
     private _fb: FormBuilder,
     private _bookmarksService: BookmarksService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.iniForm();
@@ -39,19 +45,19 @@ export class BookmarkAddComponent implements OnInit {
       title: [''],
       link: [''],
       tags: [''],
-      description: ''
-    })
+      description: '',
+    });
   }
 
   onAddTag() {
     const value = this.bookmarkForm.get('tags')?.value;
     if (value) {
       this.tags.push(value);
-      this.bookmarkForm.get('tags')?.patchValue('')
+      this.bookmarkForm.get('tags')?.patchValue('');
     }
   }
 
-  removeTag(tag: string): void {
+  removeTag(tag?: string): void {
     const index = this.tags.indexOf(tag);
     if (index >= 0) {
       this.tags.splice(index, 1);
@@ -69,8 +75,8 @@ export class BookmarkAddComponent implements OnInit {
       Description: form.description,
       Likes: false,
       BookmarkId: Math.floor(Math.random() * 100),
-      BookmarkDate: new Date()
-    }
+      BookmarkDate: new Date(),
+    };
 
     const bookmarks = this._bookmarksService.bookmarks$();
     bookmarks.push(bookmark);

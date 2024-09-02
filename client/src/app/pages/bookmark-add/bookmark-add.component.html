@@ -57,28 +57,37 @@
     <form [formGroup]="bookmarkForm">
       <div class="w-full mb-4">
         <label
+          for="txtTitle"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >Title</label
         >
-        <input formControlName="title" type="text" class="input" />
+        <input
+          formControlName="title"
+          id="txtTitle"
+          type="text"
+          class="input"
+        />
       </div>
 
       <div class="w-full mb-4">
         <label
+          for="txtLink"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >Link</label
         >
-        <input formControlName="link" type="url" class="input" />
+        <input formControlName="link" type="url" id="txtLink" class="input" />
       </div>
 
       <div class="w-full mb-4">
         <label
+          for="txtUrl"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >Tags</label
         >
         <input
           formControlName="tags"
           type="url"
+          id="txtUrl"
           class="input mb-2"
           (keyup.enter)="onAddTag()"
         />
@@ -119,10 +128,15 @@
 
       <div class="w-full mb-4">
         <label
+          for="txtDescription"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >Description</label
         >
-        <textarea formControlName="description" class="input"></textarea>
+        <textarea
+          formControlName="description"
+          id="txtDescription"
+          class="input"
+        ></textarea>
       </div>
     </form>
 
