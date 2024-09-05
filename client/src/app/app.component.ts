@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { initFlowbite } from 'flowbite';
@@ -12,6 +12,7 @@ import { AuthService } from './shared/services/auth.service';
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [NavComponent, CommonModule, RouterOutlet],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   isAuth = false;

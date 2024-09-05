@@ -16,7 +16,8 @@ export class NavComponent {
     private _authService: AuthService
   ) {}
 
-  async onLogout() {
+  async onLogout(e: Event) {
+    e.stopPropagation();
     this._authService.isAuthenticated.set(false);
     localStorage.removeItem('isAuthenticated');
     await this._router.navigate(['login']);
