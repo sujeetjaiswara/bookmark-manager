@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const bookmarkSchema = new mongoose.Schema({
-  Heading: String,
-  Desc: String,
-  BlogDate: String,
+  heading: String,
+  description: String,
+  date: String,
 });
 
 const bookmarkModel = mongoose.model("bookmarks", bookmarkSchema);

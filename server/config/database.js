@@ -1,3 +1,3 @@
 module.exports = {
-  url: "mongodb://127.1.1.0/pocketlabs_dq",
+  url: "mongodb://127.0.0.1:27017/bookmark-manager",
 };
