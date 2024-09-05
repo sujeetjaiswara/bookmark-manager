@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { initFlowbite } from 'flowbite';
@@ -14,9 +14,10 @@ import { AuthService } from './shared/services/auth.service';
   imports: [NavComponent, CommonModule, RouterOutlet],
 })
 export class AppComponent implements OnInit {
+  isAuth = false;
+
   constructor(
     private _updates: SwUpdate,
-    // private _snackBar: MatSnackBar
     public _authService: AuthService
   ) {
     _updates.versionUpdates.subscribe(evt => {
@@ -37,9 +38,19 @@ export class AppComponent implements OnInit {
           break;
       }
     });
+
+    effect(() => {
+      this.isAuth = this._authService.isAuthenticated();
+    });
   }
 
   ngOnInit(): void {
     initFlowbite();
+
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (isAuthenticated === 'true') {
+      this.isAuth = true;
+      this._authService.isAuthenticated.set(true);
+    }
   }
 }

@@ -18,7 +18,8 @@ export class LoginComponent {
 
   onLogin(e: Event) {
     e.preventDefault();
-    this._authService.isAuthenticated = true;
+    this._authService.isAuthenticated.set(true);
     this._router.navigate(['bookmarks']);
+    localStorage.setItem('isAuthenticated', 'true');
   }
 }
