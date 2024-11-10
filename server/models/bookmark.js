@@ -1,16 +1,27 @@
 const mongoose = require("mongoose");
 
 const bookmarkSchema = new mongoose.Schema({
-  heading: {
+  title: {
     type: String,
     required: true,
     trim: true,
+  },
+  link: {
+    type: String,
+    required: true,
+  },
+  tags: {
+    type: String,
   },
   description: {
     type: String,
     trim: true,
   },
-  date: String,
+  screenshot: {
+    type: String,
+  },
+  createdAt: Date,
+  updatedAt: Date,
 });
 
 const bookmarkModel = mongoose.model("bookmark", bookmarkSchema);

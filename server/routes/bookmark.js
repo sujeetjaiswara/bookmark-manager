@@ -4,9 +4,12 @@ const bookmarkModel = require("../models/bookmark");
 router.post("/create", async (req, res) => {
   try {
     const newBookmark = await bookmarkModel.create({
-      heading: req.body.heading,
+      title: req.body.title,
+      link: req.body.link,
+      tags: req.body.tags,
       description: req.body.description,
-      date: new Date(),
+      screenshot: req.body.screenshot,
+      createdAt: new Date(),
     });
     res.status(200).json(newBookmark);
   } catch (error) {
@@ -36,9 +39,12 @@ router.put("/update", async (req, res) => {
   try {
     const query = { _id: req.body.id };
     const updateData = {
-      heading: req.body.heading,
+      title: req.body.title,
+      link: req.body.link,
+      tags: req.body.tags,
       description: req.body.description,
-      date: new Date(),
+      screenshot: req.body.screenshot,
+      updatedAt: new Date(),
     };
     const newBookmark = await bookmarkModel.findOneAndUpdate(
       query,

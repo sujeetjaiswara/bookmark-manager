@@ -4,7 +4,14 @@ const bookmarkRoutes = require("./routes/bookmark.js");
 
 const app = express();
 
-app.use(cors()); // Enable CORS
+// app.use(cors()); // Enable CORS
+
+app.use(
+  cors({
+    origin: "http://localhost:4200", // Allow Angular app to connect
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
