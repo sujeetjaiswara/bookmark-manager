@@ -1,3 +1,10 @@
-module.exports = {
-  url: "mongodb://127.0.0.1:27017/bookmark-manager",
-};
+const mongoose = require("mongoose");
+
+function connectToDB() {
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((err) => console.log(err));
+}
+
+module.exports = connectToDB;

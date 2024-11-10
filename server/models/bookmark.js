@@ -1,8 +1,15 @@
 const mongoose = require("mongoose");
 
 const bookmarkSchema = new mongoose.Schema({
-  heading: String,
-  description: String,
+  heading: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  description: {
+    type: String,
+    trim: true,
+  },
   date: String,
 });
 
