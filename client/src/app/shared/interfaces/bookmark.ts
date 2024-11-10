@@ -1,10 +1,11 @@
 export interface Bookmark {
-  BookmarkId: number;
-  Title: string;
-  Links: string;
-  Tags: string;
-  Description: string;
-  Screenshot: string;
-  BookmarkDate: Date;
-  Likes: boolean;
+  _id?: string;
+  title: string;
+  link: string;
+  tags: string;
+  description: string;
+  screenshot: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  // Likes: boolean;
 }

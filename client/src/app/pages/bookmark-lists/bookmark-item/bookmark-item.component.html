@@ -1,10 +1,10 @@
 <div class="flex bg-white shadow-sm rounded border group p-1 mb-2">
   <!-- Screenshot -->
   <div class="w-[150px] h-100 bg-gray-100" style="position: relative">
-    @if (bookmark().Screenshot) {
+    @if (bookmark().screenshot) {
       <img
         class="rounded object-cover"
-        [ngSrc]="bookmark().Screenshot"
+        [ngSrc]="bookmark().screenshot"
         placeholder="data:image/png;base64,iVBORw0K..."
         alt=""
         fill
@@ -26,28 +26,28 @@
     <div class="flex justify-between mb-2">
       <div>
         <a
-          [href]="bookmark().Links"
+          [href]="bookmark().link"
           target="_blank"
           class="font-semibold hover:text-orange-900 leading-none">
           <h4 class="font-medium text-lg leading-none">
-            {{ bookmark().Title }}
+            {{ bookmark().title }}
           </h4>
         </a>
       </div>
       <div>
         <small class="text-gray-600 text-xs">
-          {{ bookmark().BookmarkDate | date }}
+          {{ bookmark().createdAt | date }}
         </small>
       </div>
     </div>
 
     <div class="text-gray-600 text-sm line-clamp-4 mb-2">
-      {{ bookmark().Description }}
+      {{ bookmark().description }}
     </div>
 
     <!-- Tags -->
     <div class="mb-2">
-      @for (tag of getTags(bookmark().Tags); track $index) {
+      @for (tag of getTags(bookmark().tags); track $index) {
         <span
           class="bg-orange-100 text-orange-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-orange-900 dark:text-orange-300">
           {{ tag }}
@@ -57,7 +57,7 @@
 
     <!-- Actions -->
     <div class="flex items-center justify-end gap-2">
-      <bm-btn-fav [isLiked]="bookmark().Likes" (toggleFav)="onFav(bookmark())"></bm-btn-fav>
+      <!-- <bm-btn-fav [isLiked]="bookmark().likes" (toggleFav)="onFav(bookmark())"></bm-btn-fav> -->
 
       <button (click)="onEdit($event, bookmark())">
         <svg

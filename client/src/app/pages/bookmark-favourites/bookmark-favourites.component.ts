@@ -29,13 +29,13 @@ export class BookmarkFavouritesComponent {
   }
 
   getFavBookmarks() {
-    const allBookmarks = this._bookmarksService.bookmarks$();
-    const favBookmarks = allBookmarks.filter(bookmark => bookmark.Likes);
-    this._bookmarksService.setFavBookmarks(favBookmarks);
+    // const allBookmarks = this._bookmarksService.bookmarks$();
+    // const favBookmarks = allBookmarks.filter(bookmark => bookmark.Likes);
+    // this._bookmarksService.setFavBookmarks(favBookmarks);
   }
 
   trackByFn(_index: number, bookmark: Bookmark) {
-    return bookmark.BookmarkId;
+    return bookmark._id;
   }
 
   onAdd(e: Event) {
@@ -47,7 +47,7 @@ export class BookmarkFavouritesComponent {
     const cnf = confirm('Are you sure?');
     if (cnf) {
       const bookmarks = [...this._bookmarksService.bookmarks$()];
-      const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
+      const index = bookmarks.findIndex(x => x._id === bookmark._id);
       if (index > -1) {
         bookmarks.splice(index, 1);
         this._bookmarksService.setBookmarks(bookmarks);
@@ -55,12 +55,13 @@ export class BookmarkFavouritesComponent {
     }
   }
 
-  toggleFavBookmark(bookmark: any) {
-    const bookmarks = [...this._bookmarksService.bookmarks$()];
-    const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
-    if (index > -1) {
-      bookmarks[index].Likes = !bookmarks[index].Likes;
-      this._bookmarksService.setBookmarks(bookmarks);
-    }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  toggleFavBookmark(bookmark: Bookmark) {
+    // const bookmarks = [...this._bookmarksService.bookmarks$()];
+    // const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
+    // if (index > -1) {
+    //   bookmarks[index].Likes = !bookmarks[index].Likes;
+    //   this._bookmarksService.setBookmarks(bookmarks);
+    // }
   }
 }

@@ -6,7 +6,6 @@ import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
-import bookmarkData from './../../../assets/data/bookmarks.json';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
 @Component({
@@ -16,22 +15,26 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [BookmarkItemComponent, CommonModule, ScrollingModule, SearchBoxComponent],
-  providers: [DataService],
 })
 export class BookmarkListsComponent implements OnInit {
   #router = inject(Router);
+  // #destroyRef = inject(DestroyRef);
+  #dataService = inject(DataService);
   bookmarksService = inject(BookmarksService);
 
-  // Mockup data
-  _bookmarkData: any = bookmarkData;
-
   ngOnInit(): void {
-    // Set mockup data
-    this.bookmarksService.setBookmarks(this._bookmarkData);
+    this.#dataService
+      .getBookmarks()
+      // .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        next: (data: Bookmark[]) => {
+          this.bookmarksService.setBookmarks(data);
+        },
+      });
   }
 
   trackByFn(_index: number, bookmark: Bookmark) {
-    return bookmark.BookmarkId;
+    return bookmark._id;
   }
 
   onAdd(e: Event) {
@@ -43,7 +46,7 @@ export class BookmarkListsComponent implements OnInit {
     const cnf = confirm('Are you sure?');
     if (cnf) {
       const bookmarks = [...this.bookmarksService.bookmarks$()];
-      const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
+      const index = bookmarks.findIndex(x => x._id === bookmark._id);
       if (index > -1) {
         bookmarks.splice(index, 1);
         this.bookmarksService.setBookmarks(bookmarks);
@@ -51,12 +54,13 @@ export class BookmarkListsComponent implements OnInit {
     }
   }
 
-  toggleFavBookmark(bookmark: any) {
-    const bookmarks = [...this.bookmarksService.bookmarks$()];
-    const index = bookmarks.findIndex(x => x.BookmarkId === bookmark.BookmarkId);
-    if (index > -1) {
-      bookmarks[index].Likes = !bookmarks[index].Likes;
-      this.bookmarksService.setBookmarks(bookmarks);
-    }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  toggleFavBookmark(bookmark: Bookmark) {
+    // const bookmarks = [...this.bookmarksService.bookmarks$()];
+    // const index = bookmarks.findIndex(x => x._id === bookmark._id);
+    // if (index > -1) {
+    //   bookmarks[index].Likes = !bookmarks[index].Likes;
+    //   this.bookmarksService.setBookmarks(bookmarks);
+    // }
   }
 }

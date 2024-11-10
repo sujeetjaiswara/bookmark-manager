@@ -58,22 +58,19 @@ export class BookmarkAddComponent implements OnInit {
     const form = this.bookmarkForm.value;
 
     const bookmark: Bookmark = {
-      Title: form.title,
-      Links: form.link,
-      Screenshot: '',
-      Tags: this.tags.toString(),
-      Description: form.description,
-      Likes: false,
-      BookmarkId: Math.floor(Math.random() * 100),
-      BookmarkDate: new Date(),
+      title: form.title,
+      link: form.link,
+      screenshot: '',
+      tags: this.tags.toString(),
+      description: form.description,
     };
 
     const bookmarks = this._bookmarksService.bookmarks$();
     bookmarks.push(bookmark);
+
     this._bookmarksService.setBookmarks(bookmarks);
 
     this.isSaving = true;
-
     setTimeout(() => {
       this.isSaving = false;
       this.router.navigate(['/bookmarks']);

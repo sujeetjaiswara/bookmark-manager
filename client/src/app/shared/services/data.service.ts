@@ -1,19 +1,20 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import { Bookmark } from '../interfaces/bookmark';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  private baseURL = 'http://bookmarks.test';
+  private baseURL = environment.backendURL;
 
-  constructor(private http: HttpClient) {}
+  #http = inject(HttpClient);
 
-  // http://bookmarks.test/app/controller/bookmark_disp.php
-  getBookmarks(): Observable<any> {
-    return this.http
-      .get(`${this.baseURL}/app/controller/bookmark_disp.php`)
+  getBookmarks(): Observable<Bookmark[]> {
+    return this.#http
+      .get<Bookmark[]>(`${this.baseURL}/bookmarks`)
       .pipe(catchError(this.handleError));
   }
 
