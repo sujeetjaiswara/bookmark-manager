@@ -1,7 +1,8 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
@@ -21,11 +22,18 @@ export class BookmarkListsComponent implements OnInit {
   // #destroyRef = inject(DestroyRef);
   #dataService = inject(DataService);
   bookmarksService = inject(BookmarksService);
+  isLoading = signal(false);
 
   ngOnInit(): void {
+    this.isLoading.set(true);
     this.#dataService
       .getBookmarks()
       // .pipe(takeUntilDestroyed(this.#destroyRef))
+      .pipe(
+        finalize(() => {
+          this.isLoading.set(false);
+        })
+      )
       .subscribe({
         next: (data: Bookmark[]) => {
           this.bookmarksService.setBookmarks(data);

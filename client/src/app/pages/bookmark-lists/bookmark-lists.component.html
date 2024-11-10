@@ -24,19 +24,25 @@
     </button>
   </bm-search-box>
 
-  @if (bookmarksService.bookmarks$(); as bookmarks) {
-    @if (bookmarks.length > 0) {
-      <cdk-virtual-scroll-viewport scrollWindow itemSize="156">
-        <section *cdkVirtualFor="let bookmark of bookmarks; trackBy: trackByFn">
-          <bm-bookmark-item
-            [bookmark]="bookmark"
-            (removeBookmark)="removeBookmark($event)"
-            (toggleFavBookmark)="toggleFavBookmark($event)">
-          </bm-bookmark-item>
-        </section>
-      </cdk-virtual-scroll-viewport>
-    } @else {
-      No data
+  @if (isLoading()) {
+    <div class="flex justify-center items-center p-6">
+      Loading....
+    </div>
+  }@else {
+    @if (bookmarksService.bookmarks$(); as bookmarks) {
+      @if (bookmarks.length > 0) {
+        <cdk-virtual-scroll-viewport scrollWindow itemSize="156">
+          <section *cdkVirtualFor="let bookmark of bookmarks; trackBy: trackByFn">
+            <bm-bookmark-item
+              [bookmark]="bookmark"
+              (removeBookmark)="removeBookmark($event)"
+              (toggleFavBookmark)="toggleFavBookmark($event)">
+            </bm-bookmark-item>
+          </section>
+        </cdk-virtual-scroll-viewport>
+      } @else {
+        No data
+      }
     }
-  }
+  }  
 </div>
