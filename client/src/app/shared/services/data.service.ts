@@ -18,6 +18,12 @@ export class DataService {
       .pipe(catchError(this.handleError));
   }
 
+  createBookmark(body: Bookmark) {
+    return this.#http
+      .post<Bookmark>(`${this.baseURL}/bookmarks/create`, body)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

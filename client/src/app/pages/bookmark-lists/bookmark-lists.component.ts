@@ -36,7 +36,9 @@ export class BookmarkListsComponent implements OnInit {
       )
       .subscribe({
         next: (data: Bookmark[]) => {
-          this.bookmarksService.setBookmarks(data);
+          if (data) {
+            this.bookmarksService.setBookmarks(data.reverse());
+          }
         },
       });
   }

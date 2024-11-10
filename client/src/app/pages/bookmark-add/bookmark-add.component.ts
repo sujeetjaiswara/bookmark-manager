@@ -1,9 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'bm-bookmark-add',
@@ -14,6 +22,7 @@ import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class BookmarkAddComponent implements OnInit {
+  #dataService = inject(DataService);
   public bookmarkForm!: FormGroup;
   public tags: any[] = [];
   public previewImage = '';
@@ -60,21 +69,24 @@ export class BookmarkAddComponent implements OnInit {
     const bookmark: Bookmark = {
       title: form.title,
       link: form.link,
-      screenshot: '',
       tags: this.tags.toString(),
       description: form.description,
+      screenshot: '',
     };
 
-    const bookmarks = this._bookmarksService.bookmarks$();
-    bookmarks.push(bookmark);
-
-    this._bookmarksService.setBookmarks(bookmarks);
-
     this.isSaving = true;
-    setTimeout(() => {
-      this.isSaving = false;
-      this.router.navigate(['/bookmarks']);
-    }, 300);
+    this.#dataService
+      .createBookmark(bookmark)
+      .pipe(
+        finalize(() => {
+          this.isSaving = false;
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/bookmarks']);
+        },
+      });
   }
 
   onFileSelected(event: any) {
