@@ -6,6 +6,6 @@ const bookmarkSchema = new mongoose.Schema({
   date: String,
 });
 
-const bookmarkModel = mongoose.model("bookmarks", bookmarkSchema);
+const bookmarkModel = mongoose.model("bookmark", bookmarkSchema);
 
 module.exports = bookmarkModel;

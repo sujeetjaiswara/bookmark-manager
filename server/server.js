@@ -1,13 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const configDB = require("./config/database.js");
+const configDB = require("./config/db.js");
 const bookmarkRoutes = require("./routes/bookmark.js");
 
 const app = express();
 
 app.use(cors()); // Enable CORS
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const main = async () => {
   await mongoose.connect(configDB.url);
