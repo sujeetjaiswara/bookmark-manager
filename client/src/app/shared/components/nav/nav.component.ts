@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { GlobalSearchComponent } from '../global-search/global-search.component';
 
 @Component({
   selector: 'bm-nav',
@@ -8,18 +9,21 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, GlobalSearchComponent],
 })
 export class NavComponent {
-  constructor(
-    private _router: Router,
-    private _authService: AuthService
-  ) {}
+  #router = inject(Router);
+  #authService = inject(AuthService);
+
+  onAdd(e: Event) {
+    e.preventDefault();
+    this.#router.navigate(['add-bookmark']);
+  }
 
   async onLogout(e: Event) {
     e.stopPropagation();
-    this._authService.isAuthenticated.set(false);
+    this.#authService.isAuthenticated.set(false);
     localStorage.removeItem('isAuthenticated');
-    await this._router.navigate(['login']);
+    await this.#router.navigate(['login']);
   }
 }

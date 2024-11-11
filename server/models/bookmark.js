@@ -20,6 +20,12 @@ const bookmarkSchema = new mongoose.Schema({
   screenshot: {
     type: String,
   },
+  isFav: {
+    type: Number,
+  },
+  isDeleted: {
+    type: Number,
+  },
   createdAt: Date,
   updatedAt: Date,
 });

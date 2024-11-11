@@ -1,9 +1,8 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
+// import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
@@ -15,10 +14,9 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   styleUrls: ['./bookmark-lists.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [BookmarkItemComponent, CommonModule, ScrollingModule, SearchBoxComponent],
+  imports: [BookmarkItemComponent, CommonModule, ScrollingModule],
 })
 export class BookmarkListsComponent implements OnInit {
-  #router = inject(Router);
   // #destroyRef = inject(DestroyRef);
   #dataService = inject(DataService);
   bookmarksService = inject(BookmarksService);
@@ -45,11 +43,6 @@ export class BookmarkListsComponent implements OnInit {
 
   trackByFn(_index: number, bookmark: Bookmark) {
     return bookmark._id;
-  }
-
-  onAdd(e: Event) {
-    e.preventDefault();
-    this.#router.navigate(['add-bookmark']);
   }
 
   removeBookmark(bookmark: Bookmark) {

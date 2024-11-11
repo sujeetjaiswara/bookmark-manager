@@ -10,6 +10,8 @@ router.post("/create", async (req, res) => {
       description: req.body.description,
       screenshot: req.body.screenshot,
       createdAt: new Date(),
+      isFav: 0,
+      isDeleted: 0,
     });
     res.status(200).json(newBookmark);
   } catch (error) {

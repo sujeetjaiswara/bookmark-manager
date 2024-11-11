@@ -1,6 +1,8 @@
 <div class="flex bg-white shadow-sm rounded border group p-1 mb-2">
   <!-- Screenshot -->
-  <div class="w-[150px] h-100 bg-gray-100" style="position: relative">
+  <div
+    class="min-w-[150px] min-h-[170px] man-w-[150px] max-h-[170px] bg-gray-100"
+    style="position: relative">
     @if (bookmark().screenshot) {
       <img
         class="rounded object-cover"
@@ -21,79 +23,76 @@
     }
   </div>
 
-  <div class="w-full p-4">
+  <div class="w-full px-4 py-2">
     <!-- Title & date -->
-    <div class="flex justify-between mb-2">
+    <div class="flex justify-between items-center mb-1">
       <div>
         <a
           [href]="bookmark().link"
           target="_blank"
-          class="font-semibold hover:text-orange-900 leading-none">
-          <h4 class="font-medium text-lg leading-none">
-            {{ bookmark().title }}
-          </h4>
+          class="font-medium text-lg hover:text-orange-900 leading-none">
+          {{ bookmark().title }}
         </a>
+        <div class="text-gray-600 text-xs mb-1">
+          {{ bookmark().createdAt | date }}
+        </div>
       </div>
       <div>
-        <small class="text-gray-600 text-xs">
-          {{ bookmark().createdAt | date }}
-        </small>
-      </div>
-    </div>
+        <!-- Actions -->
+        <div class="flex items-center justify-end gap-2">
+          <!-- <bm-btn-fav [isLiked]="bookmark().likes" (toggleFav)="onFav(bookmark())"></bm-btn-fav> -->
 
-    <div class="text-gray-600 text-sm line-clamp-4 mb-2">
-      {{ bookmark().description }}
+          <button (click)="onEdit($event, bookmark())">
+            <svg
+              class="w-5 h-5 text-gray-600 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="none"
+              viewBox="0 0 24 24">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+            </svg>
+          </button>
+
+          <button (click)="onRemove($event, bookmark())">
+            <svg
+              class="w-5 h-5 text-red-500 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="none"
+              viewBox="0 0 24 24">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Tags -->
     <div class="mb-2">
       @for (tag of getTags(bookmark().tags); track $index) {
         <span
-          class="bg-orange-100 text-orange-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-orange-900 dark:text-orange-300">
+          class="bg-orange-100 text-orange-800 text-[0.7rem] font-medium me-1 px-2.5 py-[0.8px] inline-flex items-center leading-normal rounded-full dark:bg-orange-900 dark:text-orange-300 uppercase">
           {{ tag }}
         </span>
       }
     </div>
 
-    <!-- Actions -->
-    <div class="flex items-center justify-end gap-2">
-      <!-- <bm-btn-fav [isLiked]="bookmark().likes" (toggleFav)="onFav(bookmark())"></bm-btn-fav> -->
-
-      <button (click)="onEdit($event, bookmark())">
-        <svg
-          class="w-5 h-5 text-gray-600 dark:text-white"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          fill="none"
-          viewBox="0 0 24 24">
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-        </svg>
-      </button>
-
-      <button (click)="onRemove($event, bookmark())">
-        <svg
-          class="w-5 h-5 text-red-500 dark:text-white"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          fill="none"
-          viewBox="0 0 24 24">
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
-        </svg>
-      </button>
+    <div class="text-gray-600 text-sm line-clamp-4 mb-1">
+      {{ bookmark().description }}
     </div>
   </div>
 </div>

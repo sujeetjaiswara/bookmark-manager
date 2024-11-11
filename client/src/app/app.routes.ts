@@ -27,4 +27,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/bookmark-add/bookmark-add.component').then(m => m.BookmarkAddComponent),
   },
+  {
+    path: 'edit-bookmark/:id',
+    title: 'Edit Bookmark',
+    loadComponent: () =>
+      import('./pages/bookmark-add/bookmark-add.component').then(m => m.BookmarkAddComponent),
+  },
 ];

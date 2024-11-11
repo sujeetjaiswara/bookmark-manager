@@ -34,7 +34,7 @@ export class BookmarkItemComponent {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onEdit(e: Event, bookmark: Bookmark) {
     e.preventDefault();
-    this.#router.navigate(['add-bookmark']);
+    this.#router.navigate(['edit-bookmark', bookmark._id]);
   }
 
   onRemove(e: Event, bookmark: Bookmark) {
