@@ -3,14 +3,21 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   inject,
   OnInit,
 } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
-import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
@@ -23,26 +30,25 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class BookmarkAddComponent implements OnInit {
   #dataService = inject(DataService);
+  #destroyRef = inject(DestroyRef);
+  #cd = inject(ChangeDetectorRef);
+  #fb = inject(FormBuilder);
+  #router = inject(Router);
+
   public bookmarkForm!: FormGroup;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public tags: any[] = [];
   public previewImage = '';
   public isSaving = false;
-
-  constructor(
-    private router: Router,
-    private _cd: ChangeDetectorRef,
-    private _fb: FormBuilder,
-    private _bookmarksService: BookmarksService
-  ) {}
 
   ngOnInit(): void {
     this.iniForm();
   }
 
   iniForm() {
-    this.bookmarkForm = this._fb.group({
-      title: [''],
-      link: [''],
+    this.bookmarkForm = this.#fb.group({
+      title: ['', Validators.required],
+      link: ['', Validators.required],
       tags: [''],
       description: '',
     });
@@ -78,30 +84,32 @@ export class BookmarkAddComponent implements OnInit {
     this.#dataService
       .createBookmark(bookmark)
       .pipe(
-        finalize(() => {
-          this.isSaving = false;
-        })
+        finalize(() => (this.isSaving = false)),
+        takeUntilDestroyed(this.#destroyRef)
       )
       .subscribe({
         next: () => {
-          this.router.navigate(['/bookmarks']);
+          this.#router.navigate(['/bookmarks']);
         },
       });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onFileSelected(event: any) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const file: any = event.target.files[0];
     if (file) {
       const reader = new FileReader();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       reader.onload = (e: any) => {
         this.previewImage = e.target.result;
-        this._cd.markForCheck();
+        this.#cd.markForCheck();
       };
       reader.readAsDataURL(file);
     }
   }
 
   onCancel() {
-    this.router.navigate(['/bookmarks']);
+    this.#router.navigate(['/bookmarks']);
   }
 }

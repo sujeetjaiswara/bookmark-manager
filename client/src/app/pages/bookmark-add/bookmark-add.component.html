@@ -3,11 +3,11 @@
     class="w-[92vw] md:w-11/12 lg:w-8/12 mx-auto my-2 md:my-2 bg-white rounded-md shadow border p-4">
     <h4 class="text-xl font-medium mb-2">Add Bookmark</h4>
 
-    <div class="border rounded h-3/4 mb-4">
+    <div class="rounded h-3/4 mb-4">
       @if (previewImage) {
         <img
           id="ImgPreview"
-          class="w-full h-64 border-2 border-gray-300 border-dashed rounded-lg object-cover"
+          class="w-full h-64 border-gray-300 border-dashed rounded-lg object-cover"
           [src]="previewImage"
           alt="" />
       } @else {
@@ -49,23 +49,34 @@
 
     <form [formGroup]="bookmarkForm">
       <div class="w-full mb-4">
-        <label for="txtTitle" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >Title</label
-        >
+        <label for="txtTitle" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Title
+        </label>
         <input formControlName="title" id="txtTitle" type="text" class="input" />
+        <ng-container
+          *ngIf="bookmarkForm.get('title')?.dirty || bookmarkForm.get('title')?.touched">
+          <ng-container *ngIf="bookmarkForm.get('title')?.hasError('required')">
+            <p class="mt-1 text-sm text-red-600 dark:text-red-500">Please enter title.</p>
+          </ng-container>
+        </ng-container>
       </div>
 
       <div class="w-full mb-4">
-        <label for="txtLink" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >Link</label
-        >
+        <label for="txtLink" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Link
+        </label>
         <input formControlName="link" type="url" id="txtLink" class="input" />
+        <ng-container *ngIf="bookmarkForm.get('link')?.dirty || bookmarkForm.get('link')?.touched">
+          <ng-container *ngIf="bookmarkForm.get('link')?.hasError('required')">
+            <p class="mt-1 text-sm text-red-600 dark:text-red-500">Please enter link.</p>
+          </ng-container>
+        </ng-container>
       </div>
 
       <div class="w-full mb-4">
-        <label for="txtUrl" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >Tags</label
-        >
+        <label for="txtUrl" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Tags
+        </label>
         <input
           formControlName="tags"
           type="url"
@@ -116,7 +127,10 @@
     <div class="flex justify-end gap-1">
       <button class="btn-alternative" (click)="onCancel()">Cancel</button>
 
-      <button class="btn-primary" [disabled]="isSaving" (click)="onAdd()">
+      <button
+        class="btn-primary disabled:opacity-80 disabled:cursor-not-allowed"
+        [disabled]="isSaving || bookmarkForm.invalid"
+        (click)="onAdd()">
         <ng-container *ngIf="isSaving; else btnAdd">
           <svg
             aria-hidden="true"
@@ -141,3 +155,4 @@
 </div>
 
 <!-- <pre>{{ bookmarkForm.value | json }}</pre> -->
+<!-- <pre>{{ bookmarkForm.invalid | json }}</pre> -->

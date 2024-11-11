@@ -1,8 +1,15 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  OnInit,
+  inject,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
-// import { SearchBoxComponent } from 'src/app/shared/components/search-box/search-box.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
@@ -17,7 +24,7 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   imports: [BookmarkItemComponent, CommonModule, ScrollingModule],
 })
 export class BookmarkListsComponent implements OnInit {
-  // #destroyRef = inject(DestroyRef);
+  #destroyRef = inject(DestroyRef);
   #dataService = inject(DataService);
   bookmarksService = inject(BookmarksService);
   isLoading = signal(false);
@@ -26,17 +33,18 @@ export class BookmarkListsComponent implements OnInit {
     this.isLoading.set(true);
     this.#dataService
       .getBookmarks()
-      // .pipe(takeUntilDestroyed(this.#destroyRef))
       .pipe(
-        finalize(() => {
-          this.isLoading.set(false);
-        })
+        finalize(() => this.isLoading.set(false)),
+        takeUntilDestroyed(this.#destroyRef)
       )
       .subscribe({
         next: (data: Bookmark[]) => {
           if (data) {
             this.bookmarksService.setBookmarks(data.reverse());
           }
+        },
+        error: err => {
+          console.error(err);
         },
       });
   }
