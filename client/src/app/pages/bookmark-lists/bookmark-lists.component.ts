@@ -16,6 +16,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'bm-bookmark-lists',
   templateUrl: './bookmark-lists.component.html',
   styleUrls: ['./bookmark-lists.component.scss'],
@@ -56,12 +57,19 @@ export class BookmarkListsComponent implements OnInit {
   removeBookmark(bookmark: Bookmark) {
     const cnf = confirm('Are you sure?');
     if (cnf) {
-      const bookmarks = [...this.bookmarksService.bookmarks$()];
-      const index = bookmarks.findIndex(x => x._id === bookmark._id);
-      if (index > -1) {
-        bookmarks.splice(index, 1);
-        this.bookmarksService.setBookmarks(bookmarks);
-      }
+      this.#dataService
+        .deleteBookmark(bookmark._id)
+        .pipe(takeUntilDestroyed(this.#destroyRef))
+        .subscribe({
+          next: () => {
+            const bookmarks = [...this.bookmarksService.bookmarks$()];
+            const index = bookmarks.findIndex(x => x._id === bookmark._id);
+            if (index > -1) {
+              bookmarks.splice(index, 1);
+              this.bookmarksService.setBookmarks(bookmarks);
+            }
+          },
+        });
     }
   }
 
