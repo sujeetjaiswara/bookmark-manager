@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { GlobalSearchComponent } from '../global-search/global-search.component';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'bm-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss'],
@@ -20,7 +21,8 @@ export class NavComponent {
     this.#router.navigate(['add-bookmark']);
   }
 
-  async onLogout(e: Event) {
+  async onLogout(e: MouseEvent) {
+    e.preventDefault();
     e.stopPropagation();
     this.#authService.isAuthenticated.set(false);
     localStorage.removeItem('isAuthenticated');
