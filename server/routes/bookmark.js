@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const bookmark = await bookmarkModel.find({ _id: req.params.id });
+    const bookmark = await bookmarkModel.findOne({ _id: req.params.id });
     res.status(200).json(bookmark);
   } catch (error) {
     res.status(500).send(error.message);
@@ -39,7 +39,7 @@ router.get("/:id", async (req, res) => {
 
 router.put("/update", async (req, res) => {
   try {
-    const query = { _id: req.body.id };
+    const query = { _id: req.body._id };
     const updateData = {
       title: req.body.title,
       link: req.body.link,

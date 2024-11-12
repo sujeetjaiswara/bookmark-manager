@@ -1,7 +1,7 @@
 <div class="flex flex-col min-h-[calc(100vh-10rem)]">
   <div
     class="w-[92vw] md:w-11/12 lg:w-8/12 mx-auto my-2 md:my-2 bg-white rounded-md shadow border p-4">
-    <h4 class="text-xl font-medium mb-2">Add Bookmark</h4>
+    <h4 class="text-xl font-medium mb-2">{{ id ? 'Edit' : 'Add' }} Bookmark</h4>
 
     <div class="rounded h-3/4 mb-4">
       @if (previewImage) {
