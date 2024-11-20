@@ -1,6 +1,6 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
@@ -18,11 +18,10 @@ import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-
 })
 export class BookmarkFavouritesComponent {
   // public bookmarks$: Observable<Bookmark[]>;
+  #router = inject(Router);
+  _bookmarksService = inject(BookmarksService);
 
-  constructor(
-    private _router: Router,
-    public _bookmarksService: BookmarksService
-  ) {
+  constructor() {
     // this.bookmarks$ = this._bookmarksService.getFavBookmarks();
     this.getFavBookmarks();
   }
@@ -39,7 +38,7 @@ export class BookmarkFavouritesComponent {
 
   onAdd(e: Event) {
     e.preventDefault();
-    this._router.navigate(['add-bookmark']);
+    this.#router.navigate(['add-bookmark']);
   }
 
   removeBookmark(bookmark: Bookmark) {

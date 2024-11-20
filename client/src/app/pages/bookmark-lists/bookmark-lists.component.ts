@@ -19,7 +19,6 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'bm-bookmark-lists',
   templateUrl: './bookmark-lists.component.html',
   styleUrls: ['./bookmark-lists.component.scss'],

@@ -18,7 +18,7 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'attribute',
-          prefix: 'app',
+          prefix: ['app', 'bm'],
           style: 'camelCase',
         },
       ],
@@ -26,7 +26,7 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'element',
-          prefix: 'app',
+          prefix: ['app', 'bm'],
           style: 'kebab-case',
         },
       ],

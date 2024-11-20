@@ -21,7 +21,6 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'bm-bookmark-add',
   templateUrl: './bookmark-add.component.html',
   styleUrls: ['./bookmark-add.component.scss'],

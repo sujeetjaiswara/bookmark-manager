@@ -1,7 +1,7 @@
 import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { Router } from '@angular/router';
-import { BtnFavComponent } from 'src/app/shared/components/btn-fav/btn-fav.component';
+// import { BtnFavComponent } from 'src/app/shared/components/btn-fav/btn-fav.component';
 import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 
 @Component({
@@ -10,7 +10,11 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
   styleUrls: ['./bookmark-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, BtnFavComponent],
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    // BtnFavComponent
+  ],
   providers: [{ provide: IMAGE_CONFIG, useValue: { placeholderResolution: 40 } }],
 })
 export class BookmarkItemComponent {
@@ -31,7 +35,6 @@ export class BookmarkItemComponent {
     this.toggleFavBookmark.emit(bookmark);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onEdit(e: Event, bookmark: Bookmark) {
     e.preventDefault();
     this.#router.navigate(['edit-bookmark', bookmark._id]);
