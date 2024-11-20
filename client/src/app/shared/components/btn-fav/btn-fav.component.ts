@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'bm-btn-fav',
@@ -8,8 +8,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BtnFavComponent {
-  @Input() isLiked = false;
-  @Output() toggleFav = new EventEmitter();
+  readonly isLiked = input(false);
+  readonly toggleFav = output();
 
   onToggle(e: Event) {
     e.preventDefault();
