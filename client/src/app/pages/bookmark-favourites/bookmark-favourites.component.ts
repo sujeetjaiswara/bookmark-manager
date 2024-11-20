@@ -12,7 +12,6 @@ import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-
   templateUrl: './bookmark-favourites.component.html',
   styleUrls: ['./bookmark-favourites.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [BookmarkItemComponent, CommonModule, ScrollingModule],
   providers: [DataService],
 })

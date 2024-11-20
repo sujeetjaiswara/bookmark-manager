@@ -9,7 +9,6 @@ import { Bookmark } from 'src/app/shared/interfaces/bookmark';
   templateUrl: './bookmark-item.component.html',
   styleUrls: ['./bookmark-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     CommonModule,
     NgOptimizedImage,

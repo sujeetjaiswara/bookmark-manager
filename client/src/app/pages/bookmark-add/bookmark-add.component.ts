@@ -25,7 +25,6 @@ import { DataService } from 'src/app/shared/services/data.service';
   templateUrl: './bookmark-add.component.html',
   styleUrls: ['./bookmark-add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class BookmarkAddComponent implements OnInit {

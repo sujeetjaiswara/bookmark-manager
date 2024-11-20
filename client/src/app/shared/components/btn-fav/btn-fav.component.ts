@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 
 @Component({
   selector: 'bm-btn-fav',
-  standalone: true,
   imports: [],
   templateUrl: './btn-fav.component.html',
   styleUrl: './btn-fav.component.scss',

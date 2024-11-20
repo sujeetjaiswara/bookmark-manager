@@ -10,7 +10,6 @@ import { AuthService } from './shared/services/auth.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: true,
   imports: [NavComponent, CommonModule, RouterOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

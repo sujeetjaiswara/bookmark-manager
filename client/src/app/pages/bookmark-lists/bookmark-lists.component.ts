@@ -23,7 +23,6 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   templateUrl: './bookmark-lists.component.html',
   styleUrls: ['./bookmark-lists.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [BookmarkItemComponent, CommonModule, ScrollingModule],
 })
 export class BookmarkListsComponent implements OnInit, AfterViewInit {

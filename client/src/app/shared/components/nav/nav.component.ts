@@ -9,7 +9,6 @@ import { GlobalSearchComponent } from '../global-search/global-search.component'
   selector: 'bm-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule, GlobalSearchComponent],
 })
