@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -10,15 +10,13 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   imports: [],
 })
 export class LoginComponent {
-  constructor(
-    private _router: Router,
-    private _authService: AuthService
-  ) {}
+  #router = inject(Router);
+  #authService = inject(AuthService);
 
   onLogin(e: Event) {
     e.preventDefault();
-    this._authService.isAuthenticated.set(true);
-    this._router.navigate(['bookmarks']);
     localStorage.setItem('isAuthenticated', 'true');
+    this.#authService.isAuthenticated.set(true);
+    this.#router.navigate(['bookmarks']);
   }
 }
