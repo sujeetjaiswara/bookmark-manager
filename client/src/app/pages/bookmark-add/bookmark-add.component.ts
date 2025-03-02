@@ -82,7 +82,7 @@ export class BookmarkAddComponent implements OnInit {
               description: rs.data.description,
             });
 
-            this.tags = rs.data.tags?.split(',').filter(Boolean) ?? [];
+            this.tags = rs.data.tags;
           }
         },
         error: err => {

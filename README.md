@@ -20,3 +20,5 @@ https://flowbite.com/docs/components/tooltips/
 https://flowbite.com/docs/components/progress/
 https://flowbite.com/docs/components/spinner/
 https://flowbite.com/docs/components/navbar/#typescript
+
+# http://localhost:3000/api/v1/bookmark/?limit=12&skip=2&showDeleted=true

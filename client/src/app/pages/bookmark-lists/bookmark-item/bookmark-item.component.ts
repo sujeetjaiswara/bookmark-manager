@@ -22,14 +22,6 @@ export class BookmarkItemComponent {
   removeBookmark = output<Bookmark>();
   toggleFavBookmark = output<Bookmark>();
 
-  getTags(tags: string) {
-    if (!tags) {
-      return;
-    }
-
-    return tags.split(',');
-  }
-
   onFav(bookmark: Bookmark) {
     this.toggleFavBookmark.emit(bookmark);
   }
