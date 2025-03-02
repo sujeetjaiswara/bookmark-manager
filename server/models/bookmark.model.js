@@ -3,12 +3,14 @@ import mongoose from "mongoose";
 const bookmarkSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: [true, "Title is required"],
     trim: true,
+    minLength: 2,
+    maxLength: 200,
   },
   link: {
     type: String,
-    required: true,
+    required: [true, "Link is required"],
   },
   tags: {
     type: String,
@@ -30,6 +32,6 @@ const bookmarkSchema = new mongoose.Schema({
   updatedAt: Date,
 });
 
-const bookmarkModel = mongoose.model("bookmark", bookmarkSchema);
+const Bookmark = mongoose.model("Bookmark", bookmarkSchema);
 
-export default bookmarkModel;
+export default Bookmark;
