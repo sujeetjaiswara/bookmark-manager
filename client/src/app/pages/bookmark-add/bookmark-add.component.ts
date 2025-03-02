@@ -79,9 +79,10 @@ export class BookmarkAddComponent implements OnInit {
             this.bookmarkForm.patchValue({
               title: rs.data.title,
               link: rs.data.link,
-              tags: rs.data.tags,
               description: rs.data.description,
             });
+
+            this.tags = rs.data.tags?.split(',').filter(Boolean) ?? [];
           }
         },
         error: err => {
