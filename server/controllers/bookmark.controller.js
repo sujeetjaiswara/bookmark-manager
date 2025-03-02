@@ -60,7 +60,23 @@ export const deleteBookmark = async (req, res, next) => {
   try {
     const query = { _id: req.params.id };
     const deletedBookmark = await Bookmark.deleteOne(query);
-    res.status(200).json({ success: true, data: deletedBookmark });
+    if (deletedBookmark.deletedCount === 1) {
+      res.status(200).json({
+        success: true,
+        data: {
+          message: "Bookmark successfully deleted",
+          deletedId: req.params.id,
+        },
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        data: {
+          message: "Bookmark not found",
+          id: req.params.id,
+        },
+      });
+    }
   } catch (error) {
     next(error);
   }
