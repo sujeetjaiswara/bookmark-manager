@@ -17,9 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 const dotenv = require("dotenv");
 dotenv.config();
 
-const connectToDB = require("./config/db.js");
-connectToDB();
-
 // Routes
 app.use("/bookmarks", bookmarkRoutes);
 
@@ -27,6 +24,9 @@ app.use("/bookmarks", bookmarkRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+
+  const connectToDB = require("./config/db.js");
+  connectToDB();
 });
 
 module.exports = app;
