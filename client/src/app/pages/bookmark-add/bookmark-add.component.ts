@@ -17,8 +17,8 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { DataService } from 'src/app/shared/services/data.service';
+import { BookmarkCreateUpdateRequest, BookmarkResponse } from 'src/app/shared/types/bookmark';
 
 @Component({
   selector: 'bm-bookmark-add',
@@ -74,13 +74,13 @@ export class BookmarkAddComponent implements OnInit {
       .getBookmark(id)
       .pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe({
-        next: (data: Bookmark) => {
-          if (data) {
+        next: (rs: BookmarkResponse) => {
+          if (rs.data) {
             this.bookmarkForm.patchValue({
-              title: data.title,
-              link: data.link,
-              tags: data.tags,
-              description: data.description,
+              title: rs.data.title,
+              link: rs.data.link,
+              tags: rs.data.tags,
+              description: rs.data.description,
             });
           }
         },
@@ -107,20 +107,17 @@ export class BookmarkAddComponent implements OnInit {
 
   onAdd() {
     const form = this.bookmarkForm.value;
-    const bookmark: Bookmark = {
-      title: form.title,
-      link: form.link,
+
+    const bookmark: BookmarkCreateUpdateRequest = {
+      title: form.title?.trim(),
+      link: form.link?.trim(),
       tags: this.tags.toString(),
       description: form.description,
       screenshot: '',
     };
 
-    if (this.id) {
-      bookmark._id = this.id;
-    }
-
     const requestURL = this.id
-      ? this.#dataService.updateBookmark(bookmark)
+      ? this.#dataService.updateBookmark(bookmark, this.id)
       : this.#dataService.createBookmark(bookmark);
 
     this.isSaving = true;

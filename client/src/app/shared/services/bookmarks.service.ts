@@ -1,5 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { Bookmark } from '../interfaces/bookmark';
+import { Bookmark } from '../types/bookmark';
 
 @Injectable({
   providedIn: 'root',

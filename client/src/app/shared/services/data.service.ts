@@ -2,7 +2,11 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { Bookmark } from '../interfaces/bookmark';
+import {
+  BookmarkCreateUpdateRequest,
+  BookmarkResponse,
+  BookmarksResponse,
+} from '../types/bookmark';
 
 @Injectable({
   providedIn: 'root',
@@ -11,32 +15,32 @@ export class DataService {
   #baseURL = environment.backendURL;
   #http = inject(HttpClient);
 
-  getBookmarks(): Observable<Bookmark[]> {
+  getBookmarks(): Observable<BookmarksResponse> {
     return this.#http
-      .get<Bookmark[]>(`${this.#baseURL}/bookmarks`)
+      .get<BookmarksResponse>(`${this.#baseURL}/bookmark`)
       .pipe(catchError(this.handleError));
   }
 
-  getBookmark(id: string): Observable<Bookmark> {
+  getBookmark(id: string): Observable<BookmarkResponse> {
     return this.#http
-      .get<Bookmark>(`${this.#baseURL}/bookmarks/${id}`)
+      .get<BookmarkResponse>(`${this.#baseURL}/bookmark/${id}`)
       .pipe(catchError(this.handleError));
   }
 
-  createBookmark(body: Bookmark) {
+  createBookmark(body: BookmarkCreateUpdateRequest) {
     return this.#http
-      .post<Bookmark>(`${this.#baseURL}/bookmarks/create`, body)
+      .post<BookmarkCreateUpdateRequest>(`${this.#baseURL}/bookmark`, body)
       .pipe(catchError(this.handleError));
   }
 
-  updateBookmark(body: Bookmark) {
+  updateBookmark(body: BookmarkCreateUpdateRequest, id: string) {
     return this.#http
-      .put<Bookmark>(`${this.#baseURL}/bookmarks/update`, body)
+      .put<BookmarkCreateUpdateRequest>(`${this.#baseURL}/bookmark/${id}`, body)
       .pipe(catchError(this.handleError));
   }
 
   deleteBookmark(id?: string) {
-    return this.#http.delete(`${this.#baseURL}/bookmarks/${id}`).pipe(catchError(this.handleError));
+    return this.#http.delete(`${this.#baseURL}/bookmark/${id}`).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

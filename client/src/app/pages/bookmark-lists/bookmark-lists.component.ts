@@ -13,9 +13,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import type { InstanceOptions, ModalInterface, ModalOptions } from 'flowbite';
 import { Modal } from 'flowbite';
 import { finalize } from 'rxjs';
-import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
+import { Bookmark, BookmarksResponse } from 'src/app/shared/types/bookmark';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
 @Component({
@@ -42,9 +42,9 @@ export class BookmarkListsComponent implements OnInit, AfterViewInit {
         takeUntilDestroyed(this.#destroyRef)
       )
       .subscribe({
-        next: (data: Bookmark[]) => {
-          if (data) {
-            this.bookmarksService.setBookmarks(data.reverse());
+        next: (rs: BookmarksResponse) => {
+          if (rs.data) {
+            this.bookmarksService.setBookmarks(rs.data.reverse());
           }
         },
         error: err => {

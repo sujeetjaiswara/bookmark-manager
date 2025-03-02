@@ -2,7 +2,7 @@ import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { Router } from '@angular/router';
 // import { BtnFavComponent } from 'src/app/shared/components/btn-fav/btn-fav.component';
-import { Bookmark } from 'src/app/shared/interfaces/bookmark';
+import { Bookmark } from 'src/app/shared/types/bookmark';
 
 @Component({
   selector: 'bm-bookmark-item',

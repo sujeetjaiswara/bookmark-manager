@@ -2,9 +2,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Bookmark } from 'src/app/shared/interfaces/bookmark';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
+import { Bookmark } from 'src/app/shared/types/bookmark';
 import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-item.component';
 
 @Component({
