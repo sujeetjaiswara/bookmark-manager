@@ -15,7 +15,7 @@ import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-
   imports: [BookmarkItemComponent, CommonModule, ScrollingModule],
   providers: [DataService],
 })
-export class BookmarkFavouritesComponent {
+export default class BookmarkFavouritesComponent {
   // public bookmarks$: Observable<Bookmark[]>;
   #router = inject(Router);
   _bookmarksService = inject(BookmarksService);

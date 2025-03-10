@@ -25,7 +25,7 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BookmarkItemComponent, CommonModule, ScrollingModule],
 })
-export class BookmarkListsComponent implements OnInit, AfterViewInit {
+export default class BookmarkListsComponent implements OnInit, AfterViewInit {
   #destroyRef = inject(DestroyRef);
   #dataService = inject(DataService);
   bookmarksService = inject(BookmarksService);

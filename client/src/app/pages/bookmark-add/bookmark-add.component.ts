@@ -27,7 +27,7 @@ import { BookmarkCreateUpdateRequest, BookmarkResponse } from 'src/app/shared/ty
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
-export class BookmarkAddComponent implements OnInit {
+export default class BookmarkAddComponent implements OnInit {
   #dataService = inject(DataService);
   #destroyRef = inject(DestroyRef);
   #cd = inject(ChangeDetectorRef);

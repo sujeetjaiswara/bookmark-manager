@@ -4,33 +4,27 @@ export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'login',
-    title: 'Login',
-    loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent),
+    title: 'Authentication | Bookmark Manager',
+    loadComponent: () => import('./pages/login/login.component'),
   },
   {
     path: 'bookmarks',
-    title: 'Bookmarks',
-    loadComponent: () =>
-      import('./pages/bookmark-lists/bookmark-lists.component').then(m => m.BookmarkListsComponent),
+    title: 'All Bookmarks | Bookmark Manager',
+    loadComponent: () => import('./pages/bookmark-lists/bookmark-lists.component'),
   },
   {
     path: 'fav-bookmarks',
-    title: 'Fav Bookmarks',
-    loadComponent: () =>
-      import('./pages/bookmark-favourites/bookmark-favourites.component').then(
-        m => m.BookmarkFavouritesComponent
-      ),
+    title: 'Favorite Collections | Bookmark Manager',
+    loadComponent: () => import('./pages/bookmark-favourites/bookmark-favourites.component'),
   },
   {
     path: 'add-bookmark',
-    title: 'Add Bookmark',
-    loadComponent: () =>
-      import('./pages/bookmark-add/bookmark-add.component').then(m => m.BookmarkAddComponent),
+    title: 'Create New Bookmark | Bookmark Manager',
+    loadComponent: () => import('./pages/bookmark-add/bookmark-add.component'),
   },
   {
     path: 'edit-bookmark/:id',
-    title: 'Edit Bookmark',
-    loadComponent: () =>
-      import('./pages/bookmark-add/bookmark-add.component').then(m => m.BookmarkAddComponent),
+    title: 'Modify Bookmark | Bookmark Manager',
+    loadComponent: () => import('./pages/bookmark-add/bookmark-add.component'),
   },
 ];

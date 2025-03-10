@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
 })
-export class LoginComponent {
+export default class LoginComponent {
   #router = inject(Router);
   #authService = inject(AuthService);
 
