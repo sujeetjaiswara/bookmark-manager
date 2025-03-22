@@ -1,20 +1,9 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  DestroyRef,
-  inject,
-  OnInit,
-} from '@angular/core';
+// prettier-ignore
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+// prettier-ignore
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { DataService } from 'src/app/shared/services/data.service';
@@ -46,7 +35,6 @@ export default class BookmarkAddComponent implements OnInit {
     this.#activatedRoute.params.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       next: (p: any) => {
-        console.log(p.id);
         this.id = p.id;
       },
     });

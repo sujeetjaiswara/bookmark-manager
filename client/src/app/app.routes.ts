@@ -12,11 +12,11 @@ export const routes: Routes = [
     title: 'All Bookmarks | Bookmark Manager',
     loadComponent: () => import('./pages/bookmark-lists/bookmark-lists.component'),
   },
-  {
-    path: 'fav-bookmarks',
-    title: 'Favorite Collections | Bookmark Manager',
-    loadComponent: () => import('./pages/bookmark-favourites/bookmark-favourites.component'),
-  },
+  // {
+  //   path: 'fav-bookmarks',
+  //   title: 'Favorite Collections | Bookmark Manager',
+  //   loadComponent: () => import('./pages/bookmark-favourites/bookmark-favourites.component'),
+  // },
   {
     path: 'add-bookmark',
     title: 'Create New Bookmark | Bookmark Manager',

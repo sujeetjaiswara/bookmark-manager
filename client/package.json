@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "fix-formating": "npx prettier --write ."
+    "format": "npx prettier --write ."
   },
   "private": true,
   "dependencies": {
