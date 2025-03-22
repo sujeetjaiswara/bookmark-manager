@@ -8,9 +8,8 @@ describe('GlobalSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GlobalSearchComponent]
-    })
-    .compileComponents();
+      imports: [GlobalSearchComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(GlobalSearchComponent);
     component = fixture.componentInstance;
