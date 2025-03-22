@@ -2,11 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import {
-  BookmarkCreateUpdateRequest,
-  BookmarkResponse,
-  BookmarksResponse,
-} from '../types/bookmark';
+// prettier-ignore
+import { BookmarkCreateUpdateRequest, BookmarkResponse, BookmarksResponse, } from '../types/bookmark';
 
 @Injectable({
   providedIn: 'root',
