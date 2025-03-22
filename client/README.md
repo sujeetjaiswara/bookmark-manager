@@ -1,6 +1,6 @@
 # BookmarkManager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.0.3.
 
 ## Development server
 
