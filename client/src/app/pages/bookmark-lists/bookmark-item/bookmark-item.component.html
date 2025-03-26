@@ -42,7 +42,9 @@
         <div class="flex items-center justify-end gap-2">
           <!-- <bm-btn-fav [isLiked]="bookmark().likes" (toggleFav)="onFav(bookmark())"></bm-btn-fav> -->
 
-          <button (click)="onEdit($event, bookmark())">
+          <button
+            class="btn btn-xs btn-circle btn-warning p-1"
+            (click)="onEdit($event, bookmark())">
             <svg
               class="w-5 h-5 text-gray-600 dark:text-white"
               aria-hidden="true"
@@ -60,7 +62,9 @@
             </svg>
           </button>
 
-          <button (click)="onRemove($event, bookmark())">
+          <button
+            class="btn btn-xs btn-circle btn-error p-1"
+            (click)="onRemove($event, bookmark())">
             <svg
               class="w-5 h-5 text-red-500 dark:text-white"
               aria-hidden="true"

@@ -1,12 +1,8 @@
-<nav class="bg-white border-b border-gray-300 dark:bg-teal-900">
+<nav class="bg-white border-b border-gray-300">
   <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-3">
-    <a
-      routerLink="/bookmarks"
-      class="flex items-center space-x-1 rtl:space-x-reverse text-orange-500">
+    <a routerLink="/bookmarks" class="flex items-center space-x-1 rtl:space-x-reverse">
       <img class="w-5 h-5" src="assets/logo.png" alt="logo" />
-      <span class="self-center text-lg font-medium whitespace-nowrap dark:text-white">
-        Bookmarks
-      </span>
+      <span class="self-center text-lg font-medium whitespace-nowrap"> Bookmarks </span>
     </a>
 
     <!-- Search -->
@@ -18,9 +14,9 @@
         (click)="onAdd($event)"
         ngProjectAs="actionButtons"
         type="button"
-        class="font-bold inline-flex items-center bg-orange-50 p-1 rounded-full">
+        class="btn btn-primary btn-circle btn-sm">
         <svg
-          class="w-5 h-5 text-orange-600 dark:text-orange-600"
+          class="w-5 h-5"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -36,32 +32,15 @@
         </svg>
       </button>
 
-      <!-- Liked -->
-      <!-- <a
-        class="font-bold inline-flex items-center bg-red-50 p-1 rounded-full"
-        routerLink="/fav-bookmarks">
-        <svg
-          class="w-5 h-5 text-red-600 dark:text-red-600"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          fill="currentColor"
-          viewBox="0 0 24 24">
-          <path
-            d="m12.75 20.66 6.184-7.098c2.677-2.884 2.559-6.506.754-8.705-.898-1.095-2.206-1.816-3.72-1.855-1.293-.034-2.652.43-3.963 1.442-1.315-1.012-2.678-1.476-3.973-1.442-1.515.04-2.825.76-3.724 1.855-1.806 2.201-1.915 5.823.772 8.706l6.183 7.097c.19.216.46.34.743.34a.985.985 0 0 0 .743-.34Z" />
-        </svg>
-      </a> -->
-
       <button
         id="user-menu-button"
-        class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full hover:text-orange-600 dark:hover:text-orange-500 md:me-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white"
+        class="flex items-center text-sm pe-1 font-medium rounded-full hover:text-orange-600 md:me-0"
         type="button">
         <span class="sr-only">Open user menu</span>
         <div class="relative me-4">
           <img class="w-8 h-8 rounded-full" src="assets/profile.jpg" alt="profile image" />
           <span
-            class="top-0 start-7 absolute w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
+            class="top-0 start-7 absolute w-3.5 h-3.5 status status-success border-2 border-white dark:border-gray-800 rounded-full"></span>
         </div>
         Sujeet Jaiswara
         <svg
@@ -81,7 +60,7 @@
 
       <!-- Dropdown menu -->
       <div
-        class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+        class="z-50 hidden my-4 text-base list-none divide-y divide-gray-100 rounded-lg shadow"
         id="user-dropdown">
         <ul class="py-2">
           <li>
