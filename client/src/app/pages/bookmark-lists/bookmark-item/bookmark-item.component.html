@@ -1,4 +1,4 @@
-<div class="flex bg-white shadow-sm rounded border group p-1 mb-2">
+<div class="flex bg-white shadow-sm rounded group p-1 mb-2">
   <!-- Screenshot -->
   <div
     class="min-w-[150px] min-h-[170px] man-w-[150px] max-h-[170px] bg-gray-100"
@@ -89,7 +89,7 @@
     <div class="mb-2">
       @for (tag of bookmark().tags; track $index) {
         <span
-          class="bg-orange-100 text-orange-800 text-[0.7rem] font-medium me-1 px-2.5 py-[0.8px] inline-flex items-center leading-normal rounded-full dark:bg-orange-900 dark:text-orange-300 uppercase">
+          class="badge badge-dash badge-primary badge-xs uppercase me-1">
           {{ tag }}
         </span>
       }
