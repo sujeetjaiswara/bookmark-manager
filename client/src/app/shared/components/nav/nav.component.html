@@ -32,57 +32,18 @@
         </svg>
       </button>
 
-      <button
-        id="user-menu-button"
-        class="flex items-center text-sm pe-1 font-medium rounded-full hover:text-orange-600 md:me-0"
-        type="button">
-        <span class="sr-only">Open user menu</span>
-        <div class="relative me-4">
-          <img class="w-8 h-8 rounded-full" src="assets/profile.jpg" alt="profile image" />
-          <span
-            class="top-0 start-7 absolute w-3.5 h-3.5 status status-success border-2 border-white dark:border-gray-800 rounded-full"></span>
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+          <div class="w-10 rounded-full">
+            <img alt="Tailwind CSS Navbar component" src="assets/profile.jpg" />
+          </div>
         </div>
-        Sujeet Jaiswara
-        <svg
-          class="w-2.5 h-2.5 ms-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6">
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4" />
-        </svg>
-      </button>
-
-      <!-- Dropdown menu -->
-      <div
-        class="z-50 hidden my-4 text-base list-none divide-y divide-gray-100 rounded-lg shadow"
-        id="user-dropdown">
-        <ul class="py-2">
-          <li>
-            <a
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-              Settings
-            </a>
-          </li>
-          <li>
-            <a
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-              href="#"
-              (click)="onLogout($event)">
-              Sign out
-            </a>
-          </li>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+          <li><a>Profile</a></li>
+          <li><a>Settings</a></li>
+          <li><a href="#" (click)="onLogout($event)">Logout</a></li>
         </ul>
       </div>
     </div>
