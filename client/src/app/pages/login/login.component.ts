@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -7,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [InputTextModule, CardModule, ButtonModule],
 })
 export default class LoginComponent {
   #router = inject(Router);

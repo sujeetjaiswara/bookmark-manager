@@ -9,7 +9,10 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 import { finalize } from 'rxjs';
+import { GlobalSearchComponent } from 'src/app/shared/components/global-search/global-search.component';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { Bookmark, BookmarksResponse } from 'src/app/shared/types/bookmark';
@@ -20,10 +23,11 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   templateUrl: './bookmark-lists.component.html',
   styleUrls: ['./bookmark-lists.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BookmarkItemComponent, ScrollingModule],
+  imports: [BookmarkItemComponent, GlobalSearchComponent, ScrollingModule, ButtonModule],
 })
 export default class BookmarkListsComponent implements OnInit, AfterViewInit {
   #destroyRef = inject(DestroyRef);
+  #router = inject(Router);
   #dataService = inject(DataService);
   bookmarksService = inject(BookmarksService);
   isLoading = signal(false);
@@ -128,5 +132,10 @@ export default class BookmarkListsComponent implements OnInit, AfterViewInit {
     //   bookmarks[index].Likes = !bookmarks[index].Likes;
     //   this.bookmarksService.setBookmarks(bookmarks);
     // }
+  }
+
+  onAdd(e: Event) {
+    e.preventDefault();
+    this.#router.navigate(['add-bookmark']);
   }
 }

@@ -1,9 +1,24 @@
-// prettier-ignore
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-// prettier-ignore
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { TextareaModule } from 'primeng/textarea';
 import { finalize } from 'rxjs';
 import { DataService } from 'src/app/shared/services/data.service';
 import { BookmarkCreateUpdateRequest, BookmarkResponse } from 'src/app/shared/types/bookmark';
@@ -12,8 +27,15 @@ import { BookmarkCreateUpdateRequest, BookmarkResponse } from 'src/app/shared/ty
   selector: 'bm-bookmark-add',
   templateUrl: './bookmark-add.component.html',
   styleUrls: ['./bookmark-add.component.scss'],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    CardModule,
+    InputTextModule,
+    TextareaModule,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, ReactiveFormsModule],
 })
 export default class BookmarkAddComponent implements OnInit {
   #dataService = inject(DataService);
