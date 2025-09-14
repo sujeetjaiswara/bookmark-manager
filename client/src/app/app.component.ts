@@ -1,9 +1,15 @@
-// prettier-ignore
-import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  effect,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
-import { initFlowbite } from 'flowbite';
 import { environment } from 'src/environments/environment';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { AuthService } from './shared/services/auth.service';
@@ -39,8 +45,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    initFlowbite();
-
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (isAuthenticated === 'true') {
       this.isAuth.set(true);

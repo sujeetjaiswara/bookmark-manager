@@ -1,9 +1,14 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
-// prettier-ignore
-import { AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  OnInit,
+  inject,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import type { InstanceOptions, ModalInterface, ModalOptions } from 'flowbite';
-import { Modal } from 'flowbite';
 import { finalize } from 'rxjs';
 import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
 import { DataService } from 'src/app/shared/services/data.service';
@@ -22,7 +27,6 @@ export default class BookmarkListsComponent implements OnInit, AfterViewInit {
   #dataService = inject(DataService);
   bookmarksService = inject(BookmarksService);
   isLoading = signal(false);
-  modal!: ModalInterface;
   selectedBookmark: Bookmark | null = null;
 
   ngOnInit(): void {
@@ -46,35 +50,35 @@ export default class BookmarkListsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.initConfirmModal();
+    // this.initConfirmModal();
   }
 
-  initConfirmModal() {
-    const $modalElement: HTMLElement | null = document.querySelector('#popup-modal');
+  // initConfirmModal() {
+  //   const $modalElement: HTMLElement | null = document.querySelector('#popup-modal');
 
-    const modalOptions: ModalOptions = {
-      placement: 'center',
-      backdrop: 'dynamic',
-      backdropClasses: 'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
-      closable: true,
-      onHide: () => {
-        console.log('modal is hidden');
-      },
-      onShow: () => {
-        console.log('modal is shown');
-      },
-      onToggle: () => {
-        console.log('modal has been toggled');
-      },
-    };
+  //   const modalOptions: ModalOptions = {
+  //     placement: 'center',
+  //     backdrop: 'dynamic',
+  //     backdropClasses: 'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
+  //     closable: true,
+  //     onHide: () => {
+  //       console.log('modal is hidden');
+  //     },
+  //     onShow: () => {
+  //       console.log('modal is shown');
+  //     },
+  //     onToggle: () => {
+  //       console.log('modal has been toggled');
+  //     },
+  //   };
 
-    const instanceOptions: InstanceOptions = {
-      id: 'popup-modal',
-      override: true,
-    };
+  //   const instanceOptions: InstanceOptions = {
+  //     id: 'popup-modal',
+  //     override: true,
+  //   };
 
-    this.modal = new Modal($modalElement, modalOptions, instanceOptions);
-  }
+  //   this.modal = new Modal($modalElement, modalOptions, instanceOptions);
+  // }
 
   trackByFn(_index: number, bookmark: Bookmark) {
     return bookmark._id;
@@ -82,12 +86,12 @@ export default class BookmarkListsComponent implements OnInit, AfterViewInit {
 
   onRemoveBookmark(bookmark: Bookmark) {
     this.selectedBookmark = bookmark;
-    this.modal.show();
+    // this.modal.show();
   }
 
   onCancelModal() {
     this.selectedBookmark = null;
-    this.modal.hide();
+    // this.modal.hide();
   }
 
   onYesModal(selectedBookmark: Bookmark | null) {
@@ -108,7 +112,7 @@ export default class BookmarkListsComponent implements OnInit, AfterViewInit {
           }
 
           this.selectedBookmark = null;
-          this.modal.hide();
+          // this.modal.hide();
         },
         error: err => {
           console.log(err);
