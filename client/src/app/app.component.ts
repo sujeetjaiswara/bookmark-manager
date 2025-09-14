@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 // prettier-ignore
 import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -13,7 +12,7 @@ import { AuthService } from './shared/services/auth.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [NavComponent, CommonModule, RouterOutlet],
+  imports: [NavComponent, RouterOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {

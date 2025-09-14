@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 // prettier-ignore
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -14,7 +13,7 @@ import { BookmarkCreateUpdateRequest, BookmarkResponse } from 'src/app/shared/ty
   templateUrl: './bookmark-add.component.html',
   styleUrls: ['./bookmark-add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
 })
 export default class BookmarkAddComponent implements OnInit {
   #dataService = inject(DataService);

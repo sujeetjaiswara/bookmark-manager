@@ -1,5 +1,4 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { CommonModule } from '@angular/common';
 // prettier-ignore
 import { AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -16,7 +15,7 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
   templateUrl: './bookmark-lists.component.html',
   styleUrls: ['./bookmark-lists.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BookmarkItemComponent, CommonModule, ScrollingModule],
+  imports: [BookmarkItemComponent, ScrollingModule],
 })
 export default class BookmarkListsComponent implements OnInit, AfterViewInit {
   #destroyRef = inject(DestroyRef);
