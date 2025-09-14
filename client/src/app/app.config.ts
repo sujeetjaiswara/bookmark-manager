@@ -3,7 +3,9 @@ import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
+import { MyPreset } from './my-preset';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,5 +18,13 @@ export const appConfig: ApplicationConfig = {
         registrationStrategy: 'registerWhenStable:30000',
       }),
     ]),
+    providePrimeNG({
+      theme: {
+        preset: MyPreset,
+        options: {
+          darkModeSelector: '.app-dark',
+        },
+      },
+    }),
   ],
 };

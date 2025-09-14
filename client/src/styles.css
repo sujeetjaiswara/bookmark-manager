@@ -1,1 +1,8 @@
 @import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+@plugin "tailwindcss-primeui";
+@custom-variant dark (&:where(.my-app-dark, .my-app-dark *));
+
+html {
+  font-size: 14px;
+}
