@@ -15,13 +15,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Data } from '@core/services';
+import { BookmarkCreateUpdateRequest, BookmarkResponse } from '@shared/types';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { finalize } from 'rxjs';
-import { Data } from 'src/app/shared';
-import { BookmarkCreateUpdateRequest, BookmarkResponse } from 'src/app/shared/types/bookmark';
 
 @Component({
   selector: 'bm-bookmark-add',
@@ -44,9 +44,7 @@ export default class BookmarkAddComponent implements OnInit {
   #fb = inject(FormBuilder);
   #router = inject(Router);
   #activatedRoute = inject(ActivatedRoute);
-
   protected bookmarkForm!: FormGroup;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected tags: any[] = [];
   protected previewImage = '';
   protected isSaving = false;
@@ -54,7 +52,6 @@ export default class BookmarkAddComponent implements OnInit {
 
   constructor() {
     this.#activatedRoute.params.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe({
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       next: (p: any) => {
         this.id = p.id;
       },

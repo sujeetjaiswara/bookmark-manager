@@ -10,11 +10,11 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
+import { Bookmarks, Data } from '@core/services';
+import { GlobalSearchComponent } from '@shared/components';
+import { Bookmark, BookmarksResponse } from '@shared/types';
 import { ButtonModule } from 'primeng/button';
 import { finalize } from 'rxjs';
-import { Bookmarks, Data } from 'src/app/shared';
-import { GlobalSearchComponent } from 'src/app/shared/components/global-search/global-search.component';
-import { Bookmark, BookmarksResponse } from 'src/app/shared/types/bookmark';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
 @Component({

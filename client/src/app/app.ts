@@ -9,8 +9,9 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
-import { environment } from 'src/environments/environment';
-import { Auth, NavComponent } from './shared';
+import { Auth } from '@core/services';
+import { NavComponent } from '@shared/components';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'bm-app',

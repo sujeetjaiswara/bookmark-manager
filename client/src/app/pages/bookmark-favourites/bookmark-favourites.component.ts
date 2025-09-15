@@ -1,9 +1,8 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
-import { DataService } from 'src/app/shared/services/data.service';
-import { Bookmark } from 'src/app/shared/types/bookmark';
+import { Bookmarks } from '@core/services';
+import { Bookmark } from '@shared/types';
 import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-item.component';
 
 @Component({
@@ -12,12 +11,11 @@ import { BookmarkItemComponent } from '../bookmark-lists/bookmark-item/bookmark-
   styleUrls: ['./bookmark-favourites.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BookmarkItemComponent, ScrollingModule],
-  providers: [DataService],
 })
 export default class BookmarkFavouritesComponent {
   // public bookmarks$: Observable<Bookmark[]>;
   #router = inject(Router);
-  _bookmarksService = inject(BookmarksService);
+  _bookmarksService = inject(Bookmarks);
 
   constructor() {
     // this.bookmarks$ = this._bookmarksService.getFavBookmarks();
