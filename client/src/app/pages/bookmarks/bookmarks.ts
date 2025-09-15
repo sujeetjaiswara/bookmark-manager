@@ -1,34 +1,33 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  OnInit,
   inject,
+  OnInit,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
-import { Bookmarks, Data } from '@core/services';
+import { Bookmarks as BookmarksService, Data } from '@core/services';
 import { GlobalSearchComponent } from '@shared/components';
 import { Bookmark, BookmarksResponse } from '@shared/types';
 import { ButtonModule } from 'primeng/button';
 import { finalize } from 'rxjs';
-import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
+import { BookmarkRow } from './bookmark-row/bookmark-row';
 
 @Component({
-  selector: 'bm-bookmark-lists',
-  templateUrl: './bookmark-lists.component.html',
-  styleUrls: ['./bookmark-lists.component.scss'],
+  selector: 'bm-bookmarks',
+  imports: [BookmarkRow, GlobalSearchComponent, ScrollingModule, ButtonModule],
+  templateUrl: './bookmarks.html',
+  styleUrl: './bookmarks.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BookmarkItemComponent, GlobalSearchComponent, ScrollingModule, ButtonModule],
 })
-export default class BookmarkListsComponent implements OnInit, AfterViewInit {
+export default class Bookmarks implements OnInit {
   #destroyRef = inject(DestroyRef);
   #router = inject(Router);
   #dataService = inject(Data);
-  bookmarksService = inject(Bookmarks);
+  bookmarksService = inject(BookmarksService);
   isLoading = signal(false);
   selectedBookmark: Bookmark | null = null;
 
@@ -52,9 +51,9 @@ export default class BookmarkListsComponent implements OnInit, AfterViewInit {
       });
   }
 
-  ngAfterViewInit(): void {
-    // this.initConfirmModal();
-  }
+  //   ngAfterViewInit(): void {
+  // this.initConfirmModal();
+  //   }
 
   // initConfirmModal() {
   //   const $modalElement: HTMLElement | null = document.querySelector('#popup-modal');

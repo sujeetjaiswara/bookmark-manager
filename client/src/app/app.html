@@ -1,3 +1,6 @@
+<!-- Router progress bar: shows navigation loading state -->
+<ng-progress ngProgressRouter [spinner]="false" />
+
 @if (isAuth()) {
 <bm-nav class="sticky top-0 z-10"></bm-nav>
 }
@@ -5,3 +8,10 @@
 <div class="min-h-screen overflow-hidden">
   <router-outlet></router-outlet>
 </div>
+
+<!-- Toast notifications: global messages shown at top-right -->
+<p-toast
+  key="globalToaster"
+  position="top-right"
+  [preventDuplicates]="false"
+  [preventOpenDuplicates]="true" />

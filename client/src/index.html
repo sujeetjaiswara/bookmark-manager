@@ -7,17 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-      rel="stylesheet" />
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1976d2" />
     <link rel="preconnect" href="https://images.pexels.com" />
+    <style>
+      .root-loader {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+      }
+      .root-loader p {
+        font-size: 1.2rem;
+        text-align: center;
+        color: #777;
+      }
+      .root-loader p::after {
+        content: '...';
+        margin-left: 0.1rem;
+      }
+      .root-loader img {
+        height: 4.8rem;
+        animation: flash 1.2s linear infinite;
+        margin-bottom: 0.9rem;
+      }
+      @keyframes flash {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <app-root></app-root>
+    <bm-root>
+      <div class="root-loader">
+        <p>Loading...</p>
+      </div>
+    </bm-root>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
   </body>
 </html>

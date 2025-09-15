@@ -4,22 +4,22 @@
     class="min-w-[150px] min-h-[170px] man-w-[150px] max-h-[170px] bg-gray-100"
     style="position: relative">
     @if (bookmark().screenshot) {
-      <img
-        class="rounded object-cover"
-        [ngSrc]="bookmark().screenshot"
-        placeholder="data:image/png;base64,iVBORw0K..."
-        alt=""
-        fill
-        priority />
+    <img
+      class="rounded object-cover"
+      [ngSrc]="bookmark().screenshot"
+      placeholder="data:image/png;base64,iVBORw0K..."
+      alt=""
+      fill
+      priority />
     } @else {
-      <img
-        class="rounded object-cover"
-        ngSrc="https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        placeholder="data:image/png;base64,iVBORw0K..."
-        [placeholderConfig]="{ blur: true }"
-        alt=""
-        fill
-        priority />
+    <img
+      class="rounded object-cover"
+      ngSrc="https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      placeholder="data:image/png;base64,iVBORw0K..."
+      [placeholderConfig]="{ blur: true }"
+      alt=""
+      fill
+      priority />
     }
   </div>
 
@@ -33,9 +33,7 @@
           class="font-medium text-lg hover:text-orange-900 leading-none">
           {{ bookmark().title }}
         </a>
-        <div class="text-gray-600 text-xs mb-1">
-          {{ bookmark().createdAt | date }}
-        </div>
+        <div class="text-gray-600 text-xs mb-1">{{ bookmark().createdAt | date }}</div>
       </div>
       <div>
         <!-- Actions -->
@@ -84,15 +82,13 @@
     <!-- Tags -->
     <div class="mb-2">
       @for (tag of bookmark().tags; track $index) {
-        <span
-          class="bg-orange-100 text-orange-800 text-[0.7rem] font-medium me-1 px-2.5 py-[0.8px] inline-flex items-center leading-normal rounded-full dark:bg-orange-900 dark:text-orange-300 uppercase">
-          {{ tag }}
-        </span>
+      <span
+        class="bg-orange-100 text-orange-800 text-[0.7rem] font-medium me-1 px-2.5 py-[0.8px] inline-flex items-center leading-normal rounded-full dark:bg-orange-900 dark:text-orange-300 uppercase">
+        {{ tag }}
+      </span>
       }
     </div>
 
-    <div class="text-gray-600 text-sm line-clamp-4 mb-1">
-      {{ bookmark().description }}
-    </div>
+    <div class="text-gray-600 text-sm line-clamp-4 mb-1">{{ bookmark().description }}</div>
   </div>
 </div>

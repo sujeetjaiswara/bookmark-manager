@@ -4,6 +4,7 @@ import {
   DestroyRef,
   effect,
   inject,
+  OnInit,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -12,19 +13,24 @@ import { SwUpdate } from '@angular/service-worker';
 import { Auth } from '@core/services';
 import { NavComponent } from '@shared/components';
 import { environment } from 'environments/environment';
+import { NgProgressbar } from 'ngx-progressbar';
+import { NgProgressRouter } from 'ngx-progressbar/router';
+import { PrimeNG } from 'primeng/config';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'bm-app',
-  imports: [NavComponent, RouterOutlet],
+  selector: 'bm-root',
+  imports: [NavComponent, RouterOutlet, ToastModule, NgProgressbar, NgProgressRouter],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {
-  #updates = inject(SwUpdate);
-  #authService = inject(Auth);
-  #destroyRef = inject(DestroyRef);
-  isAuth = signal(false);
+export class App implements OnInit {
+  readonly #updates = inject(SwUpdate);
+  readonly #authService = inject(Auth);
+  readonly #primeng = inject(PrimeNG);
+  readonly #destroyRef = inject(DestroyRef);
+  protected isAuth = signal(false);
 
   constructor() {
     console.log(`envTitle: ${environment.envTitle}`);
@@ -44,6 +50,8 @@ export class App {
   }
 
   ngOnInit(): void {
+    this.#primeng.ripple.set(true);
+
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (isAuthenticated === 'true') {
       this.isAuth.set(true);

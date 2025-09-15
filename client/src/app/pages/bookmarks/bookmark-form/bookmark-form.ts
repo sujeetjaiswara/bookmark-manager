@@ -24,9 +24,7 @@ import { TextareaModule } from 'primeng/textarea';
 import { finalize } from 'rxjs';
 
 @Component({
-  selector: 'bm-bookmark-add',
-  templateUrl: './bookmark-add.component.html',
-  styleUrls: ['./bookmark-add.component.scss'],
+  selector: 'bm-bookmark-form',
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -35,9 +33,11 @@ import { finalize } from 'rxjs';
     InputTextModule,
     TextareaModule,
   ],
+  templateUrl: './bookmark-form.html',
+  styleUrl: './bookmark-form.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class BookmarkAddComponent implements OnInit {
+export class BookmarkForm implements OnInit {
   #dataService = inject(Data);
   #destroyRef = inject(DestroyRef);
   #cd = inject(ChangeDetectorRef);
@@ -45,7 +45,7 @@ export default class BookmarkAddComponent implements OnInit {
   #router = inject(Router);
   #activatedRoute = inject(ActivatedRoute);
   protected bookmarkForm!: FormGroup;
-  protected tags: any[] = [];
+  protected tags: unknown[] = [];
   protected previewImage = '';
   protected isSaving = false;
   protected id!: string;
