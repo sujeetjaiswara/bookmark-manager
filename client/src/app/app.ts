@@ -4,7 +4,6 @@ import {
   DestroyRef,
   effect,
   inject,
-  OnInit,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -14,13 +13,13 @@ import { environment } from 'src/environments/environment';
 import { Auth, NavComponent } from './shared';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'bm-app',
   imports: [NavComponent, RouterOutlet],
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class App {
   #updates = inject(SwUpdate);
   #authService = inject(Auth);
   #destroyRef = inject(DestroyRef);

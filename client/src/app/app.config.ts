@@ -5,7 +5,7 @@ import { provideRouter } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
-import { MyPreset } from './my-preset';
+import { MyPreset } from './core/my-preset';
 
 export const appConfig: ApplicationConfig = {
   providers: [
