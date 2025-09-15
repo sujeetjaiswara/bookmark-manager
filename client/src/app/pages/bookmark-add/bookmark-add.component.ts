@@ -20,7 +20,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { finalize } from 'rxjs';
-import { DataService } from 'src/app/shared/services/data.service';
+import { Data } from 'src/app/shared';
 import { BookmarkCreateUpdateRequest, BookmarkResponse } from 'src/app/shared/types/bookmark';
 
 @Component({
@@ -38,7 +38,7 @@ import { BookmarkCreateUpdateRequest, BookmarkResponse } from 'src/app/shared/ty
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BookmarkAddComponent implements OnInit {
-  #dataService = inject(DataService);
+  #dataService = inject(Data);
   #destroyRef = inject(DestroyRef);
   #cd = inject(ChangeDetectorRef);
   #fb = inject(FormBuilder);

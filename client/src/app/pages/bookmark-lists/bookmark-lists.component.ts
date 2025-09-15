@@ -12,9 +12,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { finalize } from 'rxjs';
+import { Bookmarks, Data } from 'src/app/shared';
 import { GlobalSearchComponent } from 'src/app/shared/components/global-search/global-search.component';
-import { BookmarksService } from 'src/app/shared/services/bookmarks.service';
-import { DataService } from 'src/app/shared/services/data.service';
 import { Bookmark, BookmarksResponse } from 'src/app/shared/types/bookmark';
 import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 
@@ -28,8 +27,8 @@ import { BookmarkItemComponent } from './bookmark-item/bookmark-item.component';
 export default class BookmarkListsComponent implements OnInit, AfterViewInit {
   #destroyRef = inject(DestroyRef);
   #router = inject(Router);
-  #dataService = inject(DataService);
-  bookmarksService = inject(BookmarksService);
+  #dataService = inject(Data);
+  bookmarksService = inject(Bookmarks);
   isLoading = signal(false);
   selectedBookmark: Bookmark | null = null;
 

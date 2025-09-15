@@ -3,7 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PopoverModule } from 'primeng/popover';
-import { AuthService } from '../../services/auth.service';
+import { Auth } from '../../services';
 
 @Component({
   selector: 'bm-nav',
@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavComponent {
   #router = inject(Router);
-  #authService = inject(AuthService);
+  #authService = inject(Auth);
 
   async onLogout(e: MouseEvent) {
     e.preventDefault();

@@ -4,7 +4,7 @@ import { Bookmark } from '../types/bookmark';
 @Injectable({
   providedIn: 'root',
 })
-export class BookmarksService {
+export class Bookmarks {
   public bookmarks$: WritableSignal<Bookmark[]> = signal([]);
   public favBookmarks$: WritableSignal<Bookmark[]> = signal([]);
   public count: WritableSignal<number> = signal(0);

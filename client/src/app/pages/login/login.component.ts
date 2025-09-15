@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { Auth } from 'src/app/shared';
 
 @Component({
   selector: 'bm-login',
@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export default class LoginComponent {
   #router = inject(Router);
-  #authService = inject(AuthService);
+  #authService = inject(Auth);
 
   onLogin(e: Event) {
     e.preventDefault();

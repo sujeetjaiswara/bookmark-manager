@@ -11,8 +11,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
-import { NavComponent } from './shared/components/nav/nav.component';
-import { AuthService } from './shared/services/auth.service';
+import { Auth, NavComponent } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +22,7 @@ import { AuthService } from './shared/services/auth.service';
 })
 export class AppComponent implements OnInit {
   #updates = inject(SwUpdate);
-  #authService = inject(AuthService);
+  #authService = inject(Auth);
   #destroyRef = inject(DestroyRef);
   isAuth = signal(false);
 
