@@ -7,45 +7,33 @@ import {
   OnInit,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Data } from '@core/services';
 import { BookmarkCreateUpdateRequest, BookmarkResponse } from '@shared/types';
 import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { finalize } from 'rxjs';
 
 @Component({
   selector: 'bm-bookmark-form',
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    CardModule,
-    InputTextModule,
-    TextareaModule,
-  ],
+  imports: [ReactiveFormsModule, ButtonModule, InputTextModule, TextareaModule],
   templateUrl: './bookmark-form.html',
   styleUrl: './bookmark-form.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookmarkForm implements OnInit {
-  #dataService = inject(Data);
-  #destroyRef = inject(DestroyRef);
-  #cd = inject(ChangeDetectorRef);
-  #fb = inject(FormBuilder);
-  #router = inject(Router);
-  #activatedRoute = inject(ActivatedRoute);
+  readonly #dataService = inject(Data);
+  readonly #destroyRef = inject(DestroyRef);
+  readonly #cd = inject(ChangeDetectorRef);
+  readonly #fb = inject(FormBuilder);
+  readonly #router = inject(Router);
+  readonly #dialogRef = inject(DynamicDialogRef);
+  readonly #activatedRoute = inject(ActivatedRoute);
   protected bookmarkForm!: FormGroup;
-  protected tags: unknown[] = [];
+  protected tags: any[] = [];
   protected previewImage = '';
   protected isSaving = false;
   protected id!: string;
@@ -135,7 +123,7 @@ export class BookmarkForm implements OnInit {
       )
       .subscribe({
         next: () => {
-          this.#router.navigate(['/bookmarks']);
+          this.onCancel('ok');
         },
       });
   }
@@ -158,7 +146,7 @@ export class BookmarkForm implements OnInit {
     }
   }
 
-  onCancel() {
-    this.#router.navigate(['/bookmarks']);
+  onCancel(data?: string) {
+    this.#dialogRef.close(data);
   }
 }

@@ -8,12 +8,13 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
 import { Bookmarks as BookmarksService, Data } from '@core/services';
 import { GlobalSearchComponent } from '@shared/components';
 import { Bookmark, BookmarksResponse } from '@shared/types';
 import { ButtonModule } from 'primeng/button';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { finalize } from 'rxjs';
+import { BookmarkForm } from './bookmark-form/bookmark-form';
 import { BookmarkRow } from './bookmark-row/bookmark-row';
 
 @Component({
@@ -25,13 +26,17 @@ import { BookmarkRow } from './bookmark-row/bookmark-row';
 })
 export default class Bookmarks implements OnInit {
   #destroyRef = inject(DestroyRef);
-  #router = inject(Router);
   #dataService = inject(Data);
+  #dialogService = inject(DialogService);
   bookmarksService = inject(BookmarksService);
   isLoading = signal(false);
   selectedBookmark: Bookmark | null = null;
 
   ngOnInit(): void {
+    this.getBookmarks();
+  }
+
+  getBookmarks() {
     this.isLoading.set(true);
     this.#dataService
       .getBookmarks()
@@ -50,37 +55,6 @@ export default class Bookmarks implements OnInit {
         },
       });
   }
-
-  //   ngAfterViewInit(): void {
-  // this.initConfirmModal();
-  //   }
-
-  // initConfirmModal() {
-  //   const $modalElement: HTMLElement | null = document.querySelector('#popup-modal');
-
-  //   const modalOptions: ModalOptions = {
-  //     placement: 'center',
-  //     backdrop: 'dynamic',
-  //     backdropClasses: 'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
-  //     closable: true,
-  //     onHide: () => {
-  //       console.log('modal is hidden');
-  //     },
-  //     onShow: () => {
-  //       console.log('modal is shown');
-  //     },
-  //     onToggle: () => {
-  //       console.log('modal has been toggled');
-  //     },
-  //   };
-
-  //   const instanceOptions: InstanceOptions = {
-  //     id: 'popup-modal',
-  //     override: true,
-  //   };
-
-  //   this.modal = new Modal($modalElement, modalOptions, instanceOptions);
-  // }
 
   trackByFn(_index: number, bookmark: Bookmark) {
     return bookmark._id;
@@ -132,8 +106,20 @@ export default class Bookmarks implements OnInit {
     // }
   }
 
-  onAdd(e: Event) {
-    e.preventDefault();
-    this.#router.navigate(['add-bookmark']);
+  onAdd() {
+    const ref: DynamicDialogRef = this.#dialogService.open(BookmarkForm, {
+      header: 'Add New Bookmark',
+      style: { width: '90vw', maxWidth: '50rem' },
+      contentStyle: { overflow: 'hidden' },
+      modal: true,
+      closable: true,
+      data: {},
+    });
+
+    ref.onClose.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe((result: boolean) => {
+      if (result) {
+        this.getBookmarks();
+      }
+    });
   }
 }
